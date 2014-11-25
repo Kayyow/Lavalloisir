@@ -3,12 +3,15 @@
 	<h1>Laval<span id="logoTitleColor">loisir</span></h1>
 	
     <!-- Menu -->
-    <nav class="menu">
+    <nav id="menu">
         <ul>
-            <li><a class="tab_link" href="index.html">Accueil</a></li>
-            <li><a class="tab_link" href="Activite.html">Activités</a></li>
-            <li><a class="tab_link" href="Inscription.html">Inscription</a></li>
-            <li><a class="tab_link" href="Contact.html">Contact</a></li>
+            <li><a class="tabLink" href="../">Accueil</a></li>
+            <li><a class="tabLink" href="Activite.html">Activités</a></li>
+            <li><a class="tabLink" href="Inscription.html">Inscription</a></li>
+            <li><a class="tabLink" href="Contact.html">Contact</a></li>
         </ul>
     </nav>
+    
+    <!-- Bouton menu responsive -->
+    <a href="#" class="buttonMenu"></a>
 </header>

@@ -15,14 +15,21 @@ body {
 	background: #f0f0f0;
 }
 
-h1 {
-	font-family: 'kaushan_scriptregular';
-	font-size: 56px;
-  	color: #63696D;
+a {
+	line-height: 30px;
+	color: #65b9bd;
+	text-decoration: underline;
 }
 
-#logoTitleColor {
-	color: #65B9BD;
+
+/* HEADER */
+header {
+	z-index: 100;
+	left: 0; right: 0;
+	padding: 10px;
+	line-height: 70px;
+	height: 70px;
+	color: #63696D;
 }
 
 header a {
@@ -30,16 +37,21 @@ header a {
 	text-decoration: none;
 }
 
-.tab_link {
+h1 {
+	position: relative;
+	float: left;
+	margin:0;
+	margin-left: 16px;
+	font-family: 'kaushan_scriptregular';
+	font-size: 56px;
+  	color: #63696D;
+  	text-shadow: 0 0 2px #fff;
+}
+
+.tabLink {
 	display: block;
 	text-decoration: none;
 	color: inherit;
-}
-
-#title-span {
-    padding: 0;
-    margin: 0;
-    color: #65B9BD;
 }
 
 .buttonMenu {
@@ -48,26 +60,137 @@ header a {
 	padding: 0 25px;
 }
 
-.menu {
+#menu {
 	float: right;
 }
 
-.menu ul{
+#menu ul{
 	padding:0;
 	margin:0;
 }
 
-.menu ul li {
+#menu ul li {
 	display: inline-block;
 	width: 100px;
 	text-align: center;
 	border-left: 1px dashed #C0C0C0;
 }
 
-.menu ul li:hover {
-color: #5F9AB5;
+#menu ul li:hover {
+	color: #5F9AB5;
 }
 
+#logoTitleColor {
+	color: #65B9BD;
+}
+
+
+/* CONTENT */
+#container {
+	position: relative;
+	margin: auto;
+	width: 900px;
+}
+
+#coreContent {
+	position: relative;
+	padding-top: 50px;
+	bottom: 10px;
+}
+
+
+/* LEFT PANEL */
+#leftPanel {
+	position: relative;
+	float:  left;
+	width: 630px; 
+	padding: 20px;
+	border: solid 1px #CDCDCD;
+	background-color: #fff;
+}
+
+#leftPanel > form {
+    margin: auto;
+    width: 300px;
+}
+
+#leftPanel > form > label {
+    width: 120px;
+    float:left;
+}
+
+#leftPanel > form > input {
+    float:left;
+    padding: 2px;
+    height: 30px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    background-color: #eee;
+}
+
+
+/* RIGHT PANEL */
+#rightPanel {
+  position: relative;
+  float: right;
+  width: 220px;
+}
+
+.columnBox {
+  margin-bottom: 10px;
+  border: 1px solid #CDCDCD;
+  background-color: #fff;
+}
+
+.titleBox {
+  padding: 10px;
+  margin-top: -1px;
+  margin-left: -1px;
+  background-color: #5F9AB5;
+  border: 1px solid #006D9F;
+  width: 198px;
+}
+
+#cnctForm {
+  padding: 10px;
+}
+
+.cnctInput {
+  position: relative;
+  padding: 2px;
+  height: 30px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  background-color: #eee;
+}
+
+#topBox > ul {
+  padding: 0;
+  margin: 0;
+}
+
+.listBestRating {
+  padding: 5px;
+  display: block;
+  height: 25px;
+  line-height: 25px;
+  border-bottom: 1px solid #ddd; 
+}
+
+
+/* FOOTER */
+footer {
+	position: relative;
+	clear: both;
+	height: 50px;
+	bottom: 0;
+	padding-top: 10px;
+	text-align: center;
+	color: #63696D;
+}
+
+
+/* MEDIA QUERY */
 @media only screen and (max-width: 700px) {
 	#container, .splitter {
 		height: 100%;
@@ -132,7 +255,7 @@ color: #5F9AB5;
 		box-shadow: 0 10px 0 1px #63696D, 0 20px 0 1px #63696D, 0 30px 0 1px #63696D; 
 	}
 	 
-	 .menu {
+	#menu {
 		position: absolute;
 		left: 0;
 		top: 0;
@@ -143,9 +266,9 @@ color: #5F9AB5;
 		width: 200px;
 		transform: translateX(-200px); 
 		overflow-y: hidden;
-	 }
+	}
 	
-	.menu > ul > li {
+	#menu > ul > li {
 		display: block;
 		width: 200px;
 		height: 50px;
@@ -156,7 +279,7 @@ color: #5F9AB5;
 		color: #fff;
 	}
 	  
-	.menu > ul > li:hover {
+	#menu > ul > li:hover {
 		background-color: #8F9EA5;
 		color: #fff;
 	}
