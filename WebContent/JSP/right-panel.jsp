@@ -19,11 +19,6 @@
 	        <li class="listBestRating">TOP 3</li>
 	        <li class="listBestRating">TOP 4</li>
 	        <li class="listBestRating">TOP 5</li>
-	        <li class="listBestRating">TOP 6</li>
-	        <li class="listBestRating">TOP 7</li>
-	        <li class="listBestRating">TOP 8</li>
-	        <li class="listBestRating">TOP 9</li>
-	        <li class="listBestRating">TOP 10</li>
 	    </ul>
 	</div>
 	<div class="columnBox lastAdded">

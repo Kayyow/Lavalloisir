@@ -1,6 +1,6 @@
 <header>
 	<!-- Titre / Logo -->
-	<h1>Laval<span id="logoTitleColor">loisir</span></h1>
+	<h1><a href="Home">Laval<span id="logoTitleColor">loisir</span></a></h1>
 	
     <!-- Menu -->
     <nav id="menu">

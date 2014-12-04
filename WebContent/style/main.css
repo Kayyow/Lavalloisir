@@ -12,11 +12,10 @@
 
 body {
 	margin: 0; padding: 0;
-	background: #f0f0f0;
+	background: #eee;
 }
 
 a {
-	line-height: 30px;
 	color: #65b9bd;
 	text-decoration: underline;
 }
@@ -29,7 +28,7 @@ header {
 	padding: 10px;
 	line-height: 70px;
 	height: 70px;
-	color: #63696D;
+	color: #696969;
 }
 
 header a {
@@ -46,6 +45,10 @@ h1 {
 	font-size: 56px;
   	color: #63696D;
   	text-shadow: 0 0 2px #fff;
+}
+
+h1 a {
+	
 }
 
 .buttonMenu {
@@ -66,9 +69,8 @@ h1 {
 .tabLink {
 	display: inline-block;
 	width: 100px;
-	line-height: 70px;
 	text-align: center;
-	font-weight: bold;
+	font-size: 17px;
 	border-left: 1px dashed #C0C0C0;
 }
 
@@ -77,11 +79,11 @@ h1 {
 }
 
 .tabLink a {
-	color: #5F9AB5;
+	color: #636363;
 }
 
 .tabLink a:hover {
-	color: #63696D;
+	color: #65B9BD;
 }
 
 #logoTitleColor {
@@ -151,7 +153,6 @@ h1 {
 	margin-left: -1px;
 	background-color: #5F9AB5;
 	border: 1px solid #006D9F;
-	width: 198px;
 }
 
 #cnctForm {
@@ -189,9 +190,6 @@ h1 {
 footer {
 	position: relative;
 	clear: both;
-	height: 50px;
-	bottom: 0;
-	padding-top: 10px;
 	text-align: center;
 	color: #63696D;
 }
