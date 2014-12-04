@@ -6,7 +6,6 @@
 			
 			<div id="coreContent">
 				<div id="leftPanel">
-					<!-- PLACER VARIABLE NOM DE FICHIER -->
 					<jsp:include page="${ fileName }" flush="true" />
 				</div>
 				
