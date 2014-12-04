@@ -5,10 +5,10 @@
     <!-- Menu -->
     <nav id="menu">
         <ul>
-            <li><a class="tabLink" href="../">Accueil</a></li>
-            <li><a class="tabLink" href="Activite.html">Activités</a></li>
-            <li><a class="tabLink" href="Inscription.html">Inscription</a></li>
-            <li><a class="tabLink" href="Contact.html">Contact</a></li>
+            <li><a class="tabLink" href="../Home">Accueil</a></li>
+            <li><a class="tabLink" href="#">ActivitÃ©s</a></li>
+            <li><a class="tabLink" href="#">Inscription</a></li>
+            <li><a class="tabLink" href="#">Contact</a></li>
         </ul>
     </nav>
     
