@@ -48,12 +48,6 @@ h1 {
   	text-shadow: 0 0 2px #fff;
 }
 
-.tabLink {
-	display: block;
-	text-decoration: none;
-	color: inherit;
-}
-
 .buttonMenu {
 	font-weight: bold;
 	float: left;
@@ -65,25 +59,34 @@ h1 {
 }
 
 #menu ul{
-	padding:0;
-	margin:0;
+	padding: 0;
+	margin: 0;
 }
 
-#menu ul li {
+.tabLink {
 	display: inline-block;
 	width: 100px;
+	line-height: 70px;
 	text-align: center;
+	font-weight: bold;
 	border-left: 1px dashed #C0C0C0;
 }
 
-#menu ul li:hover {
+.tabLink:first-child {
+	border-left: none;
+}
+
+.tabLink a {
 	color: #5F9AB5;
+}
+
+.tabLink a:hover {
+	color: #63696D;
 }
 
 #logoTitleColor {
 	color: #65B9BD;
 }
-
 
 /* CONTENT */
 #container {
@@ -109,17 +112,17 @@ h1 {
 	background-color: #fff;
 }
 
-#leftPanel > form {
+#leftPanel form {
     margin: auto;
     width: 300px;
 }
 
-#leftPanel > form > label {
+#leftPanel form label {
     width: 120px;
     float:left;
 }
 
-#leftPanel > form > input {
+#leftPanel form input {
     float:left;
     padding: 2px;
     height: 30px;
@@ -131,50 +134,54 @@ h1 {
 
 /* RIGHT PANEL */
 #rightPanel {
-  position: relative;
-  float: right;
-  width: 220px;
+	position: relative;
+	float: right;
+	width: 220px;
 }
 
 .columnBox {
-  margin-bottom: 10px;
-  border: 1px solid #CDCDCD;
-  background-color: #fff;
+	margin-bottom: 10px;
+	border: 1px solid #CDCDCD;
+	background-color: #fff;
 }
 
 .titleBox {
-  padding: 10px;
-  margin-top: -1px;
-  margin-left: -1px;
-  background-color: #5F9AB5;
-  border: 1px solid #006D9F;
-  width: 198px;
+	padding: 10px;
+	margin-top: -1px;
+	margin-left: -1px;
+	background-color: #5F9AB5;
+	border: 1px solid #006D9F;
+	width: 198px;
 }
 
 #cnctForm {
-  padding: 10px;
+	padding: 10px;
 }
 
 .cnctInput {
-  position: relative;
-  padding: 2px;
-  height: 30px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  background-color: #eee;
+	position: relative;
+	padding: 2px;
+	height: 30px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	background-color: #eee;
 }
 
-#topBox > ul {
-  padding: 0;
-  margin: 0;
+.bestRating ul{
+	margin: 0;
+	padding: 0;
 }
 
 .listBestRating {
-  padding: 5px;
-  display: block;
-  height: 25px;
-  line-height: 25px;
-  border-bottom: 1px solid #ddd; 
+	padding: 5px;
+	display: block;
+	height: 25px;
+	line-height: 25px;
+	border-bottom: 1px solid #ddd; 
+}
+
+.listBestRating:last-child {
+	border-bottom: none;
 }
 
 

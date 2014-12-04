@@ -1,21 +1,22 @@
-package com.servlets;
+package com.lavalloisir.servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Home
+ * Servlet implementation class Registration
  */
-public class Home extends HttpServlet {
+public class Registration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Home() {
+    public Registration() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -24,8 +25,8 @@ public class Home extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		this.getServletContext().getRequestDispatcher("/JSP/home.jsp").forward(request, response);
+		request.setAttribute("fileName", "LPRegistration.jsp");
+		this.getServletContext().getRequestDispatcher("/JSP/page.jsp").forward(request, response);
 	}
 
 	/**

@@ -5,7 +5,10 @@
 			<%@ include file="header.jsp" %>
 			
 			<div id="coreContent">
-				<%@ include file="left-panel.jsp" %>
+				<div id="leftPanel">
+					<!-- PLACER VARIABLE NOM DE FICHIER -->
+					<jsp:include page="${ fileName }" flush="true" />
+				</div>
 				
 				<%@ include file="right-panel.jsp" %>
 			</div>
