@@ -2,16 +2,25 @@ package com.lavalloisir.beans.business;
 
 public class Leisure {
 
+	private long id;
     private String name; 
     private int number;
     private String street; 
     private int zipCode;
     private String city;
     private String description;
-    private int phone;
+    private String phone;
     private String email;
     private Category category;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+    
     public String getName() {
         return name;
     }
@@ -60,11 +69,11 @@ public class Leisure {
         this.description = description;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
