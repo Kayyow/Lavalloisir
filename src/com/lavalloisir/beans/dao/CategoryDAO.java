@@ -1,5 +1,7 @@
 package com.lavalloisir.beans.dao;
 
-public class CategoryDAO {
+import com.lavalloisir.beans.business.Category;
 
+public interface CategoryDAO {
+	Category find(String title) throws DAOException;
 }
