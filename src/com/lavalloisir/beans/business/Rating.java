@@ -9,7 +9,7 @@ public class Rating {
     private String comment;
     private Date dateRating;
     private User user;
-    private Leisure idLeisure;
+    private Leisure leisure;
 
     public int getRating() {
         return rating;
@@ -51,12 +51,12 @@ public class Rating {
         this.user = user;
     }
 
-    public Leisure getIdLeisure() {
-        return idLeisure;
+    public Leisure getLeisure() {
+        return leisure;
     }
 
-    public void setIdLeisure(Leisure idLeisure) {
-        this.idLeisure = idLeisure;
+    public void setLeisure(Leisure leisure) {
+        this.leisure = leisure;
     }
     
     public Rating() {
