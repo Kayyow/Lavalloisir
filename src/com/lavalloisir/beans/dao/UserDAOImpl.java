@@ -6,8 +6,19 @@ import com.lavalloisir.beans.business.User;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
-public class UserDAOImpl {
+public class UserDAOImpl implements UserDAO {
 
+	@Override
+	public User find (String login, String password) throws DAOException {
+		return null;
+	}
+	
+	@Override
+	public void create (User user) throws IllegalArgumentException, DAOException {
+	}
+	
+	
+	////////// A CHANGER ! ///////////
 	public static User find(Connection cnx, String login){
 		
 		Statement stmt = null;
@@ -47,7 +58,6 @@ public class UserDAOImpl {
 	
 	public static void create(Connection cnx, User user){
 		
-
 		User u = find(cnx, user.getLogin());
 		Statement stmt = null;
 		
