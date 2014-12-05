@@ -1,5 +1,6 @@
-package com.lavalloisir.beans;
+package com.lavalloisir.beans.business;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class User {
@@ -11,7 +12,7 @@ public class User {
     private String login;
     private String password;
     private String profilPicture;
-    private Date registerDate;
+    private Timestamp registerDate;
 
     public String getName() {
         return name;
@@ -65,7 +66,7 @@ public class User {
         return registerDate;
     }
 
-    public void setRegisterDate(Date registerDate) {
+    public void setRegisterDate(Timestamp registerDate) {
         this.registerDate = registerDate;
     }
 

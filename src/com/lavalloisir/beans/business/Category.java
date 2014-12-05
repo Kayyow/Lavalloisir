@@ -1,4 +1,4 @@
-package com.lavalloisir.beans;
+package com.lavalloisir.beans.business;
 
 public class Category {
 
