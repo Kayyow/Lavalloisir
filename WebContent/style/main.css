@@ -13,6 +13,7 @@
 body {
 	margin: 0; padding: 0;
 	background: #eee;
+	color: #696969;
 }
 
 a {
@@ -115,23 +116,29 @@ h1 a {
 	background-color: #fff;
 }
 
-#leftPanel form {
+#registrForm {
     margin: auto;
-    width: 300px;
+    margin-top: 20px;
+    width: 295px;
 }
 
-#leftPanel form label {
+#registrForm label {
     width: 120px;
     float:left;
 }
 
-#leftPanel form input {
+.registrInput {
     float:left;
     padding: 2px;
     height: 30px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     background-color: #eee;
+}
+
+#registrButton {
+	float: right;
+	padding: 5px;
 }
 
 
@@ -154,19 +161,30 @@ h1 a {
 	margin-left: -1px;
 	background-color: #5F9AB5;
 	border: 1px solid #006D9F;
+	color: #fff;
 }
 
 #cnctForm {
-	padding: 10px;
+	padding: 10px 10px 0px 10px;
 }
 
 .cnctInput {
 	position: relative;
 	padding: 2px;
 	height: 30px;
+	width: 100%;
 	margin-bottom: 10px;
 	border: 1px solid #ccc;
 	background-color: #eee;
+}
+
+#cnctButton {
+	float: right;
+	padding: 5px;
+}
+
+#cnctForm a {
+	line-height: 30px;
 }
 
 .bestRating ul{
@@ -192,7 +210,6 @@ footer {
 	position: relative;
 	clear: both;
 	text-align: center;
-	color: #63696D;
 }
 
 
