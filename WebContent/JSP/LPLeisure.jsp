@@ -16,10 +16,11 @@
 	<input id="addLeisurButton" type="submit" value="Ajouter un loisir">
 </form>
 
+<!-- Affiche la liste des activités -->
 
 <div id="leisrList">
 
-	<!-- Tant qu'il y a des activité, afficher : -->
+	<!-- Tant qu'il y a des activités, afficher : -->
 	<div class="leisrInsert">
 	    <div class="leisrPhoto"></div>
         <div class="leisrDesctription">
@@ -30,4 +31,4 @@
     	</div>
 	</div>
     
-</div>
+</div> 
