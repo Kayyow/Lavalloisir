@@ -1,10 +1,10 @@
 package com.lavalloisir.beans.dao;
 
 import java.sql.ResultSet;
+import java.sql.Connection;
+import java.sql.Statement;
 
 import com.lavalloisir.beans.business.Category;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
 
 public class CategoryDAOImpl {
 
