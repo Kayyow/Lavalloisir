@@ -13,6 +13,7 @@
 body {
 	margin: 0; padding: 0;
 	background: #eee;
+	color: #696969;
 }
 
 a {
@@ -61,8 +62,8 @@ h1 {
   	text-shadow: 2px 1px 0 #fff;
 }
 
-h1 a {
-	
+h2{
+	color: #5F9AB5
 }
 
 #logoTitleColor {
@@ -115,23 +116,89 @@ h1 a {
 	background-color: #fff;
 }
 
-#leftPanel form {
+#registrForm,
+#LeisureForm,
+#createLeisrForm {
     margin: auto;
-    width: 300px;
+    margin-top: 20px;
 }
 
-#leftPanel form label {
+#registrForm {
+	width: 295px;
+}
+
+
+#registrForm label,
+#createLeisrForm label{
     width: 120px;
     float:left;
 }
 
-#leftPanel form input {
+.registrInput,
+.createLeisrInput {
     float:left;
     padding: 2px;
     height: 30px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
+    background-color: #fafafa;
+}
+
+#registrButton,
+#addLeisurButton {
+	float: right;
+	padding: 5px;
+}
+
+#leisrList {
+	margin-top : 25px;
+	border: 1px solid #ccc;
+}
+
+#leisrList:last-child {
+	border-bottom: none;
+}
+
+.leisrInsert {
+	padding: 15px;
+	height: 80px;
+    border-bottom: 1px solid #999;
     background-color: #eee;
+}
+
+.leisrPhoto {
+	position: relative;
+	float: left;
+    height: 80px;
+    width:  80px;
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
+.leisrDesctription {
+    position: relative;
+    left: 10px; 
+}
+
+.leisrTitle {
+    font-size: 25px;
+}
+
+.leisrRating {
+    position: relative;
+    float: right;
+    right: 10px;
+    color: #000;
+    top: -20px;
+    padding: 20px 10px 20px 10px;
+    background-color: #d5d5d5;
+    border-radius: 5px;
+}
+
+.leisrValueRating {
+    font-weight: 900;
+    font-size: 20px;
+    color: #4eab4e;
 }
 
 
@@ -154,19 +221,30 @@ h1 a {
 	margin-left: -1px;
 	background-color: #5F9AB5;
 	border: 1px solid #006D9F;
+	color: #fff;
 }
 
 #cnctForm {
-	padding: 10px;
+	padding: 10px 10px 0px 10px;
 }
 
 .cnctInput {
 	position: relative;
 	padding: 2px;
 	height: 30px;
+	width: 100%;
 	margin-bottom: 10px;
 	border: 1px solid #ccc;
-	background-color: #eee;
+	background-color: #fafafa;
+}
+
+#cnctButton {
+	float: right;
+	padding: 5px;
+}
+
+#cnctForm a {
+	line-height: 30px;
 }
 
 .bestRating ul{
@@ -192,7 +270,6 @@ footer {
 	position: relative;
 	clear: both;
 	text-align: center;
-	color: #63696D;
 }
 
 
