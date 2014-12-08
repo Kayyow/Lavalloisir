@@ -1,4 +1,8 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 encoding//WebContent/JSP/LPRegistration.jsp=UTF-8
 encoding//WebContent/JSP/left-panel.jsp=UTF-8
+=======
+>>>>>>> f48673874e6c03b15fcd79effead380a546f566d
 encoding//WebContent/JSP/right-panel.jsp=UTF-8
+encoding/<project>=UTF-8

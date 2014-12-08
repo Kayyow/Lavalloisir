@@ -1,17 +1,20 @@
 @font-face {
-    font-family: 'kaushan_scriptregular';
-    src: url('../font/kaushanscript-regular-webfont.eot');
-    src: url('../font/kaushanscript-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../font/kaushanscript-regular-webfont.woff2') format('woff2'),
-         url('../font/kaushanscript-regular-webfont.woff') format('woff'),
-         url('../font/kaushanscript-regular-webfont.ttf') format('truetype'),
-         url('../font/kaushanscript-regular-webfont.svg#kaushan_scriptregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'kaushan_scriptregular';
+	src: url('../font/kaushanscript-regular-webfont.eot');
+	src: url('../font/kaushanscript-regular-webfont.eot?#iefix')
+		format('embedded-opentype'),
+		url('../font/kaushanscript-regular-webfont.woff2') format('woff2'),
+		url('../font/kaushanscript-regular-webfont.woff') format('woff'),
+		url('../font/kaushanscript-regular-webfont.ttf') format('truetype'),
+		url('../font/kaushanscript-regular-webfont.svg#kaushan_scriptregular')
+		format('svg');
+	font-weight: normal;
+	font-style: normal;
 }
 
 body {
-	margin: 0; padding: 0;
+	margin: 0;
+	padding: 0;
 	background: #eee;
 	color: #696969;
 }
@@ -20,7 +23,6 @@ a {
 	color: #65b9bd;
 	text-decoration: underline;
 }
-
 
 /****** CONTENT ******/
 #container {
@@ -35,11 +37,11 @@ a {
 	bottom: 10px;
 }
 
-
 /****** HEADER ******/
 header {
 	z-index: 100;
-	left: 0; right: 0;
+	left: 0;
+	right: 0;
 	padding: 10px;
 	line-height: 70px;
 	height: 70px;
@@ -54,12 +56,12 @@ header a {
 h1 {
 	position: relative;
 	float: left;
-	margin:0;
+	margin: 0;
 	margin-left: 16px;
 	font-family: 'kaushan_scriptregular';
 	font-size: 56px;
-  	color: #696969;
-  	text-shadow: 2px 1px 0 #fff;
+	color: #696969;
+	text-shadow: 2px 1px 0 #fff;
 }
 
 h2{
@@ -80,7 +82,7 @@ h2{
 	float: right;
 }
 
-#menu ul{
+#menu ul {
 	padding: 0;
 	margin: 0;
 }
@@ -105,17 +107,17 @@ h2{
 	color: #65B9BD;
 }
 
-
 /* LEFT PANEL */
 #leftPanel {
 	position: relative;
-	float:  left;
-	width: 630px; 
+	float: left;
+	width: 630px;
 	padding: 20px;
 	border: solid 1px #CDCDCD;
 	background-color: #fff;
 }
 
+<<<<<<< HEAD
 #registrForm,
 #LeisureForm,
 #createLeisrForm {
@@ -202,6 +204,27 @@ h2{
 }
 
 
+=======
+#leftPanel form {
+	margin: auto;
+	width: 300px;
+}
+
+#leftPanel form label {
+	width: 120px;
+	float: left;
+}
+
+#leftPanel form input {
+	float: left;
+	padding: 2px;
+	height: 30px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	background-color: #eee;
+}
+
+>>>>>>> f48673874e6c03b15fcd79effead380a546f566d
 /* RIGHT PANEL */
 #rightPanel {
 	position: relative;
@@ -247,7 +270,7 @@ h2{
 	line-height: 30px;
 }
 
-.bestRating ul{
+.bestRating ul {
 	margin: 0;
 	padding: 0;
 }
@@ -257,13 +280,12 @@ h2{
 	display: block;
 	height: 25px;
 	line-height: 25px;
-	border-bottom: 1px solid #ddd; 
+	border-bottom: 1px solid #ddd;
 }
 
 .listBestRating:last-child {
 	border-bottom: none;
 }
-
 
 /* FOOTER */
 footer {
@@ -272,25 +294,21 @@ footer {
 	text-align: center;
 }
 
-
 /* MEDIA QUERY */
 @media only screen and (max-width: 700px) {
 	#container, .splitter {
 		height: 100%;
 	}
-	
-	#container { 
+	#container {
 		overflow: hidden;
 		position: relative;
 		margin: auto;
 		width: 100%;
 	}
-	
 	.splitter {
 		transition-duration: 0.5s;
-		transform: translateX(0px); 
+		transform: translateX(0px);
 	}
-	
 	.content {
 		position: absolute;
 		top: 100px;
@@ -301,11 +319,9 @@ footer {
 		overflow-y: scroll;
 		-webkit-overflow-scrolling: touch;
 	}
-	
-	header { 
-		position: static; 
+	header {
+		position: static;
 	}
-	
 	footer {
 		width: 100%;
 		height: 50px;
@@ -315,7 +331,6 @@ footer {
 		background: #000;
 		color: #fff;
 	}
-	
 	.buttonMenu {
 		position: relative;
 		display: block;
@@ -323,10 +338,9 @@ footer {
 		float: left;
 		width: 80px;
 		height: 100px;
-		cursor: pointer; 
+		cursor: pointer;
 		padding: 0;
 	}
-	
 	.buttonMenu:after {
 		content: '';
 		position: absolute;
@@ -335,9 +349,9 @@ footer {
 		height: 0;
 		top: 25px;
 		left: 30px;
-		box-shadow: 0 10px 0 1px #63696D, 0 20px 0 1px #63696D, 0 30px 0 1px #63696D; 
+		box-shadow: 0 10px 0 1px #63696D, 0 20px 0 1px #63696D, 0 30px 0 1px
+			#63696D;
 	}
-	 
 	#menu {
 		position: absolute;
 		left: 0;
@@ -347,36 +361,32 @@ footer {
 		-webkit-overflow-scrolling: touch;
 		background-color: #5F9AB5;
 		width: 200px;
-		transform: translateX(-200px); 
+		transform: translateX(-200px);
 		overflow-y: hidden;
 	}
-	
-	#menu > ul > li {
+	#menu>ul>li {
 		display: block;
 		width: 200px;
 		height: 50px;
 		padding: auto;
 		text-align: center;
 		line-height: 50px;
-		border-bottom: 1px solid #7CB6D1; 
+		border-bottom: 1px solid #7CB6D1;
 		color: #fff;
 	}
-	  
-	#menu > ul > li:hover {
+	#menu>ul>li:hover {
 		background-color: #8F9EA5;
 		color: #fff;
 	}
-	
 	.with--sidebar .splitter {
-		transform: translateX(200px); 
+		transform: translateX(200px);
 	}
-	
 	.with--sidebar .site-cache {
 		position: absolute;
 		top: 0;
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background-color: rgba(0,0,0,0.6);
-	} 
+		background-color: rgba(0, 0, 0, 0.6);
+	}
 }
