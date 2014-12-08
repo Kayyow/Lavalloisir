@@ -88,7 +88,7 @@ public class UserDAOImpl implements UserDAO {
     }
     
     /**
-	 * Simple méthode utilitaire permettant de faire la correspondance (le mapping)
+	 * Simple methode utilitaire permettant de faire la correspondance (le mapping)
 	 * entre une ligne issue de la table utilisateur (un ResultSet) et un bean User
 	 * @param rs
 	 * @return
