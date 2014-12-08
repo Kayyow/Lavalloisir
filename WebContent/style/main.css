@@ -62,8 +62,8 @@ h1 {
   	text-shadow: 2px 1px 0 #fff;
 }
 
-h1 a {
-	
+h2{
+	color: #5F9AB5
 }
 
 #logoTitleColor {
@@ -116,29 +116,89 @@ h1 a {
 	background-color: #fff;
 }
 
-#registrForm {
+#registrForm,
+#LeisureForm,
+#createLeisrForm {
     margin: auto;
     margin-top: 20px;
-    width: 295px;
 }
 
-#registrForm label {
+#registrForm {
+	width: 295px;
+}
+
+
+#registrForm label,
+#createLeisrForm label{
     width: 120px;
     float:left;
 }
 
-.registrInput {
+.registrInput,
+.createLeisrInput {
     float:left;
     padding: 2px;
     height: 30px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
+    background-color: #fafafa;
+}
+
+#registrButton,
+#addLeisurButton {
+	float: right;
+	padding: 5px;
+}
+
+#leisrList {
+	margin-top : 25px;
+	border: 1px solid #ccc;
+}
+
+#leisrList:last-child {
+	border-bottom: none;
+}
+
+.leisrInsert {
+	padding: 15px;
+	height: 80px;
+    border-bottom: 1px solid #999;
     background-color: #eee;
 }
 
-#registrButton {
-	float: right;
-	padding: 5px;
+.leisrPhoto {
+	position: relative;
+	float: left;
+    height: 80px;
+    width:  80px;
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
+.leisrDesctription {
+    position: relative;
+    left: 10px; 
+}
+
+.leisrTitle {
+    font-size: 25px;
+}
+
+.leisrRating {
+    position: relative;
+    float: right;
+    right: 10px;
+    color: #000;
+    top: -20px;
+    padding: 20px 10px 20px 10px;
+    background-color: #d5d5d5;
+    border-radius: 5px;
+}
+
+.leisrValueRating {
+    font-weight: 900;
+    font-size: 20px;
+    color: #4eab4e;
 }
 
 
@@ -175,7 +235,7 @@ h1 a {
 	width: 100%;
 	margin-bottom: 10px;
 	border: 1px solid #ccc;
-	background-color: #eee;
+	background-color: #fafafa;
 }
 
 #cnctButton {
