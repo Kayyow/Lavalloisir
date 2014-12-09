@@ -13,8 +13,10 @@
 	    <option >Categorie 4</option>
 	</select>
 	
-	<input id="addLeisurButton" type="submit" value="Ajouter un loisir">
+	<a href="CreateLeisure" id="addLeisurButton"> Ajouter un loisir</a>
 </form>
+
+
 
 <!-- Affiche la liste des activités -->
 

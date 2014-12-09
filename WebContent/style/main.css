@@ -117,7 +117,6 @@ h2{
 	background-color: #fff;
 }
 
-<<<<<<< HEAD
 #registrForm,
 #LeisureForm,
 #createLeisrForm {
@@ -125,7 +124,8 @@ h2{
     margin-top: 20px;
 }
 
-#registrForm {
+#registrForm,
+#createLeisrForm {
 	width: 295px;
 }
 
@@ -203,28 +203,6 @@ h2{
     color: #4eab4e;
 }
 
-
-=======
-#leftPanel form {
-	margin: auto;
-	width: 300px;
-}
-
-#leftPanel form label {
-	width: 120px;
-	float: left;
-}
-
-#leftPanel form input {
-	float: left;
-	padding: 2px;
-	height: 30px;
-	margin-bottom: 10px;
-	border: 1px solid #ccc;
-	background-color: #eee;
-}
-
->>>>>>> f48673874e6c03b15fcd79effead380a546f566d
 /* RIGHT PANEL */
 #rightPanel {
 	position: relative;
