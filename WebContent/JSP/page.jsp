@@ -6,7 +6,7 @@
 
 		<div id="coreContent">
 			<div id="leftPanel">
-				<jsp:include page="${ fileName }" flush="true" />
+				<jsp:include page="${ leftPanelFile }" flush="true" />
 			</div>
 
 			<%@ include file="right-panel.jsp"%>

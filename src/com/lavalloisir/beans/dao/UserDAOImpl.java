@@ -83,6 +83,7 @@ public class UserDAOImpl implements UserDAO {
     private static final String SQL_SELECT_BY_EMAIL = "SELECT "
 			+ "id, nom, prenom, email, login, motDePasse, photoProfil, dateInscription "
 			+ "FROM utilisateur WHERE email = ? ";
+    
 	// Implémentation de la méthode trouver() définie dans l'interface UtilisateurDao
     @Override
     public User find (String email) throws DAOException {
@@ -112,7 +113,7 @@ public class UserDAOImpl implements UserDAO {
     
     private static final String SQL_INSERT = "INSERT INTO utilisateur "
     		+ "(nom, prenom, email, login, motDePasse, photoProfil, dateInscription) "
-    		+ "VALUES (?, ?, ?, ?, ?, ?, NOW())";
+    		+ "VALUES (?, ?, ?, ?, ?, 'WebContent/img/profil_picture.jpeg', NOW())";
     
 	// Implémentation de la méthode creer() définie dans l'interface UtilisateurDao
     @Override
@@ -126,7 +127,7 @@ public class UserDAOImpl implements UserDAO {
     		cnct = daoFactory.getConnection();
     		preparedStmt = DAOUtil.initPreparedStatement(cnct, SQL_INSERT, true,
     				user.getName(), user.getFirstName(), user.getEmail(), user.getLogin(),
-    				user.getPassword(), user.getProfilPicture());
+    				user.getPassword());
     		int status = preparedStmt.executeUpdate();
     		
     		// Analyse du statut retourné par la requête d'insertion
@@ -164,7 +165,7 @@ public class UserDAOImpl implements UserDAO {
 		user.setEmail(rs.getString("email"));
 		user.setLogin(rs.getString("login"));
 		user.setPassword(rs.getString("motDePasse"));
-		user.setProfilPicture(rs.getString("imageProfil"));
+		user.setProfilPicture(rs.getString("photoProfil"));
 		user.setRegisterDate(rs.getTimestamp("dateInscription"));
 		return user;
 	}

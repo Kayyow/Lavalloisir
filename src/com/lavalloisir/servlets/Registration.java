@@ -19,8 +19,8 @@ public class Registration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	public static final String CONF_DAO_FACTORY = "daofactory";
-	public static final String ATT_USER = "utilisateur";
-	public static final String ATT_FORM = "form";
+	public static final String ATT_USER = "USER";
+	public static final String ATT_FORM = "FORM";
 	public static final String VIEW = "/JSP/page.jsp";
 	
 	private UserDAO userDAO;
@@ -35,7 +35,6 @@ public class Registration extends HttpServlet {
      */
     public Registration() throws ServletException {
         super();
-        init();
     }
 
 	/**

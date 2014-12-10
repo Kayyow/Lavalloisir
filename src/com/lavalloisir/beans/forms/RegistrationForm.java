@@ -12,12 +12,12 @@ import com.lavalloisir.beans.dao.DAOException;
 import com.lavalloisir.beans.dao.UserDAO;
 
 public final class RegistrationForm {
-	private static final String FIELD_LNAME = ""; 
-	private static final String FIELD_FNAME = "";
-	private static final String FIELD_EMAIL = ""; // TO COMPLETE
-	private static final String FIELD_LOGIN = "";
-	private static final String FIELD_PASSWD = "";
-	private static final String FIELD_CONFIRM = "";
+	private static final String FIELD_LNAME = "registrLName"; 
+	private static final String FIELD_FNAME = "registrFName";
+	private static final String FIELD_EMAIL = "registrMail";
+	private static final String FIELD_LOGIN = "registrLogin";
+	private static final String FIELD_PASSWD = "registrPwd";
+	private static final String FIELD_CONFIRM = "registrConfirm";
 
     private static final String ALGO_ENCRYPT = "SHA-256";
 
@@ -37,7 +37,7 @@ public final class RegistrationForm {
         return result;
     }
 
-    public User registerUser( HttpServletRequest request ) {
+    public User registerUser(HttpServletRequest request) {
     	String lName = getFieldValue(request, FIELD_LNAME);
     	String fName = getFieldValue(request, FIELD_FNAME);
     	String email = getFieldValue(request, FIELD_EMAIL);

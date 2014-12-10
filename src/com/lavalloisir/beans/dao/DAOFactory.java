@@ -8,8 +8,8 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DAOFactory {
-	// CONSTANT
-	private static final String FICHIER_PROPERTIES = "/com/lavalloisir/dao/dao.properties";
+	// CONSTANTS
+	private static final String FICHIER_PROPERTIES = "/com/lavalloisir/beans/dao/dao.properties";
 	private static final String PROPERTY_URL = "url";
 	private static final String PROPERTY_DRIVER = "driver";
 	private static final String PROPERTY_USER_NAME = "username";
@@ -64,15 +64,13 @@ public class DAOFactory {
 		return instance;
 	}
 	
-	/* M�thode charg�e de fournir une connexion � la base de donn�es */
-	/* package*/ Connection getConnection() throws SQLException {
+	// Méthode chargée de fournir une connexion à la base de données
+	Connection getConnection() throws SQLException {
 		return DriverManager.getConnection(url, userName, password);
 	}
 	
-	/*
-     * M�thodes de r�cup�ration de l'impl�mentation des diff�rents DAO (un seul
-     * pour le moment)
-     */
+    // Méthodes de récupération de l'implémentation des différents DAO (un seul
+    // pour le moment)
     public UserDAO getUserDAO() {
         return new UserDAOImpl(this);
     }
