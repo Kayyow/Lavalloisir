@@ -27,10 +27,10 @@ public class DAOFactory {
 	}
 	
 	/*
-     * Méthode chargée de récupérer les informations de connexion à la base de
-     * données, charger le driver JDBC et retourner une instance de la Factory
+     * Mï¿½thode chargï¿½e de rï¿½cupï¿½rer les informations de connexion ï¿½ la base de
+     * donnï¿½es, charger le driver JDBC et retourner une instance de la Factory
      */
-	public static DAOFactory getInstrance() throws DAOConfigurationException {
+	public static DAOFactory getInstance() throws DAOConfigurationException {
 		Properties properties = new Properties();
 		String url;
 		String driver;
@@ -64,13 +64,13 @@ public class DAOFactory {
 		return instance;
 	}
 	
-	/* Méthode chargée de fournir une connexion à la base de données */
+	/* Mï¿½thode chargï¿½e de fournir une connexion ï¿½ la base de donnï¿½es */
 	/* package*/ Connection getConnection() throws SQLException {
 		return DriverManager.getConnection(url, userName, password);
 	}
 	
 	/*
-     * Méthodes de récupération de l'implémentation des différents DAO (un seul
+     * Mï¿½thodes de rï¿½cupï¿½ration de l'implï¿½mentation des diffï¿½rents DAO (un seul
      * pour le moment)
      */
     public UserDAO getUserDAO() {

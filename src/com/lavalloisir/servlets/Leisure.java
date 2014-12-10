@@ -24,7 +24,7 @@ public class Leisure extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("fileName", "LPLeisure.jsp");
+		request.setAttribute("leftPanelFile", "LPLeisure.jsp");
 		this.getServletContext().getRequestDispatcher("/JSP/page.jsp").forward(request, response);
 	}
 

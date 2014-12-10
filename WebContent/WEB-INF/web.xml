@@ -33,4 +33,7 @@
 			<include-prelude>/JSP/taglibs.jsp</include-prelude>
 		</jsp-property-group>
 	</jsp-config>
+	<listener>
+		<listener-class>com.lavalloisir.config.InitDAOFactory</listener-class>
+	</listener>
 </web-app>

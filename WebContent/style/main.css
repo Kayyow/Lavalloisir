@@ -5,9 +5,7 @@
 		format('embedded-opentype'),
 		url('../font/kaushanscript-regular-webfont.woff2') format('woff2'),
 		url('../font/kaushanscript-regular-webfont.woff') format('woff'),
-		url('../font/kaushanscript-regular-webfont.ttf') format('truetype'),
-		url('../font/kaushanscript-regular-webfont.svg#kaushan_scriptregular')
-		format('svg');
+		url('../font/kaushanscript-regular-webfont.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -117,7 +115,6 @@ h2{
 	background-color: #fff;
 }
 
-<<<<<<< HEAD
 #registrForm,
 #LeisureForm,
 #createLeisrForm {
@@ -203,28 +200,6 @@ h2{
     color: #4eab4e;
 }
 
-
-=======
-#leftPanel form {
-	margin: auto;
-	width: 300px;
-}
-
-#leftPanel form label {
-	width: 120px;
-	float: left;
-}
-
-#leftPanel form input {
-	float: left;
-	padding: 2px;
-	height: 30px;
-	margin-bottom: 10px;
-	border: 1px solid #ccc;
-	background-color: #eee;
-}
-
->>>>>>> f48673874e6c03b15fcd79effead380a546f566d
 /* RIGHT PANEL */
 #rightPanel {
 	position: relative;

@@ -24,7 +24,7 @@ public class Home extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("fileName", "LPHome.jsp");
+		request.setAttribute("leftPanelFile", "LPHome.jsp");
 		this.getServletContext().getRequestDispatcher("/JSP/page.jsp").forward(request, response);
 	}
 
