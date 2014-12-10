@@ -69,13 +69,13 @@ public final class RegistrationForm {
      * Appel à la validation de l'adresse email reçue et initialisation de la
      * propriété email du bean
      */
-    private void processEmail( String email, User user ) {
+    private void processEmail(String email, User user) {
         try {
             validEmail( email );
-        } catch ( FormValidationException e ) {
-        	setError( FIELD_EMAIL, e.getMessage() );
+        } catch (FormValidationException e) {
+        	setError(FIELD_EMAIL, e.getMessage());
         }
-        user.setEmail( email );
+        user.setEmail(email);
     }
 
     /*

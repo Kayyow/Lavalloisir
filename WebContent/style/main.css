@@ -122,7 +122,8 @@ h2{
     margin-top: 20px;
 }
 
-#registrForm {
+#registrForm,
+#createLeisrForm {
 	width: 295px;
 }
 

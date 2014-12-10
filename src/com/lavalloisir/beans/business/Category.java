@@ -2,7 +2,7 @@ package com.lavalloisir.beans.business;
 
 public class Category {
 
-	private long id;
+	private int id;
     private String title;
     private String description;
 
@@ -10,7 +10,7 @@ public class Category {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

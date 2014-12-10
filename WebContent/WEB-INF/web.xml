@@ -1,38 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	version="3.0">
-	<servlet>
-		<servlet-name>Home</servlet-name>
-		<servlet-class>com.lavalloisir.servlets.Home</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>Registration</servlet-name>
-		<servlet-class>com.lavalloisir.servlets.Registration</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>Leisure</servlet-name>
-		<servlet-class>com.lavalloisir.servlets.Leisure</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Home</servlet-name>
-		<url-pattern>/Home</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Registration</servlet-name>
-		<url-pattern>/Registration</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Leisure</servlet-name>
-		<url-pattern>/Leisure</url-pattern>
-	</servlet-mapping>
-	<jsp-config>
-		<jsp-property-group>
-			<url-pattern>*.jsp</url-pattern>
-			<include-prelude>/JSP/taglibs.jsp</include-prelude>
-		</jsp-property-group>
-	</jsp-config>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <servlet>
+    <servlet-name>Home</servlet-name>
+    <servlet-class>com.lavalloisir.servlets.Home</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Registration</servlet-name>
+    <servlet-class>com.lavalloisir.servlets.Registration</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Leisure</servlet-name>
+    <servlet-class>com.lavalloisir.servlets.Leisure</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CreateLeisure</servlet-name>
+    <servlet-class>com.lavalloisir.servlets.CreateLeisure</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Home</servlet-name>
+    <url-pattern>/Home</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Registration</servlet-name>
+    <url-pattern>/Registration</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Leisure</servlet-name>
+    <url-pattern>/Leisure</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CreateLeisure</servlet-name>
+    <url-pattern>/CreateLeisure</url-pattern>
+  </servlet-mapping>
+  <jsp-config>
+    <jsp-property-group>
+      <url-pattern>*.jsp</url-pattern>
+      <include-prelude>/JSP/taglibs.jsp</include-prelude>
+    </jsp-property-group>
+  </jsp-config>
 	<listener>
 		<listener-class>com.lavalloisir.config.InitDAOFactory</listener-class>
 	</listener>
