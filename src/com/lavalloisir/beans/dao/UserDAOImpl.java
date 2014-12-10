@@ -17,6 +17,9 @@ public class UserDAOImpl implements UserDAO {
 		this.daoFactory = daoFactory;
 	}
 	
+	public UserDAOImpl() {
+	}
+
 	private static final String SQL_SELECT_BY_LOGIN_PASSWD = "SELECT "
 			+ "id, nom, prenom, email, login, motDePasse, photoProfil, dateInscription "
 			+ "FROM utilisateur WHERE login = ? AND motDePasse = ?";
@@ -48,6 +51,68 @@ public class UserDAOImpl implements UserDAO {
         return user;
     }
 	
+    private static final String SQL_SELECT_BY_ID = "SELECT "
+			+ "id, nom, prenom, email, login, motDePasse, photoProfil, dateInscription "
+			+ "FROM utilisateur WHERE login = ? AND motDePasse = ?";
+	
+	// Implémentation de la méthode trouver() définie dans l'interface UtilisateurDao
+    @Override
+    public User findById ( long id) throws DAOException {
+        Connection cnct = null;
+        PreparedStatement preparedStmt = null;
+        ResultSet rs = null;
+        User user = null;
+        
+        try {
+        	// Récupération d'une connexion depuis la Factory
+        	cnct = daoFactory.getConnection();
+        	preparedStmt = DAOUtil.initPreparedStatement(cnct, SQL_SELECT_BY_ID, false, id);
+        	rs = preparedStmt.executeQuery();
+        	
+        	// Parcours de la ligne de donnée de l'éventuel ResultSet retourné
+        	if (rs.next()) {
+        		user = map(rs);
+        	}
+        } catch (SQLException e) {
+        	throw new DAOException(e);
+        } finally {
+        	DAOUtil.silentsClosing(rs, preparedStmt, cnct);
+        }
+        
+        return user;
+    }
+    
+    private static final String SQL_SELECT_BY_EMAIL = "SELECT "
+			+ "id, nom, prenom, email, login, motDePasse, photoProfil, dateInscription "
+			+ "FROM utilisateur WHERE email = ? ";
+	
+	// Implémentation de la méthode trouver() définie dans l'interface UtilisateurDao
+    @Override
+    public User findByEmail ( String email) throws DAOException {
+        Connection cnct = null;
+        PreparedStatement preparedStmt = null;
+        ResultSet rs = null;
+        User user = null;
+        
+        try {
+        	// Récupération d'une connexion depuis la Factory
+        	cnct = daoFactory.getConnection();
+        	preparedStmt = DAOUtil.initPreparedStatement(cnct, SQL_SELECT_BY_EMAIL, false, email);
+        	rs = preparedStmt.executeQuery();
+        	
+        	// Parcours de la ligne de donnée de l'éventuel ResultSet retourné
+        	if (rs.next()) {
+        		user = map(rs);
+        	}
+        } catch (SQLException e) {
+        	throw new DAOException(e);
+        } finally {
+        	DAOUtil.silentsClosing(rs, preparedStmt, cnct);
+        }
+        
+        return user;
+    }
+    
     private static final String SQL_INSERT = "INSERT INTO utilisateur "
     		+ "(nom, prenom, email, login, motDePasse, photoProfil, dateInscription) "
     		+ "VALUES (?, ?, ?, ?, ?, ?, NOW())";

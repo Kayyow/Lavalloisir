@@ -6,4 +6,8 @@ public interface UserDAO {
 	void create (User user) throws DAOException;
 	
 	User find (String login, String password) throws DAOException;
+	
+	User findById (long id)throws DAOException;
+	
+	User findByEmail (String email)throws DAOException;
 }

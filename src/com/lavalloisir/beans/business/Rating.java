@@ -1,16 +1,26 @@
 package com.lavalloisir.beans.business;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Rating {
 	
+	private int id;
     private int rating;
     private String summaryComment;
     private String comment;
-    private Date dateRating;
+    private Timestamp dateRating;
     private User user;
     private Leisure leisure;
 
+    public int getId() {
+        return rating;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public int getRating() {
         return rating;
     }
@@ -39,7 +49,7 @@ public class Rating {
         return dateRating;
     }
 
-    public void setDateRating(Date dateRating) {
+    public void setDateRating(Timestamp dateRating) {
         this.dateRating = dateRating;
     }
 
