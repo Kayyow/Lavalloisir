@@ -3,6 +3,7 @@ package com.lavalloisir.servlets;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,14 +13,13 @@ import com.lavalloisir.beans.business.User;
 import com.lavalloisir.beans.dao.DAOFactory;
 import com.lavalloisir.beans.dao.UserDAO;
 import com.lavalloisir.beans.forms.ConnectionForm;
-import com.lavalloisir.beans.forms.RegistrationForm;
 
 /**
- * Servlet implementation class Registration
+ * Servlet implementation class Connection
  */
-public class Registration extends HttpServlet {
+public class Connection extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+       
 	public static final String CONF_DAO_FACTORY = "daofactory";
 	public static final String ATT_USER = "user";
 	public static final String ATT_FORM = "form";
@@ -28,14 +28,14 @@ public class Registration extends HttpServlet {
 	public static final String VIEW = "/JSP/page.jsp";
 	
 	private UserDAO userDAO;
-
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Registration() throws ServletException {
-    	super();
+    public Connection() {
+        super();
     }
-
+    
 	public void init() throws ServletException {
 		// Récupération d'une instance de notre DAO Utilisateur
 		this.userDAO = ((DAOFactory)getServletContext().getAttribute(CONF_DAO_FACTORY)).getUserDAO();
@@ -45,7 +45,7 @@ public class Registration extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute(ATT_FILE_LP, "LPRegistration.jsp");
+		request.setAttribute(ATT_FILE_LP, "LPConnection.jsp");
 		// Affichage de la page d'inscription
 		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
 	}
@@ -54,18 +54,29 @@ public class Registration extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute(ATT_FILE_LP, "LPRegistration.jsp");
+		request.setAttribute(ATT_FILE_LP, "LPConnection.jsp");
 		
-		// Préparation de l'objet formulaire d'inscription
-		RegistrationForm formRegist = new RegistrationForm(userDAO);
+		// Préparation de l'objet formulaire de connexion
+		ConnectionForm form = new ConnectionForm(userDAO);
 		
 		// Traitement de la requête et récupération du bean en résultant
-		User userRegist = formRegist.registerUser(request);
+		User user = form.connectUser(request);
+		
+		// Récupération de la session depuis la requête
+		HttpSession session = request.getSession();
+		
+		// Si aucune erreur de validation n'a lieu, alors ajout du bean
+		// User à la session, sinon suppression du bean de la session.
+		if (form.getErrors().isEmpty()) {
+			session.setAttribute(ATT_SESSION_USER, user);
+		} else {
+			session.setAttribute(ATT_SESSION_USER, null);
+		}
 		
 		// Stockage du formulaire et du bean dans l'objet request
-		request.setAttribute(ATT_FORM, formRegist);
-		request.setAttribute(ATT_USER, userRegist);
-	
+		request.setAttribute(ATT_FORM, form);
+		request.setAttribute(ATT_USER, user);
+		
 		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
 	}
 }

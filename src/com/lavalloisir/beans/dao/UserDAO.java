@@ -1,5 +1,7 @@
 package com.lavalloisir.beans.dao;
 
+import org.jasypt.util.password.ConfigurablePasswordEncryptor;
+
 import com.lavalloisir.beans.business.User;
 
 public interface UserDAO {
@@ -17,7 +19,7 @@ public interface UserDAO {
 	 * @return
 	 * @throws DAOException
 	 */
-	User find (String login, String password) throws DAOException;
+	User find (String login, String password, ConfigurablePasswordEncryptor pwdEncrypt) throws DAOException;
 	
 	/**
 	 * 
