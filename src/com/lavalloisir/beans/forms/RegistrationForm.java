@@ -29,7 +29,7 @@ public final class RegistrationForm {
         this.userDAO = userDAO;
     }
 
-    public Map<String, String> getErreurs() {
+    public Map<String, String> getErrors() {
         return errors;
     }
 
@@ -65,9 +65,11 @@ public final class RegistrationForm {
         return user;
     }
 
-    /*
+    /**
      * Appel à la validation de l'adresse email reçue et initialisation de la
      * propriété email du bean
+     * @param email
+     * @param user
      */
     private void processEmail(String email, User user) {
         try {
@@ -78,9 +80,12 @@ public final class RegistrationForm {
         user.setEmail(email);
     }
 
-    /*
+    /**
      * Appel à la validation des mots de passe reçus, chiffrement du mot de
      * passe et initialisation de la propriété password du bean
+     * @param password
+     * @param confirm
+     * @param user
      */
     private void processPasswords( String password, String confirm, User user ) {
         try {
@@ -145,25 +150,39 @@ public final class RegistrationForm {
     private void validPasswords(String password, String confirmation) throws FormValidationException {
         if ( password != null && confirmation != null ) {
             if ( !password.equals( confirmation ) ) {
-                throw new FormValidationException( "Les mots de passe entrés sont différents, merci de les saisir à nouveau." );
+                throw new FormValidationException("Les mots de passe entrés sont différents, merci de les saisir à nouveau.");
             } else if ( password.length() < 3 ) {
-                throw new FormValidationException( "Les mots de passe doivent contenir au moins 3 caractères." );
+                throw new FormValidationException("Les mots de passe doivent contenir au moins 3 caractères.");
             }
         } else {
-            throw new FormValidationException( "Merci de saisir et confirmer votre mot de passe." );
+            throw new FormValidationException("Merci de saisir et confirmer votre mot de passe.");
         }
     }
 
-    /* Validation du nom/prénom/login */
-    private void validNames(String lastName, String firstName, String login) throws FormValidationException {
-        if (lastName != null && lastName.length() < 3) {
-            throw new FormValidationException("Le nom de famille doit contenir au moins 3 caractères.");
+    /* Validation du nom / prénom / login */
+    private void validNames(String lastName, String firstName, String login) throws FormValidationException {        
+        if (lastName != null && !lastName.isEmpty()) {
+        	if (lastName.length() < 3) {
+                throw new FormValidationException("Le nom doit contenir au moins 3 caractères.");
+        	}
+        } else {
+        	throw new FormValidationException("Merci de saisir un nom.");
         }
-        if (firstName != null && firstName.length() < 3) {
-        	throw new FormValidationException("Le prénom doit contenir au moins 3 caractères.");
+        
+        if (firstName != null && !firstName.isEmpty()) {
+        	if (firstName.length() < 3) {
+            	throw new FormValidationException("Le prénom doit contenir au moins 3 caractères.");
+        	}
+        } else {
+        	throw new FormValidationException("Merci de saisir un prénom.");
         }
-        if (login != null && login.length() < 3) {
-        	throw new FormValidationException("Le login doit contenir au moins 3 caractères.");
+        
+        if (login != null && !login.isEmpty()) {
+	        if (login.length() < 3) {
+	            throw new FormValidationException("Le login doit contenir au moins 3 caractères.");
+	        }
+        } else {
+        	throw new FormValidationException("Merci de saisir un login.");
         }
     }
 
