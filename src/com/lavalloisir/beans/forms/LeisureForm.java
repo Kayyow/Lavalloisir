@@ -55,12 +55,11 @@ public final class LeisureForm {
         	processPhone(phone, leisure);
         	
             if ( errors.isEmpty() ) {
-            	leisureDAO.create( leisure );
+            	leisureDAO.create(leisure);
                 result = "Succès de l'ajout d'un loisir.";
             } else {
                 result = "Echec de l'ajout d'un loisir.";
             }
-        	
         } catch ( DAOException e ) {
             result = "Echec de l'ajout du loisir : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
             e.printStackTrace();
@@ -77,9 +76,10 @@ public final class LeisureForm {
     	leisure.setName(name);
     }
     
+    // TODO A refaire !!!
     private void processAddress(int number, String street, String zipCode, String city, Leisure leisure){
     	try { 
-    		validAddress( number, street, zipCode, city );
+    		validAddress(number, street, zipCode, city);
     	} catch(FormValidationException e) {
     		setError(FIELD_NUMBER, e.getMessage());
     		setError(FIELD_STREET, null);
@@ -94,7 +94,7 @@ public final class LeisureForm {
 
     public void processDescription (String description, Leisure leisure){
     	try {
-    		validDescription( description );
+    		validDescription(description);
     	} catch(FormValidationException e) {
     		setError(FIELD_DESCRIPTION, e.getMessage());
     	}

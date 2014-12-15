@@ -6,7 +6,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.lavalloisir.beans.business.User;
 import com.lavalloisir.beans.dao.DAOFactory;
@@ -22,7 +21,6 @@ public class Registration extends HttpServlet {
 	public static final String CONF_DAO_FACTORY = "daofactory";
 	public static final String ATT_USER = "user";
 	public static final String ATT_FORM = "form";
-	public static final String ATT_SESSION_USER = "sessionUser";
 	public static final String ATT_FILE_LP = "fileLP";
 	public static final String VIEW = "/JSP/page.jsp";
 	

@@ -49,7 +49,8 @@ public class CreateLeisure extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		request.setAttribute(ATT_FILE_LP, "LPCreateLeisure.jsp");
+		
 		LeisureForm form = new LeisureForm(leisureDAO);
 		
 		Leisure leisure = form.addLeisure(request);

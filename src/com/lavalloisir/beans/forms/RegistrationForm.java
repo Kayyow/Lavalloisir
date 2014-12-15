@@ -51,8 +51,8 @@ public final class RegistrationForm {
             processPasswords(passwd, confirm, user);
             processNames(lName, fName, login, user);
 
-            if ( errors.isEmpty() ) {
-                userDAO.create( user );
+            if (errors.isEmpty()) {
+                userDAO.create(user);
                 result = "Succès de l'inscription.";
             } else {
                 result = "Echec de l'inscription.";
