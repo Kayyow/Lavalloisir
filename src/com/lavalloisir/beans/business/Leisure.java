@@ -6,7 +6,7 @@ public class Leisure {
     private String name; 
     private int number;
     private String street; 
-    private int zipCode;
+    private String zipCode;
     private String city;
     private String description;
     private String phone;
@@ -45,11 +45,11 @@ public class Leisure {
         this.street = street;
     }
 
-    public int getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(int zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 

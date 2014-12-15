@@ -125,7 +125,7 @@ public class LeisureDAOImpl implements LeisureDAO {
 		leisure.setName(rs.getString("Nom"));
 		leisure.setNumber(rs.getInt("Num"));
 		leisure.setStreet(rs.getString("Rue"));
-		leisure.setZipCode(rs.getInt("CodePostale"));
+		leisure.setZipCode(rs.getString("CodePostal"));
 		leisure.setCity(rs.getString("Ville"));
 		leisure.setDescription(rs.getString("Description"));
 		leisure.setPhone(rs.getString("Telephone"));
