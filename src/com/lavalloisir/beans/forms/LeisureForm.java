@@ -143,7 +143,7 @@ public final class LeisureForm {
         }
         
         if (!zipCode.isEmpty()){
-        	if( !zipCode.matches("([0-9]{5})$)")){
+        	if( !zipCode.matches("^([0-9]{5})$")){
         		throw new FormValidationException("Merci de saisir un code postal valide.");
         	}
         	

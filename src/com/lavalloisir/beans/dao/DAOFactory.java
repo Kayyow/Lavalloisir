@@ -74,4 +74,8 @@ public class DAOFactory {
     public UserDAO getUserDAO() {
         return new UserDAOImpl(this);
     }
+    
+    public LeisureDAO getLeisureDAO() {
+        return new LeisureDAOImpl(this);
+    }
 }
