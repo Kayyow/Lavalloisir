@@ -1,13 +1,16 @@
 <%@ page pageEncoding="UTF-8" %>
 <div id="rightPanel">
 	<div class="columnBox" id="connectionBox">
-	    <div class="titleBox">Mon compte
-	    	<div id="cnctLink"><a href="Connection"></a></div>
+	    <div class="titleBox">
+	    	<a id="cnctLink" href="<c:out value="${!empty sessionScope.sessionUser ? 'Deconnection' : 'Connection'}"/>">
+	    		<img src="img/power_button_<c:out value="${!empty sessionScope.sessionUser ? 'red' : 'green'}"/>.svg"/>
+	    	</a>
+	    	Mon compte
 	    </div>
 	    <div>
-	    	<p> Login : <c:out value="${ user.login }"/></p>
-	    	<p> Nom : <c:out value="${ user.name }"/></p>
-	    	<p> Prénom : <c:out value="${ user.firstName }"/></p>
+	    	<p> Login : <c:out value="${sessionScope.sessionUser.login}"/></p>
+	    	<p> Nom : <c:out value="${sessionScope.sessionUser.name}"/></p>
+	    	<p> Prénom : <c:out value="${sessionScope.sessionUser.firstName}"/></p>
 	    </div>
 	   
 	</div>

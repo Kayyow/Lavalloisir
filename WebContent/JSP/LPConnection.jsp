@@ -10,9 +10,9 @@
 	<label for="cnctPwd">Mot de passe : </label>
 	<input type="password" class="cnctInput pwd" name="cnctPassword" value=""/>
 	<span class="error">${form.errors['cnctPassword']}</span>
-        
+	
 	<a href="Registration">S'inscrire</a>
-        
+   	
 	<input type="submit" value="Connexion">
         
 	<p class="${empty form.errors ? 'success' : 'error'}">${form.result}</p>

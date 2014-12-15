@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import com.lavalloisir.beans.business.User;
 import com.lavalloisir.beans.dao.DAOFactory;
 import com.lavalloisir.beans.dao.UserDAO;
-import com.lavalloisir.beans.forms.ConnectionForm;
 import com.lavalloisir.beans.forms.RegistrationForm;
 
 /**
@@ -57,14 +56,14 @@ public class Registration extends HttpServlet {
 		request.setAttribute(ATT_FILE_LP, "LPRegistration.jsp");
 		
 		// Préparation de l'objet formulaire d'inscription
-		RegistrationForm formRegist = new RegistrationForm(userDAO);
+		RegistrationForm form = new RegistrationForm(userDAO);
 		
 		// Traitement de la requête et récupération du bean en résultant
-		User userRegist = formRegist.registerUser(request);
+		User user = form.registerUser(request);
 		
 		// Stockage du formulaire et du bean dans l'objet request
-		request.setAttribute(ATT_FORM, formRegist);
-		request.setAttribute(ATT_USER, userRegist);
+		request.setAttribute(ATT_FORM, form);
+		request.setAttribute(ATT_USER, user);
 	
 		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
 	}

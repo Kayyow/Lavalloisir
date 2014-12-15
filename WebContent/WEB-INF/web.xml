@@ -20,8 +20,12 @@
     <servlet-class>com.lavalloisir.servlets.CreateLeisure</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>Connection</servlet-name>
-  	<servlet-class>com.lavalloisir.servlets.Connection</servlet-class>
+    <servlet-name>Connection</servlet-name>
+    <servlet-class>com.lavalloisir.servlets.Connection</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Deconnection</servlet-name>
+  	<servlet-class>com.lavalloisir.servlets.Deconnection</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Home</servlet-name>
@@ -40,8 +44,12 @@
     <url-pattern>/CreateLeisure</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>Connection</servlet-name>
-  	<url-pattern>/Connection</url-pattern>
+    <servlet-name>Connection</servlet-name>
+    <url-pattern>/Connection</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Deconnection</servlet-name>
+  	<url-pattern>/Deconnection</url-pattern>
   </servlet-mapping>
   <jsp-config>
     <jsp-property-group>

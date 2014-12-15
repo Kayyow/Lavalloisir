@@ -6,24 +6,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Home
+ * Servlet implementation class Deconnection
  */
-public class Home extends HttpServlet {
+public class Deconnection extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-	public static final String CONF_DAO_FACTORY = "daofactory";
-	public static final String ATT_USER = "user";
-	public static final String ATT_FORM = "form";
-	public static final String ATT_SESSION_USER = "sessionUser";
-	public static final String ATT_FILE_LP = "fileLP";
-	public static final String VIEW = "/JSP/page.jsp";
-    
+	
+	private static final String URL_REDIRECTION = "Connection";
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Home() {
+    public Deconnection() {
         super();
     }
 
@@ -31,9 +27,10 @@ public class Home extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute(ATT_FILE_LP, "LPHome.jsp");
+		HttpSession session = request.getSession();
+		session.invalidate();
 		
-		this.getServletContext().getRequestDispatcher("/JSP/page.jsp").forward(request, response);
+		response.sendRedirect(URL_REDIRECTION);
 	}
 
 	/**
