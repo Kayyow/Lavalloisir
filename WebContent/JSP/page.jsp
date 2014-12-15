@@ -9,7 +9,7 @@
 				<%@ include file="right-panel.jsp"%>
 				
 				<div id="leftPanel">
-					<jsp:include page="${ leftPanelFile }" flush="true"/>
+					<jsp:include page="${ fileLP }" flush="true"/>
 				</div>
 			
 			</div>

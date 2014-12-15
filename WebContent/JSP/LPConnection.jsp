@@ -15,7 +15,7 @@
         
 	<input type="submit" value="Connexion">
         
-	<p class="${empty form.errors ? 'succes' : 'erreur'}">${form.result}</p>
+	<p class="${empty form.errors ? 'success' : 'error'}">${form.result}</p>
     
 	<%-- Vérification de la présence d'un objet user en session --%>
 	<c:if test="${!empty sessionScope.sessionUser}">

@@ -22,6 +22,14 @@ a {
 	text-decoration: underline;
 }
 
+.success {
+	color: green;
+}
+
+.error {
+	color: red; 
+}
+
 /****** CONTENT ******/
 #container {
 	position: relative;
@@ -201,6 +209,19 @@ h2{
 }
 
 /* RIGHT PANEL */
+
+#cnctLink {
+	position: relative; 
+	float: right;
+	background-color : black;
+	height: 25px; width: 25px;
+}
+
+#cnctLink a {
+	display: block; 
+		height: 25px; width: 25px;
+}
+
 #rightPanel {
 	position: relative;
 	float: right;
