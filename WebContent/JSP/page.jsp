@@ -2,17 +2,22 @@
 <%@ include file="head.jsp"%>
 <body>
 	<div id="container">
-		<%@ include file="header.jsp"%>
-
-		<div id="coreContent">
-			<div id="leftPanel">
-				<jsp:include page="${ fileName }" flush="true" />
+		<div class="splitter">
+			<%@ include file="header.jsp"%>
+	
+			<div class="coreContent">
+				<%@ include file="right-panel.jsp"%>
+				
+				<div id="leftPanel">
+					<jsp:include page="${ leftPanelFile }" flush="true"/>
+				</div>
+			
 			</div>
-
-			<%@ include file="right-panel.jsp"%>
+			
+			
+			<%@ include file="footer.jsp"%>
+			<div class="site-cache"></div>
 		</div>
-
-		<%@ include file="footer.jsp"%>
 	</div>
 </body>
 </html>
