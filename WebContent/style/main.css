@@ -123,6 +123,25 @@ h2{
 	background-color: #fff;
 }
 
+.formField {
+	margin-bottom: 10px;
+}
+
+label {
+	display: block;
+	float: left;
+	margin-top: 5px;
+	width: 120px;
+}
+
+input {
+	height: 30px;
+}
+
+.button {
+	margin: auto;
+}
+
 #registrForm,
 #LeisureForm,
 #createLeisrForm {
@@ -132,21 +151,13 @@ h2{
 
 #registrForm,
 #createLeisrForm {
-	width: 295px;
-}
-
-
-#registrForm label,
-#createLeisrForm label{
-    width: 120px;
-    float: left;
+	width: 500px;
 }
 
 .registrInput,
 .createLeisrInput {
     padding: 2px;
-    height: 30px;
-    margin-bottom: 10px;
+    width: 175px;
     border: 1px solid #ccc;
     background-color: #fafafa;
 }
@@ -155,6 +166,10 @@ h2{
 #addLeisurButton {
 	float: right;
 	padding: 5px;
+}
+
+textarea {
+	height: 70px;
 }
 
 #leisrList {
@@ -267,7 +282,7 @@ h2{
 	line-height: 30px;
 }
 
-.bestRating ul {
+#bestRating ul {
 	margin: 0;
 	padding: 0;
 }
