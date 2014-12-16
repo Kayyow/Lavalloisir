@@ -1,23 +1,19 @@
 package com.lavalloisir.beans.business;
 
 public class Leisure {
-
-	private long id;
+	private int id;
     private String name; 
-    private int number;
-    private String street; 
-    private String zipCode;
-    private String city;
+    private String address;
     private String description;
     private String phone;
     private String email;
     private Category category;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
     
@@ -27,40 +23,16 @@ public class Leisure {
 
     public void setName(String name) {
         this.name = name;
+    }    
+    
+    public String getAddress() {
+    	return address;
     }
-
-    public int getNumber() {
-        return number;
+    
+    public void setAddress(String address) {
+    	this.address = address;
     }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
+    
     public String getDescription() {
         return description;
     }

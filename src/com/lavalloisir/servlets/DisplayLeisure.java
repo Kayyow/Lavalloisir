@@ -13,12 +13,11 @@ import com.lavalloisir.beans.business.Leisure;
 import com.lavalloisir.beans.dao.CategoryDAO;
 import com.lavalloisir.beans.dao.DAOFactory;
 import com.lavalloisir.beans.dao.LeisureDAO;
-import com.lavalloisir.beans.forms.LeisureForm;
 
 /**
- * Servlet implementation class CreateLeisure
+ * Servlet implementation class DisplayLeisure
  */
-public class CreateLeisure extends HttpServlet {
+public class DisplayLeisure extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	public static final String CONF_DAO_FACTORY = "daofactory";
@@ -28,47 +27,35 @@ public class CreateLeisure extends HttpServlet {
 	public static final String VIEW = "/JSP/page.jsp";
 	
 	private LeisureDAO leisureDAO;
-	private CategoryDAO categoryDAO;
-	
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreateLeisure() {
+    public DisplayLeisure() {
         super();
     }
     
 	public void init() throws ServletException {
 		// Récupération d'une instance de notre DAO Utilisateur
 		this.leisureDAO = ((DAOFactory)getServletContext().getAttribute(CONF_DAO_FACTORY)).getLeisureDAO();
-		this.categoryDAO = ((DAOFactory)getServletContext().getAttribute(CONF_DAO_FACTORY)).getCategoryDAO();
 	}
-	
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute(ATT_FILE_LP, "LPCreateLeisure.jsp");
-		List<Category> categories = categoryDAO.selectAll();
-		request.setAttribute("categories", categories);
-		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
+		request.setAttribute("fileLP", "LPLeisure.jsp");
+		List<Leisure> leisures = leisureDAO.selectAll();
+		request.setAttribute("leisures", leisures);
+		
+		this.getServletContext().getRequestDispatcher("/JSP/page.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute(ATT_FILE_LP, "LPCreateLeisure.jsp");
-		List<Category> categories = categoryDAO.selectAll();
-		request.setAttribute("categories", categories);
 		
-		LeisureForm form = new LeisureForm(leisureDAO, categories);
-		
-		Leisure leisure = form.addLeisure(request);
-		
-		// Stockage du formulaire et du bean dans l'objet request
-		request.setAttribute(ATT_FORM, form);
-		request.setAttribute(ATT_LEISURE, leisure);
-		
-		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
 	}
+
 }

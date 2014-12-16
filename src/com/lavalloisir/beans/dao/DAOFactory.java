@@ -69,13 +69,16 @@ public class DAOFactory {
 		return DriverManager.getConnection(url, userName, password);
 	}
 	
-    // Méthodes de récupération de l'implémentation des différents DAO (un seul
-    // pour le moment)
+    //// Méthodes de récupération de l'implémentation des différents DAO ////
     public UserDAO getUserDAO() {
         return new UserDAOImpl(this);
     }
     
     public LeisureDAO getLeisureDAO() {
         return new LeisureDAOImpl(this);
+    }
+    
+    public CategoryDAO getCategoryDAO() {
+    	return new CategoryDAOImpl(this);
     }
 }

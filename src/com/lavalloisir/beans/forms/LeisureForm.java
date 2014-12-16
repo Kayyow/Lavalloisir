@@ -1,30 +1,33 @@
 package com.lavalloisir.beans.forms;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.lavalloisir.beans.business.Category;
 import com.lavalloisir.beans.business.Leisure;
 import com.lavalloisir.beans.dao.DAOException;
 import com.lavalloisir.beans.dao.LeisureDAO;
 
 public final class LeisureForm {
 	private static final String FIELD_NAME = "nameLeisr";
-	private static final String FIELD_NUMBER = "numberLeisr";
-	private static final String FIELD_STREET = "streetLeisr";
-	private static final String FIELD_ZIPCODE = "zipCodeLeisr";
-	private static final String FIELD_CITY = "cityLeisr";
+	private static final String FIELD_ADDRESS = "addressLeisr";
 	private static final String FIELD_PHONE = "phoneLeisr";
 	private static final String FIELD_EMAIL = "emailLeisr";
-	private static final String FIELD_DESCRIPTION = "descriptionLeisure";
+	private static final String FIELD_DESCRIPTION = "descriptionLeisr";
+	private static final String FIELD_CATEGORY = "categoryLeisr";
 	
     private String result;
     private Map<String, String> errors = new HashMap<String, String>();
     private LeisureDAO leisureDAO;
+    private List<Category> categories;
     
-    public LeisureForm( LeisureDAO leisureDAO ) {
+    public LeisureForm( LeisureDAO leisureDAO, List<Category> categories) {
         this.leisureDAO = leisureDAO;
+        this.categories = categories;
     }
 
     public Map<String, String> getErrors() {
@@ -36,31 +39,29 @@ public final class LeisureForm {
     }
     
     public Leisure addLeisure(HttpServletRequest request) {
-    	
     	String name = getFieldValue(request, FIELD_NAME);
-    	int number = Integer.parseInt(getFieldValue(request, FIELD_NUMBER));
-    	String street = getFieldValue(request, FIELD_STREET);
-    	String zipCode = getFieldValue(request, FIELD_ZIPCODE);
-    	String city = getFieldValue(request, FIELD_CITY);
+    	String address = getFieldValue(request, FIELD_ADDRESS);
     	String phone = getFieldValue(request, FIELD_PHONE);
     	String email = getFieldValue(request, FIELD_EMAIL);
     	String description = getFieldValue(request, FIELD_DESCRIPTION);
+    	Category category = this.categories.get(Integer.parseInt(getFieldValue(request, FIELD_CATEGORY))-1);
     	
         Leisure leisure = new Leisure();
         try {
         	processName(name, leisure);
-        	processAddress(number, street, zipCode, city, leisure);
+        	processAddress(address, leisure);
         	processDescription(description, leisure);
         	processEmail(email, leisure);
         	processPhone(phone, leisure);
+        	leisure.setCategory(category);
         	
-            if ( errors.isEmpty() ) {
+            if (errors.isEmpty()) {
             	leisureDAO.create(leisure);
                 result = "Succès de l'ajout d'un loisir.";
             } else {
-                result = "Echec de l'ajout d'un loisir.";
+                result = "Echec de l'ajout d'un loisir.";             
             }
-        } catch ( DAOException e ) {
+        } catch (DAOException e) {
             result = "Echec de l'ajout du loisir : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
             e.printStackTrace();
         }
@@ -69,27 +70,20 @@ public final class LeisureForm {
     
     private void processName (String name, Leisure leisure) {
     	try{ 
-    		validName( name );
+    		validName(name);
     	} catch(FormValidationException e) {
-    		setError(FIELD_EMAIL, e.getMessage());
+    		setError(FIELD_NAME, e.getMessage());
         }
     	leisure.setName(name);
     }
     
-    // TODO A refaire !!!
-    private void processAddress(int number, String street, String zipCode, String city, Leisure leisure){
+    private void processAddress(String address, Leisure leisure){
     	try { 
-    		validAddress(number, street, zipCode, city);
+    		validAddress(address);
     	} catch(FormValidationException e) {
-    		setError(FIELD_NUMBER, e.getMessage());
-    		setError(FIELD_STREET, null);
-    		setError(FIELD_ZIPCODE, null);
-    		setError(FIELD_CITY, null);
+    		setError(FIELD_ADDRESS, e.getMessage());
         }
-    	leisure.setNumber(number);
-    	leisure.setStreet(street);
-    	leisure.setZipCode(zipCode);
-    	leisure.setCity(city);
+    	leisure.setAddress(address);
     }
 
     public void processDescription (String description, Leisure leisure){
@@ -119,7 +113,7 @@ public final class LeisureForm {
         leisure.setPhone(phone);
     }
     
-    private void validName ( String name) throws FormValidationException { 
+    private void validName (String name) throws FormValidationException { 
         if (name != null && !name.isEmpty()) {
         	if (name.length() < 3) {
                 throw new FormValidationException("Le nom doit contenir au moins 3 caractères.");
@@ -129,60 +123,43 @@ public final class LeisureForm {
         }
     }
     
-    private void validAddress (int number, String street, String zipCode, String city) throws FormValidationException {
-        if (number < 0) {
-        	throw new FormValidationException("Merci de saisir un numero de rue valide. (0 si aucun numero)");
-        }
-        
-        if (street != null && !street.isEmpty()) {
-        	if (street.length() < 3) {
-                throw new FormValidationException("Le nom de rue doit contenir au moins 3 caractères.");
+    private void validAddress (String address) throws FormValidationException {
+        if (address != null && !address.isEmpty()) {
+        	if (address.length() < 4) {
+                throw new FormValidationException("L'adresse doit contenir au moins 4 caractères.");
         	}
         } else {
-        	throw new FormValidationException("Merci de saisir un nom de rue.");
-        }
-        
-        if (!zipCode.isEmpty()){
-        	if( !zipCode.matches("^([0-9]{5})$")){
-        		throw new FormValidationException("Merci de saisir un code postal valide.");
-        	}
-        	
-        } else {
-        	throw new FormValidationException("Merci de saisir un code postal.");
-        }
-        
-        if (city != null && !city.isEmpty()) {
-        	if (city.length() < 3) {
-                throw new FormValidationException("Le nom de ville doit contenir au moins 3 caractères.");
-        	}
-        } else {
-        	throw new FormValidationException("Merci de saisir un nom de ville.");
+        	throw new FormValidationException("Merci de saisir une adresse.");
         }
     }
      
-    private void validDescription ( String description) throws FormValidationException { 
+    private void validDescription (String description) throws FormValidationException { 
         if (description != null && !description.isEmpty()) {
-        	if (description.length() < 20) {
-                throw new FormValidationException("La description doit contenir au moins 20 caractères.");
+        	if (description.length() < 10) {
+                throw new FormValidationException("La description doit contenir au moins 10 caractères.");
         	}
         } else {
-        	throw new FormValidationException("Merci de saisir un description.");
+        	throw new FormValidationException("Merci de saisir une description.");
         }
     }
     
     private void validEmail(String email) throws FormValidationException {
         if (email != null) {
-            if (!email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
-                throw new FormValidationException( "Merci de saisir une adresse mail valide." );
+            if (!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
+                throw new FormValidationException("Merci de saisir une adresse mail valide.");
             }
         } else {
-            throw new FormValidationException( "Merci de saisir une adresse mail." );
+            throw new FormValidationException("Merci de saisir une adresse mail.");
         }
     }
     
     private void validPhone(String phone) throws FormValidationException {
-    	if(phone.isEmpty()){
-    		throw new FormValidationException( "Merci de saisir un numero de téléphone valide." );
+    	if(phone != null && !phone.isEmpty()) {
+    		if (phone.length() != 10) {
+    			throw new FormValidationException("Votre n° de téléphone doit contenir 10 chiffres");
+    		}
+    	} else {
+    		throw new FormValidationException("Merci de saisir un numero de téléphone valide.");
     	}
     }
     

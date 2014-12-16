@@ -1,5 +1,7 @@
 package com.lavalloisir.beans.dao;
 
+import java.util.List;
+
 import com.lavalloisir.beans.business.Category;
 
 public interface CategoryDAO {
@@ -9,5 +11,12 @@ public interface CategoryDAO {
 	 * @return
 	 * @throws DAOException
 	 */
-	Category find(long id) throws DAOException;
+	Category find(int id) throws DAOException;
+	
+	/**
+	 * 
+	 * @return
+	 * @throws DAOException
+	 */
+	List<Category> selectAll() throws DAOException;
 }

@@ -1,5 +1,7 @@
 package com.lavalloisir.beans.dao;
 
+import java.util.List;
+
 import com.lavalloisir.beans.business.Leisure;
 
 public interface LeisureDAO {
@@ -25,4 +27,11 @@ public interface LeisureDAO {
 	 * @throws DAOException
 	 */
 	Leisure find (long id) throws DAOException;
+	
+	/**
+	 * 
+	 * @return
+	 * @throws DAOException
+	 */
+	List<Leisure> selectAll() throws DAOException;
 }

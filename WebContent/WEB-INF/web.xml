@@ -12,8 +12,8 @@
     <servlet-class>com.lavalloisir.servlets.Registration</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>Leisure</servlet-name>
-    <servlet-class>com.lavalloisir.servlets.Leisure</servlet-class>
+    <servlet-name>DisplayLeisure</servlet-name>
+    <servlet-class>com.lavalloisir.servlets.DisplayLeisure</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>CreateLeisure</servlet-name>
@@ -36,8 +36,8 @@
     <url-pattern>/Registration</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>Leisure</servlet-name>
-    <url-pattern>/Leisure</url-pattern>
+    <servlet-name>DisplayLeisure</servlet-name>
+    <url-pattern>/DisplayLeisure</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>CreateLeisure</servlet-name>
