@@ -252,8 +252,7 @@ textarea {
 
 .titleBox {
 	padding: 10px;
-	margin-top: -1px;
-	margin-left: -1px;
+	margin: -1px;
 	background-color: #5F9AB5;
 	border: 1px solid #006D9F;
 	color: #fff;

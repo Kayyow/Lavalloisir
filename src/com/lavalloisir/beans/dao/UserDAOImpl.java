@@ -3,7 +3,6 @@ package com.lavalloisir.beans.dao;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Connection;
 
 import org.jasypt.util.password.ConfigurablePasswordEncryptor;

@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Connection;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,41 +20,13 @@ public class LeisureDAOImpl implements LeisureDAO {
 	
 	public LeisureDAOImpl() {
 	}
-
-	private static final String SQL_SELECT_BY_NAME = "SELECT"
-			+ "Id, Nom, Adresse, Description, Telephone, Email, Id_categorie"
-			+ "FROM Loisir WHERE Nom = ? ";
-	// Implémentation de la méthode trouver() définie dans l'interface LeisureDAO
-    @Override
-    public Leisure find (String name) throws DAOException {
-        Connection cnct = null;
-        PreparedStatement preparedStmt = null;
-        ResultSet rs = null;
-        Leisure leisure = null;
-        
-        try {
-        	cnct = daoFactory.getConnection();
-        	preparedStmt = DAOUtil.initPreparedStatement(cnct, SQL_SELECT_BY_NAME, false, name);
-        	rs = preparedStmt.executeQuery();
-        	
-        	// Parcours de la ligne de donnée de l'éventuel ResultSet retourné
-        	if (rs.next()) {
-        		leisure = map(rs);
-        	}
-        } catch (SQLException e) {
-        	throw new DAOException(e);
-        } finally {
-        	DAOUtil.silentsClosing(rs, preparedStmt, cnct);
-        }
-        return leisure;
-    }
     
     private static final String SQL_SELECT_BY_ID = "SELECT"
 			+ "Id, Nom, Adresse, Description, Telephone, Email, Id_categorie"
 			+ "FROM Loisir WHERE Id = ? ";
 	// Implémentation de la méthode trouver() définie dans l'interface LeisureDAO
     @Override
-    public Leisure find (long id) throws DAOException {
+    public Leisure find (long id, List<Category> categories) throws DAOException {
         Connection cnct = null;
         PreparedStatement preparedStmt = null;
         ResultSet rs = null;
@@ -68,7 +39,7 @@ public class LeisureDAOImpl implements LeisureDAO {
         	
         	// Parcours de la ligne de donnée de l'éventuel ResultSet retourné
         	if (rs.next()) {
-        		leisure = map(rs);
+        		leisure = map(rs, categories);
         	}
         } catch (SQLException e) {
         	throw new DAOException(e);
@@ -118,9 +89,9 @@ public class LeisureDAOImpl implements LeisureDAO {
     
     private static final String SQL_SELECT_ALL = "SELECT "
 			+ "Id, Nom, Adresse, Description, Telephone, Email, Id_categorie "
-			+ "FROM Loisir";
+			+ "FROM Loisir";    
     @Override
-    public List<Leisure> selectAll () throws DAOException {
+    public List<Leisure> selectAll (List<Category> categories) throws DAOException {
     	Connection cnct = null;
         PreparedStatement preparedStmt = null;
         ResultSet rs = null;
@@ -135,7 +106,7 @@ public class LeisureDAOImpl implements LeisureDAO {
         	rs = preparedStmt.executeQuery();
         	
         	while (rs.next()) {
-        		leisure = map(rs);
+        		leisure = map(rs, categories);
         		leisures.add(leisure);
         	}        	
         } catch (SQLException e) {
@@ -146,7 +117,7 @@ public class LeisureDAOImpl implements LeisureDAO {
 		return leisures;
     }
     
-	private static Leisure map (ResultSet rs) throws SQLException {
+	private static Leisure map (ResultSet rs, List<Category> categories) throws SQLException {
 		Leisure leisure = new Leisure();
 		leisure.setId(rs.getInt("Id"));
 		leisure.setName(rs.getString("Nom"));
@@ -155,9 +126,11 @@ public class LeisureDAOImpl implements LeisureDAO {
 		leisure.setPhone(rs.getString("Telephone"));
 		leisure.setEmail(rs.getString("Email"));
 		
-		CategoryDAOImpl categoryDAO = new CategoryDAOImpl();
-		Category category = categoryDAO.find(rs.getInt("Id_Categorie"));
-		leisure.setCategory(category);
+		for (Category category : categories) {
+			if (category.getId() == rs.getInt("Id_categorie")) {
+				leisure.setCategory(category);
+			}
+		}
 		
 		return leisure;
 	}

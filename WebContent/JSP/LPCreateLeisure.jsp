@@ -16,8 +16,7 @@
 	
 	<div class="formField">
 		<label for="addressLeisr">Adresse :</label>
-		<textarea id="addressLeisr" name="addressLeisr" class="createLeisrInput"
-			placeholder="#0 allée Adresse #0000 VILLE" value="<c:out value="${leisure.address}"/>"></textarea>
+		<textarea id="addressLeisr" name="addressLeisr" class="createLeisrInput" placeholder="#0 allée Adresse #0000 VILLE"></textarea>
 		<span class="error">${ form.errors['addressLeisr'] }</span>
 	</div>
 	
@@ -36,18 +35,18 @@
 	</div>
 	
 	<div class="formField">
-		<label for="categoryLeisr">Categorie :</label>
+		<label for="categoryLeisr">Catégorie :</label>
 		<select id="categoryLeisr" name="categoryLeisr" class="createLeisrInput">
-		    <%
-	            List<Category> categories = (ArrayList<Category>)request.getAttribute("categories");
-	            if (categories != null) {
-					for (Category cat : categories) { 
-						out.println("<option value=\""+ cat.getId() +"\">" + cat.getTitle() +"</option>");
-					}
-	             } else {
-					System.out.print("PAS DE CATEGORIE");
-	             }
-             %>
+			<c:choose>
+				<c:when test="${ categories != null }">
+					<c:forEach var="category" items="${ categories }">
+						<option value="${ category.id }">${ category.title }</option>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<option>PAS DE CATEGORIE</option>
+				</c:otherwise>
+			</c:choose>
 		</select>
 		<span class="error">${ form.errors['categoryLeisr'] }</span>
 	</div>
@@ -60,8 +59,4 @@
 	</div>
 		
 	<input class="button" type="submit" value="Ajouter">
-	
-	<c:if test="${!empty leisure.id}">
-		<p class="success">Loisir <c:out value="${leisure.name}"/> ajouté en base de donnée.</p>
-	</c:if>
 </form>

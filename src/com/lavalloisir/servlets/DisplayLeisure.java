@@ -27,6 +27,7 @@ public class DisplayLeisure extends HttpServlet {
 	public static final String VIEW = "/JSP/page.jsp";
 	
 	private LeisureDAO leisureDAO;
+	private CategoryDAO categoryDAO;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -38,6 +39,7 @@ public class DisplayLeisure extends HttpServlet {
 	public void init() throws ServletException {
 		// Récupération d'une instance de notre DAO Utilisateur
 		this.leisureDAO = ((DAOFactory)getServletContext().getAttribute(CONF_DAO_FACTORY)).getLeisureDAO();
+		this.categoryDAO = ((DAOFactory)getServletContext().getAttribute(CONF_DAO_FACTORY)).getCategoryDAO();
 	}
 
 	/**
@@ -45,7 +47,11 @@ public class DisplayLeisure extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("fileLP", "LPLeisure.jsp");
-		List<Leisure> leisures = leisureDAO.selectAll();
+		
+		List<Category> categories = categoryDAO.selectAll();
+		request.setAttribute("categories", categories);
+		
+		List<Leisure> leisures = leisureDAO.selectAll(categories);
 		request.setAttribute("leisures", leisures);
 		
 		this.getServletContext().getRequestDispatcher("/JSP/page.jsp").forward(request, response);

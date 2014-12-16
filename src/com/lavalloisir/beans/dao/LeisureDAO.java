@@ -2,6 +2,7 @@ package com.lavalloisir.beans.dao;
 
 import java.util.List;
 
+import com.lavalloisir.beans.business.Category;
 import com.lavalloisir.beans.business.Leisure;
 
 public interface LeisureDAO {
@@ -14,24 +15,17 @@ public interface LeisureDAO {
 	
 	/**
 	 * 
-	 * @param name
-	 * @return
-	 * @throws DAOException
-	 */
-	Leisure find (String name) throws DAOException;
-	
-	/**
-	 * 
 	 * @param id
 	 * @return
 	 * @throws DAOException
 	 */
-	Leisure find (long id) throws DAOException;
+	Leisure find (long id, List<Category> categories) throws DAOException;
 	
 	/**
 	 * 
+	 * @param categories
 	 * @return
 	 * @throws DAOException
 	 */
-	List<Leisure> selectAll() throws DAOException;
+	List<Leisure> selectAll(List<Category> categories) throws DAOException;
 }
