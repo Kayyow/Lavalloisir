@@ -59,7 +59,7 @@ public class CreateLeisure extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute(ATT_FILE_LP, "LPCreateLeisure.jsp");
+		request.setAttribute(ATT_FILE_LP, "/restrained/LPCreateLeisure.jsp");
 		List<Category> categories = categoryDAO.selectAll();
 		request.setAttribute("categories", categories);
 		
