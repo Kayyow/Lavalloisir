@@ -76,16 +76,12 @@ h2{
 
 #logoTitleColor {
 	color: #65B9BD;
+	-webkit-transition: margin-left ease .8s;
 }
 
 #logoTitleColor:hover {
-	-webkit-animation: shiftRight ease 1.5s;
-}
-
-@-webkit-keyframes shiftRight {
-	0%	{margin-left: 0px;}
-	50% {margin-left: 20px;}
-	100%{margin-left: 0px;}
+	margin-left: 20px;
+	-webkit-transition: margin-left ease .8s;
 }
 
 .buttonMenu {
@@ -117,7 +113,7 @@ h2{
 
 .tabLink a {
 	color: #636363;
-	transition: color linear .8s;
+	transition: color linear .5s;
 }
 
 .tabLink a:hover {
@@ -251,16 +247,12 @@ textarea {
 
 #cnctLink img {
 	width: 100%;
+	-webkit-transition: transform linear 1s;
 }
 
 #cnctLink img:hover {
-	-webkit-animation: doubleRotation linear 1.5s; 
-}
-
-@-webkit-keyframes doubleRotation {
-    0%{-webkit-transform: rotate(0deg);}
-    50%	{-webkit-transform: rotate(360deg);}
-    100%{-webkit-transform: rotate(0deg);}
+	-webkit-transition: transform linear 1s;
+	-webkit-transform: rotate(360deg);
 }
 
 #rightPanel {
@@ -354,6 +346,7 @@ footer {
 		padding: 0 1% 1% 1%;
 		-webkit-overflow-scrolling: touch;
 	}
+	
 	header {
 		position: static;
 	}
