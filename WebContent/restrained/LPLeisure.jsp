@@ -36,10 +36,10 @@
 				<span class="leisrTitle">${ leisure.name }</span><br/>
 
 				<p class="leisrOtherInfo">
-					<p><span>Descriptifs :</span> ${ leisure.description }</p>
-					<span>Adresse :</span> ${ leisure.address }<br/>
-					<span>Téléphone :</span> ${ leisure.phone }<br/>
-					<span>Email :</span> ${ leisure.email }
+					<p>Descriptifs :<span> ${ leisure.description }</span></p>
+						Adresse : <span> ${ leisure.address }</span><br/>
+						Téléphone : <span> ${ leisure.phone }</span><br/>
+						Email : <span> ${ leisure.email }</span>
 				</p>
 			</div>
 		</div>

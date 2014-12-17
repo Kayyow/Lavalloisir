@@ -64,13 +64,13 @@ public class DisplayLeisure extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute(ATT_FILE_LP, "LPLeisure.jsp");
+		request.setAttribute(ATT_FILE_LP, "/restrained/LPLeisure.jsp");
 		request.setAttribute("categories", categories);		
 		
 		leisures = leisureDAO.selectByCategory(categories, Integer.parseInt(request.getParameter("categoryLeisr")));
 		
 		request.setAttribute("leisures", leisures);
 		
-		this.getServletContext().getRequestDispatcher("/JSP/page.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
 	}
 }
