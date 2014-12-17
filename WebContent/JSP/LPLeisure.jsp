@@ -3,10 +3,11 @@
 <h2> Liste des loisirs </h2>
 <hr>
 
+<a href="CreateLeisure" id="addLeisurButton">Ajouter un loisir</a>
 <form method="post">
 	
 	<label for="categoryLeisr">Catégorie :</label>	
-	<select id="categoryLeisr" name="categoryLeisr" class="createLeisrInput">
+	<select id="categoryLeisr" name="categoryLeisr" class="formInput">
 		<c:choose>
 			<c:when test="${ categories != null }">
 				<c:forEach var="category" items="${ categories }">
@@ -20,10 +21,8 @@
 	</select>
 	
 	<input class="button" type="submit" value="Trier" />
-	
-</form>
 
-<a href="CreateLeisure" id="addLeisurButton">Ajouter un loisir</a>
+</form>
 
 <!-- Affiche la liste des loisirs -->
 <div id="leisrList">
@@ -32,16 +31,17 @@
 	<c:forEach var="leisure" items="${ leisures }">
 		<div class="leisrInsert">
 			<div class="leisrPhoto"></div>
+			<div class="leisrRating">
+				<span class="leisrValueRating">6.5</span> /10
+			</div>
 			<div class="leisrDescription">
-				<span class="leisrTitle">${ leisure.name } :</span><br/>
-				<div class="leisrRating">
-					<span class="leisrValueRating">6.5</span> /10
-				</div>
-				<p>${ leisure.description }</p>
-				<p>
-					Adresse : ${ leisure.address }<br/>
-					Téléphone : ${ leisure.phone }<br/>
-					Email : ${ leisure.email }
+				<span class="leisrTitle">${ leisure.name }</span><br/>
+
+				<p class="leisrOtherInfo">
+					<p><span>Descriptifs :</span> ${ leisure.description }</p>
+					<span>Adresse :</span> ${ leisure.address }<br/>
+					<span>Téléphone :</span> ${ leisure.phone }<br/>
+					<span>Email :</span> ${ leisure.email }
 				</p>
 			</div>
 		</div>

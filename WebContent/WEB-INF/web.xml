@@ -24,12 +24,16 @@
     <servlet-class>com.lavalloisir.servlets.Connection</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>Deconnection</servlet-name>
-  	<servlet-class>com.lavalloisir.servlets.Deconnection</servlet-class>
+    <servlet-name>Deconnection</servlet-name>
+    <servlet-class>com.lavalloisir.servlets.Deconnection</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>Contact</servlet-name>
-  	<servlet-class>com.lavalloisir.servlets.Contact</servlet-class>
+    <servlet-name>Contact</servlet-name>
+    <servlet-class>com.lavalloisir.servlets.Contact</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Restriction</servlet-name>
+    <servlet-class>com.lavalloisir.servlets.Restriction</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Home</servlet-name>
@@ -52,12 +56,16 @@
     <url-pattern>/Connection</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>Deconnection</servlet-name>
-  	<url-pattern>/Deconnection</url-pattern>
+    <servlet-name>Deconnection</servlet-name>
+    <url-pattern>/Deconnection</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>Contact</servlet-name>
-  	<url-pattern>/Contact</url-pattern>
+    <servlet-name>Contact</servlet-name>
+    <url-pattern>/Contact</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Restriction</servlet-name>
+    <url-pattern>/Restriction</url-pattern>
   </servlet-mapping>
   <jsp-config>
     <jsp-property-group>

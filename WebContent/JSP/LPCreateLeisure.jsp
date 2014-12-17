@@ -16,7 +16,7 @@
 	
 	<div class="formField">
 		<label for="addressLeisr">Adresse :</label>
-		<textarea id="addressLeisr" name="addressLeisr" class="createLeisrInput" placeholder="#0 allée Adresse #0000 VILLE"></textarea>
+		<textarea id="addressLeisr" name="addressLeisr" class="formInput" placeholder="#0 allée Adresse #0000 VILLE"></textarea>
 		<span class="error">${ form.errors['addressLeisr'] }</span>
 	</div>
 	
@@ -36,7 +36,7 @@
 	
 	<div class="formField">
 		<label for="categoryLeisr">Catégorie :</label>
-		<select id="categoryLeisr" name="categoryLeisr" class="createLeisrInput">
+		<select id="categoryLeisr" name="categoryLeisr" class="formInput">
 			<c:choose>
 				<c:when test="${ categories != null }">
 					<c:forEach var="category" items="${ categories }">
