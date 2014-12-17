@@ -86,5 +86,4 @@
 			<include-prelude>/JSP/taglibs.jsp</include-prelude>
 		</jsp-property-group>
 	</jsp-config>
->>>>>>> 52dc219d264f2a65264e7419096a3134de033f60
 </web-app>
