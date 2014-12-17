@@ -41,7 +41,7 @@ public final class ConnectionForm {
 		String login = getFieldValue(request, FIELD_LOGIN);
 		String password = getFieldValue(request, FIELD_PASSWD);
 		
-		User user = new User();
+		User user = null;
 		try {
 			processLogin(login);
 			processPassword(password);

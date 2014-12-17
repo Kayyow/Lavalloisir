@@ -14,7 +14,7 @@ public class Rating {
     private Leisure leisure;
 
     public int getId() {
-        return rating;
+        return id;
     }
 
     public void setId(int id) {
@@ -71,7 +71,4 @@ public class Rating {
     
     public Rating() {
     }
-
-	
-
 }

@@ -18,9 +18,9 @@ public class DAOFactory {
 	private String url;
 	private String userName;
 	private String password;
+
 	
-	// CONSTRUCTORS
-	DAOFactory(String url, String userName, String password) {
+	DAOFactory (String url, String userName, String password) {
 		this.url = url;
 		this.userName = userName;
 		this.password = password;

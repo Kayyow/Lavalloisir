@@ -5,5 +5,5 @@
 	<%@ page pageEncoding="UTF-8" %>
     <script type="text/javascript" src="JS/jquery-1.2.6.js"></script>
     <script type="text/javascript" src="JS/script.js"></script>
-	<title>Lavalloisir - Accueil</title>
+	<title>Lavalloisir</title>
 </head>

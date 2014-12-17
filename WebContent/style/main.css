@@ -78,6 +78,16 @@ h2{
 	color: #65B9BD;
 }
 
+#logoTitleColor:hover {
+	-webkit-animation: shiftRight ease 1.5s;
+}
+
+@-webkit-keyframes shiftRight {
+	0%	{margin-left: 0px;}
+	50% {margin-left: 20px;}
+	100%{margin-left: 0px;}
+}
+
 .buttonMenu {
 	font-weight: bold;
 	float: left;
@@ -107,10 +117,12 @@ h2{
 
 .tabLink a {
 	color: #636363;
+	transition: color linear .8s;
 }
 
 .tabLink a:hover {
 	color: #65B9BD;
+	transition: color linear .2s;
 }
 
 /* LEFT PANEL */
@@ -228,7 +240,6 @@ textarea {
 }
 
 /* RIGHT PANEL */
-
 #cnctLink {
 	position: relative;
 	display: block;
@@ -240,6 +251,16 @@ textarea {
 
 #cnctLink img {
 	width: 100%;
+}
+
+#cnctLink img:hover {
+	-webkit-animation: doubleRotation linear 1.5s; 
+}
+
+@-webkit-keyframes doubleRotation {
+    0%{-webkit-transform: rotate(0deg);}
+    50%	{-webkit-transform: rotate(360deg);}
+    100%{-webkit-transform: rotate(0deg);}
 }
 
 #rightPanel {
@@ -256,8 +277,7 @@ textarea {
 
 .titleBox {
 	padding: 10px;
-	margin-top: -1px;
-	margin-left: -1px;
+	margin: -1px;
 	background-color: #5F9AB5;
 	border: 1px solid #006D9F;
 	color: #fff;
@@ -361,6 +381,7 @@ footer {
 		cursor: pointer;
 		padding: 0;
 	}
+	
 	.buttonMenu:after {
 		content: '';
 		position: absolute;
@@ -394,6 +415,7 @@ footer {
 		border-bottom: 1px solid #7CB6D1;
 		color: #fff;
 	}
+	
 	.tabLink a:hover {
 		background-color: #65B9BD;
 		color: #fff;
@@ -450,7 +472,6 @@ footer {
 }
 
 @media only screen and (max-width: 535px) {
-	
 	.columnBox {
 		width: 100%;
 	}

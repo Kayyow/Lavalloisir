@@ -48,8 +48,10 @@ public class CreateLeisure extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute(ATT_FILE_LP, "LPCreateLeisure.jsp");
+		
 		List<Category> categories = categoryDAO.selectAll();
 		request.setAttribute("categories", categories);
+		
 		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
 	}
 

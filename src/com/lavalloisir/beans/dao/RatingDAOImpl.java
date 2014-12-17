@@ -4,10 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Connection;
-import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.lavalloisir.beans.business.Category;
 import com.lavalloisir.beans.business.Leisure;
 import com.lavalloisir.beans.business.Rating;
 import com.lavalloisir.beans.business.User;
@@ -70,7 +68,7 @@ public class RatingDAOImpl implements RatingDAO{
         PreparedStatement preparedStmt = null;
         ResultSet rs = null;
         Rating rating = null;
-        ArrayList<Rating> list = new ArrayList();
+        ArrayList<Rating> list = new ArrayList<Rating>();
         
         try {
         	// Récupération d'une connexion depuis la Factory
