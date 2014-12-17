@@ -37,4 +37,12 @@ public interface LeisureDAO {
 	 * @throws DAOException
 	 */
 	List<Leisure> selectByCategory(List<Category> categories, int idCategory) throws DAOException;
+	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 * @throws DAOException
+	 */
+	Leisure find (long id) throws DAOException;
 }

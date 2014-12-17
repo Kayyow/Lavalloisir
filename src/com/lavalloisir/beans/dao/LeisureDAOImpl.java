@@ -20,10 +20,35 @@ public class LeisureDAOImpl implements LeisureDAO {
 	
 	public LeisureDAOImpl() {
 	}
-    
-    private static final String SQL_SELECT_BY_ID = "SELECT"
+	
+	private static final String SQL_SELECT_BY_ID = "SELECT"
 			+ "Id, Nom, Adresse, Description, Telephone, Email, Id_categorie"
 			+ "FROM Loisir WHERE Id = ? ";
+	// Implémentation de la méthode trouver() définie dans l'interface LeisureDAO
+    @Override
+    public Leisure find (long id) throws DAOException {
+        Connection cnct = null;
+        PreparedStatement preparedStmt = null;
+        ResultSet rs = null;
+        Leisure leisure = null;
+        
+        try {
+        	cnct = daoFactory.getConnection();
+        	preparedStmt = DAOUtil.initPreparedStatement(cnct, SQL_SELECT_BY_ID, false, id);
+        	rs = preparedStmt.executeQuery();
+        	
+        	// Parcours de la ligne de donnée de l'éventuel ResultSet retourné
+        	if (rs.next()) {
+        		leisure = map(rs);
+        	}
+        } catch (SQLException e) {
+        	throw new DAOException(e);
+        } finally {
+        	DAOUtil.silentsClosing(rs, preparedStmt, cnct);
+        }
+        return leisure;
+    }
+
 	// Implémentation de la méthode trouver() définie dans l'interface LeisureDAO
     @Override
     public Leisure find (long id, List<Category> categories) throws DAOException {
@@ -146,6 +171,31 @@ public class LeisureDAOImpl implements LeisureDAO {
 		return leisures;
     }
     
+    /**
+     * Map un loisir sans sa catégorie
+     * @param rs
+     * @return
+     * @throws SQLException
+     */
+    private static Leisure map (ResultSet rs) throws SQLException {
+		Leisure leisure = new Leisure();
+		leisure.setId(rs.getInt("Id"));
+		leisure.setName(rs.getString("Nom"));
+		leisure.setAddress(rs.getString("Adresse"));
+		leisure.setDescription(rs.getString("Description"));
+		leisure.setPhone(rs.getString("Telephone"));
+		leisure.setEmail(rs.getString("Email"));
+		
+		return leisure;
+	}
+    
+    /**
+     * Map un loisir
+     * @param rs
+     * @param categories
+     * @return
+     * @throws SQLException
+     */
 	private static Leisure map (ResultSet rs, List<Category> categories) throws SQLException {
 		Leisure leisure = new Leisure();
 		leisure.setId(rs.getInt("Id"));

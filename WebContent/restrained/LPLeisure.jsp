@@ -2,8 +2,7 @@
 
 <h2> Liste des loisirs </h2>
 <hr>
-
-<a href="CreateLeisure" id="addLeisurButton">Ajouter un loisir</a>
+<a href="/Lavalloisir/restrained/CreateLeisure" id="addLeisurButton">Ajouter un loisir</a>
 <form method="post">
 	
 	<label for="categoryLeisr">Catégorie :</label>	
@@ -21,7 +20,6 @@
 	</select>
 	
 	<input class="button" type="submit" value="Trier" />
-
 </form>
 
 <!-- Affiche la liste des loisirs -->
