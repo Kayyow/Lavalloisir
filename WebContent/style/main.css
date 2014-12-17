@@ -144,32 +144,36 @@ input {
 
 #registrForm,
 #LeisureForm,
-#createLeisrForm {
-    margin: auto;
-    margin-top: 20px;
+#createLeisrForm,
+#cnctForm,
+#contactForm {
+    margin: 20px 50px 0px 50px;
+    width: auto;
 }
 
-#registrForm,
-#createLeisrForm {
-	width: 500px;
-}
-
-.registrInput,
-.createLeisrInput {
+.formInput {
+	display: block;
     padding: 2px;
-    width: 175px;
+    width: 200px;
     border: 1px solid #ccc;
     background-color: #fafafa;
 }
 
-#registrButton,
+.registrButton {
+	float: right;
+}
+
 #addLeisurButton {
 	float: right;
 	padding: 5px;
 }
 
+#cnctForm a {
+	line-height: 30px;
+}
+
 textarea {
-	height: 70px;
+	height: 100px;
 }
 
 #leisrList {
@@ -197,7 +201,7 @@ textarea {
     border-radius: 5px;
 }
 
-.leisrDesctription {
+.leisrDescription {
     position: relative;
     left: 10px; 
 }
@@ -259,27 +263,8 @@ textarea {
 	color: #fff;
 }
 
-#cnctForm {
-	padding: 10px 10px 0px 10px;
-}
-
-.cnctInput {
-	position: relative;
-	padding: 2px;
-	height: 30px;
-	width: 100%;
-	margin-bottom: 10px;
-	border: 1px solid #ccc;
-	background-color: #fafafa;
-}
-
-#cnctButton {
-	float: right;
-	padding: 5px;
-}
-
-#cnctForm a {
-	line-height: 30px;
+.info {
+	margin-left: 10px;
 }
 
 #bestRating ul {
@@ -459,7 +444,7 @@ footer {
 		text-align: left;
 	}
 
-	.lastAdded {
+	#lastAdded {
 		display: none;
 	}
 }
@@ -468,6 +453,16 @@ footer {
 	
 	.columnBox {
 		width: 100%;
+	}
+	
+	#registrForm,
+	#LeisureForm,
+	#createLeisrForm,
+	#cnctForm,
+	#contactForm {
+	    margin: auto;
+	    margin-top: 20px;
+	    width: 200px;
 	}
 
 }

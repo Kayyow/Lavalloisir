@@ -7,7 +7,7 @@
 	    	</a>
 	    	Mon compte
 	    </div>
-	    <div>
+	    <div class="connectionBox info">
 	    	<p> Login : <c:out value="${sessionScope.sessionUser.login}"/></p>
 	    	<p> Nom : <c:out value="${sessionScope.sessionUser.name}"/></p>
 	    	<p> Prénom : <c:out value="${sessionScope.sessionUser.firstName}"/></p>

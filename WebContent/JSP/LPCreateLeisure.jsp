@@ -9,35 +9,35 @@
 	
 	<div class="formField">
 		<label for="nameLeisr">Nom :</label>
-		<input type="text" class="createLeisrInput" id="nameLeisr" name="nameLeisr"
+		<input type="text" class="formInput" id="nameLeisr" name="nameLeisr"
 			placeholder="Nom du loisir" value="<c:out value="${leisure.name}"/>"/>
 		<span class="error">${ form.errors['nameLeisr'] }</span>
 	</div>
 	
 	<div class="formField">
 		<label for="addressLeisr">Adresse :</label>
-		<textarea id="addressLeisr" name="addressLeisr" class="createLeisrInput"
+		<textarea id="addressLeisr" name="addressLeisr" class="formInput"
 			placeholder="#0 allée Adresse #0000 VILLE" value="<c:out value="${leisure.address}"/>"></textarea>
 		<span class="error">${ form.errors['addressLeisr'] }</span>
 	</div>
 	
 	<div class="formField">
 		<label for="phoneLeisr">Telephone :</label>
-		<input type="text" class="createLeisrInput" id="phoneLeisr" name="phoneLeisr"
+		<input type="text" class="formInput" id="phoneLeisr" name="phoneLeisr"
 			placeholder="Telephone" value="<c:out value="${leisure.phone}"/>"/>
 		<span class="error">${ form.errors['phoneLeisr'] }</span>
 	</div>
 	
 	<div class="formField">
 		<label for="emailLeisr">Email :</label>
-		<input type="text" class="createLeisrInput" id="emailLeisr" name="emailLeisr"
+		<input type="text" class="formInput" id="emailLeisr" name="emailLeisr"
 			placeholder="adresse@domaine.fr" value="<c:out value="${leisure.email}"/>"/>
 		<span class="error">${ form.errors['emailLeisr'] }</span>
 	</div>
 	
 	<div class="formField">
 		<label for="categoryLeisr">Categorie :</label>
-		<select id="categoryLeisr" name="categoryLeisr" class="createLeisrInput">
+		<select id="categoryLeisr" name="categoryLeisr" class="formInput">
 		    <%
 	            List<Category> categories = (ArrayList<Category>)request.getAttribute("categories");
 	            if (categories != null) {
@@ -54,7 +54,7 @@
 	
 	<div class="formField">
 		<label for="descriptionLeisr">Description :</label>
-		<textarea id="descriptionLeisr" name="descriptionLeisr" class="createLeisrInput"
+		<textarea id="descriptionLeisr" name="descriptionLeisr" class="formInput"
 			placeholder="Description du loisir"></textarea>
 		<span class="error">${ form.errors['descriptionLeisr'] }</span>
 	</div>

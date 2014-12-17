@@ -10,7 +10,7 @@
 			<li class="tabLink"><a href="Home">Accueil</a></li>
 			<li class="tabLink"><a href="Leisure">Loisir</a></li>
 			<li class="tabLink"><a href="Registration">Inscription</a></li>
-			<li class="tabLink"><a href="#">Contact</a></li>
+			<li class="tabLink"><a href="Contact">Contact</a></li>
 		</ul>
 	</nav>
 

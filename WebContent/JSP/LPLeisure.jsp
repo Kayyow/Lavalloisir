@@ -22,7 +22,7 @@
 	<!-- Tant qu'il y a des activités, afficher : -->
 	<div class="leisrInsert">
 	    <div class="leisrPhoto"></div>
-        <div class="leisrDesctription">
+        <div class="leisrDescription">
         	<span class="leisrTitle">Activité 1</span><br>
         	<div class="leisrRating"> <span class="leisrValueRating">6.5</span> /10 </div>
         	Adresse : <br>

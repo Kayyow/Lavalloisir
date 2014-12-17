@@ -3,15 +3,19 @@
 <hr>
 
 <form id="cnctForm" method="post">	
-	<label for="cnctLogin">Identifiant :</label>
-	<input type="text" class="cnctInput login" name="cnctLogin" value="<c:out value="${user.login}"/>" />
-	<span class="error">${form.errors['cnctLogin']}</span>
-
-	<label for="cnctPwd">Mot de passe : </label>
-	<input type="password" class="cnctInput pwd" name="cnctPassword" value=""/>
-	<span class="error">${form.errors['cnctPassword']}</span>
+	<div class="formField">	
+		<label for="cnctLogin">Identifiant :</label>
+		<input type="text" class="formInput login" name="cnctLogin" value="<c:out value="${user.login}"/>" />
+		<span class="error">${form.errors['cnctLogin']}</span>
+	</div>
 	
-	<a href="Registration">S'inscrire</a>
+	<div class="formField">	
+		<label for="cnctPwd">Mot de passe : </label>
+		<input type="password" class="formInput pwd" name="cnctPassword" value=""/>
+		<span class="error">${form.errors['cnctPassword']}</span>
+	</div>
+	
+	<a href="Registration" class="registrButton">S'inscrire</a>
    	
 	<input type="submit" value="Connexion">
         
