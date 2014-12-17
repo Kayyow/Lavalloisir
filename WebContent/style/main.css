@@ -360,7 +360,7 @@ footer {
 	
 	footer {
 		position: relative;
-		display: block;
+		display: none;
 		clear: both;
 		height: 50px;
 		bottom: 0;
@@ -438,6 +438,7 @@ footer {
 		right: 0;
 		bottom: 0;
 		background-color: rgba(0, 0, 0, 0.6);
+		overflow: hidden;
 	}
 	
 	
