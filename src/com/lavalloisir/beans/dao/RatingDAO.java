@@ -1,7 +1,5 @@
 package com.lavalloisir.beans.dao;
 
-import java.util.ArrayList;
-
 import com.lavalloisir.beans.business.Rating;
 
 public interface RatingDAO {
@@ -17,5 +15,5 @@ public interface RatingDAO {
 	 * @return
 	 * @throws DAOException
 	 */
-	ArrayList<Rating> list () throws DAOException;
+	Rating find(long idUser, long idLeisure) throws DAOException;
 }

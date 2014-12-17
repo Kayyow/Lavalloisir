@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
 <html>
-<%@ include file="head.jsp" %>>
+<%@ include file="head.jsp" %>
 <body>
 	<div id="container">
 		<div class="splitter">

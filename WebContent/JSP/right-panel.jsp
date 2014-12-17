@@ -2,15 +2,15 @@
 <div id="rightPanel">
 	<div class="columnBox" id="connectionBox">
 	    <div class="titleBox">
-	    	<a id="cnctLink" href="/Lavalloisir/<c:out value="${!empty sessionScope.sessionUser ? 'Deconnection' : 'Home'}"/>">
+	    	<a id="cnctLink" href="/Lavalloisir/<c:out value="${!empty sessionScope.sessionUser ? 'Deconnection' : 'Connection'}"/>">
 	    		<img src="/Lavalloisir/img/power_button_<c:out value="${!empty sessionScope.sessionUser ? 'red' : 'green'}"/>.svg"/>
 	    	</a>
 	    	Mon compte
 	    </div>
 	    <div class="connectionBox info">
-	    	<p> Login : <c:out value="${sessionScope.sessionUser.login}"/></p>
-	    	<p> Nom : <c:out value="${sessionScope.sessionUser.name}"/></p>
-	    	<p> Prénom : <c:out value="${sessionScope.sessionUser.firstName}"/></p>
+	    	<p>Login : <c:out value="${sessionScope.sessionUser.login}"/></p>
+	    	<p>Nom : <c:out value="${sessionScope.sessionUser.name}"/></p>
+	    	<p>Prénom : <c:out value="${sessionScope.sessionUser.firstName}"/></p>
 	    </div>
 	   
 	</div>
