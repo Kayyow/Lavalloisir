@@ -3,7 +3,7 @@
 <h2> Liste des loisirs </h2>
 <hr>
 
-<form id="leisr">	
+<form method="post">
 	
 	<label for="categoryLeisr">Catégorie :</label>	
 	<select id="categoryLeisr" name="categoryLeisr" class="createLeisrInput">
@@ -19,8 +19,11 @@
 		</c:choose>
 	</select>
 	
-	<a href="CreateLeisure" id="addLeisurButton">Ajouter un loisir</a>
+	<input class="button" type="submit" value="Trier" />
+	
 </form>
+
+<a href="CreateLeisure" id="addLeisurButton">Ajouter un loisir</a>
 
 <!-- Affiche la liste des loisirs -->
 <div id="leisrList">

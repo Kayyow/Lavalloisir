@@ -28,6 +28,9 @@ public class DisplayLeisure extends HttpServlet {
 	
 	private LeisureDAO leisureDAO;
 	private CategoryDAO categoryDAO;
+	
+	private List<Category> categories;
+	private List<Leisure> leisures;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -40,18 +43,17 @@ public class DisplayLeisure extends HttpServlet {
 		// Récupération d'une instance de notre DAO Utilisateur
 		this.leisureDAO = ((DAOFactory)getServletContext().getAttribute(CONF_DAO_FACTORY)).getLeisureDAO();
 		this.categoryDAO = ((DAOFactory)getServletContext().getAttribute(CONF_DAO_FACTORY)).getCategoryDAO();
+		
+		categories = categoryDAO.selectAll();
+		leisures = leisureDAO.selectAll(categories);
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("fileLP", "LPLeisure.jsp");
-		
-		List<Category> categories = categoryDAO.selectAll();
-		request.setAttribute("categories", categories);
-		
-		List<Leisure> leisures = leisureDAO.selectAll(categories);
+		request.setAttribute(ATT_FILE_LP, "LPLeisure.jsp");
+		request.setAttribute("categories", categories);		
 		request.setAttribute("leisures", leisures);
 		
 		this.getServletContext().getRequestDispatcher("/JSP/page.jsp").forward(request, response);
@@ -61,7 +63,14 @@ public class DisplayLeisure extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute(ATT_FILE_LP, "LPLeisure.jsp");
+		request.setAttribute("categories", categories);		
 		
+		leisures = leisureDAO.selectByCategory(categories, Integer.parseInt(request.getParameter("categoryLeisr")));
+		
+		request.setAttribute("leisures", leisures);
+		
+		this.getServletContext().getRequestDispatcher("/JSP/page.jsp").forward(request, response);
 	}
 
 }

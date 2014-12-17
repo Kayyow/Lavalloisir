@@ -86,7 +86,6 @@ public class LeisureDAOImpl implements LeisureDAO {
     	}
     }
     
-    
     private static final String SQL_SELECT_ALL = "SELECT "
 			+ "Id, Nom, Adresse, Description, Telephone, Email, Id_categorie "
 			+ "FROM Loisir";    
@@ -110,6 +109,36 @@ public class LeisureDAOImpl implements LeisureDAO {
         		leisures.add(leisure);
         	}        	
         } catch (SQLException e) {
+        	throw new DAOException(e);
+        } finally {
+        	DAOUtil.silentsClosing(rs, preparedStmt, cnct);
+        }
+		return leisures;
+    }
+    
+    private static final String SQL_SELECT_BY_CATEGORY = "SELECT "
+			+ "Id, Nom, Adresse, Description, Telephone, Email, Id_categorie "
+			+ "FROM Loisir WHERE Id_categorie = ?"; 
+    @Override
+    public List<Leisure> selectByCategory(List<Category> categories, int idCategory) throws DAOException {
+    	Connection cnct = null;
+    	PreparedStatement preparedStmt = null;
+    	ResultSet rs = null;
+    	Leisure leisure = null;
+    	List<Leisure> leisures = new ArrayList<Leisure>();
+    	
+    	try {
+    		// Récupération d'un connexion depuis la Factory
+    		cnct = daoFactory.getConnection();
+    		preparedStmt = DAOUtil.initPreparedStatement(cnct, SQL_SELECT_BY_CATEGORY, false, idCategory);
+    		
+    		rs = preparedStmt.executeQuery();
+    		
+    		while (rs.next()) {
+    			leisure = map(rs, categories);
+    			leisures.add(leisure);
+    		}
+    	} catch (SQLException e) {
         	throw new DAOException(e);
         } finally {
         	DAOUtil.silentsClosing(rs, preparedStmt, cnct);
