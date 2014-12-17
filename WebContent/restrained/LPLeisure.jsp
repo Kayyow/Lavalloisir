@@ -23,7 +23,7 @@
 	
 </form>
 
-<a href="CreateLeisure" id="addLeisurButton">Ajouter un loisir</a>
+<a href="/Lavalloisir/restrained/CreateLeisure" id="addLeisurButton">Ajouter un loisir</a>
 
 <!-- Affiche la liste des loisirs -->
 <div id="leisrList">

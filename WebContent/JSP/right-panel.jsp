@@ -2,8 +2,8 @@
 <div id="rightPanel">
 	<div class="columnBox" id="connectionBox">
 	    <div class="titleBox">
-	    	<a id="cnctLink" href="<c:out value="${!empty sessionScope.sessionUser ? 'Deconnection' : 'Connection'}"/>">
-	    		<img src="img/power_button_<c:out value="${!empty sessionScope.sessionUser ? 'red' : 'green'}"/>.svg"/>
+	    	<a id="cnctLink" href="/Lavalloisir/<c:out value="${!empty sessionScope.sessionUser ? 'Deconnection' : 'Home'}"/>">
+	    		<img src="/Lavalloisir/img/power_button_<c:out value="${!empty sessionScope.sessionUser ? 'red' : 'green'}"/>.svg"/>
 	    	</a>
 	    	Mon compte
 	    </div>

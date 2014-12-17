@@ -52,11 +52,12 @@ public class DisplayLeisure extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute(ATT_FILE_LP, "LPLeisure.jsp");
+		request.setAttribute(ATT_FILE_LP, "/restrained/LPLeisure.jsp");
+		request.setAttribute("restrained", "../");
 		request.setAttribute("categories", categories);		
 		request.setAttribute("leisures", leisures);
 		
-		this.getServletContext().getRequestDispatcher("/JSP/page.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
 	}
 
 	/**
@@ -72,5 +73,4 @@ public class DisplayLeisure extends HttpServlet {
 		
 		this.getServletContext().getRequestDispatcher("/JSP/page.jsp").forward(request, response);
 	}
-
 }
