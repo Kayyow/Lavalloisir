@@ -81,4 +81,8 @@ public class DAOFactory {
     public CategoryDAO getCategoryDAO() {
     	return new CategoryDAOImpl(this);
     }
+    
+    public RatingDAO getRatingDAO() {
+    	return new RatingDAOImpl(this);
+    }
 }

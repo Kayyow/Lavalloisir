@@ -44,8 +44,8 @@
 	  <servlet-class>com.lavalloisir.servlets.Contact</servlet-class>
 	</servlet>
 	<servlet>
-      <servlet-name>Restriction</servlet-name>
-      <servlet-class>com.lavalloisir.servlets.Restriction</servlet-class>
+      <servlet-name>ReservedAccess</servlet-name>
+      <servlet-class>com.lavalloisir.servlets.ReservedAccess</servlet-class>
     </servlet>
 	
 	<servlet-mapping>
@@ -77,8 +77,8 @@
 	  <url-pattern>/Contact</url-pattern>
 	</servlet-mapping>
    	<servlet-mapping>
-      <servlet-name>Restriction</servlet-name>
-      <url-pattern>/Restriction</url-pattern>
+      <servlet-name>ReservedAccess</servlet-name>
+      <url-pattern>/ReservedAccess</url-pattern>
     </servlet-mapping>
 	<jsp-config>
 		<jsp-property-group>

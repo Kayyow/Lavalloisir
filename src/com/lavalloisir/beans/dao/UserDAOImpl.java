@@ -55,7 +55,7 @@ public class UserDAOImpl implements UserDAO {
 	
     private static final String SQL_SELECT_BY_ID = "SELECT "
 			+ "id, nom, prenom, email, login, motDePasse, photoProfil, dateInscription "
-			+ "FROM utilisateur WHERE login = ? AND motDePasse = ?";
+			+ "FROM utilisateur WHERE login = ?";
 	// Implémentation de la méthode trouver() définie dans l'interface UtilisateurDao
     @Override
     public User find (long id) throws DAOException {

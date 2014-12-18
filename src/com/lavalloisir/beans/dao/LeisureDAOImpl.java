@@ -4,15 +4,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Connection;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.lavalloisir.beans.business.Category;
 import com.lavalloisir.beans.business.Leisure;
+import com.lavalloisir.beans.business.Rating;
 
 public class LeisureDAOImpl implements LeisureDAO {
 	
 	private DAOFactory daoFactory;
+	
+	private static DecimalFormat df = new DecimalFormat("#.#");
 	
 	LeisureDAOImpl (DAOFactory daoFactory) {
 		this.daoFactory = daoFactory;
@@ -21,9 +25,9 @@ public class LeisureDAOImpl implements LeisureDAO {
 	public LeisureDAOImpl() {
 	}
 	
-	private static final String SQL_SELECT_BY_ID = "SELECT"
-			+ "Id, Nom, Adresse, Description, Telephone, Email, Id_categorie"
-			+ "FROM Loisir WHERE Id = ? ";
+	private static final String SQL_SELECT_BY_ID = "SELECT "
+			+ "Id, Nom, Adresse, Description, Telephone, Email, Id_categorie "
+			+ "FROM Loisir WHERE Id = ?";
 	// Implémentation de la méthode trouver() définie dans l'interface LeisureDAO
     @Override
     public Leisure find (long id) throws DAOException {
@@ -115,7 +119,7 @@ public class LeisureDAOImpl implements LeisureDAO {
 			+ "Id, Nom, Adresse, Description, Telephone, Email, Id_categorie "
 			+ "FROM Loisir";    
     @Override
-    public List<Leisure> selectAll (List<Category> categories) throws DAOException {
+    public List<Leisure> selectAll (List<Category> categories, List<Rating> ratings) throws DAOException {
     	Connection cnct = null;
         PreparedStatement preparedStmt = null;
         ResultSet rs = null;
@@ -130,7 +134,7 @@ public class LeisureDAOImpl implements LeisureDAO {
         	rs = preparedStmt.executeQuery();
         	
         	while (rs.next()) {
-        		leisure = map(rs, categories);
+        		leisure = map(rs, categories, ratings);
         		leisures.add(leisure);
         	}        	
         } catch (SQLException e) {
@@ -145,7 +149,7 @@ public class LeisureDAOImpl implements LeisureDAO {
 			+ "Id, Nom, Adresse, Description, Telephone, Email, Id_categorie "
 			+ "FROM Loisir WHERE Id_categorie = ?"; 
     @Override
-    public List<Leisure> selectByCategory(List<Category> categories, int idCategory) throws DAOException {
+    public List<Leisure> selectByCategory (List<Category> categories, List<Rating> ratings, int idCategory) throws DAOException {
     	Connection cnct = null;
     	PreparedStatement preparedStmt = null;
     	ResultSet rs = null;
@@ -160,7 +164,7 @@ public class LeisureDAOImpl implements LeisureDAO {
     		rs = preparedStmt.executeQuery();
     		
     		while (rs.next()) {
-    			leisure = map(rs, categories);
+    			leisure = map(rs, categories, ratings);
     			leisures.add(leisure);
     		}
     	} catch (SQLException e) {
@@ -172,7 +176,7 @@ public class LeisureDAOImpl implements LeisureDAO {
     }
     
     /**
-     * Map un loisir sans sa catégorie
+     * Map un loisir sans sa catégorie ni sa moyenne
      * @param rs
      * @return
      * @throws SQLException
@@ -190,7 +194,7 @@ public class LeisureDAOImpl implements LeisureDAO {
 	}
     
     /**
-     * Map un loisir
+     * Map un loisir sans sa moyenne
      * @param rs
      * @param categories
      * @return
@@ -209,6 +213,46 @@ public class LeisureDAOImpl implements LeisureDAO {
 			if (category.getId() == rs.getInt("Id_categorie")) {
 				leisure.setCategory(category);
 			}
+		}
+		
+		return leisure;
+	}
+    
+    /**
+     * Map un loisir
+     * @param rs
+     * @param categories
+     * @param ratings
+     * @return
+     * @throws SQLException
+     */
+	private static Leisure map (ResultSet rs, List<Category> categories, List<Rating> ratings) throws SQLException {
+		Leisure leisure = new Leisure();
+		leisure.setId(rs.getInt("Id"));
+		leisure.setName(rs.getString("Nom"));
+		leisure.setAddress(rs.getString("Adresse"));
+		leisure.setDescription(rs.getString("Description"));
+		leisure.setPhone(rs.getString("Telephone"));
+		leisure.setEmail(rs.getString("Email"));
+		
+		for (Category category : categories) {
+			if (category.getId() == rs.getInt("Id_categorie")) {
+				leisure.setCategory(category);
+			}
+		}
+		
+		double nbScore = 0.0;
+		double scoreTotal = 0.0;
+		for (Rating rating : ratings) {
+			if (rating.getLeisure().getId() == leisure.getId()) {
+				scoreTotal += rating.getScore();
+				nbScore++;
+			}
+		}
+		
+		if (nbScore != 0) {
+			
+			leisure.setAverage(df.format(scoreTotal/nbScore));
 		}
 		
 		return leisure;

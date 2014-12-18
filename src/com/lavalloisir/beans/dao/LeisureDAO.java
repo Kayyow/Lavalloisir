@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.lavalloisir.beans.business.Category;
 import com.lavalloisir.beans.business.Leisure;
+import com.lavalloisir.beans.business.Rating;
 
 public interface LeisureDAO {
 	/**
@@ -27,7 +28,7 @@ public interface LeisureDAO {
 	 * @return
 	 * @throws DAOException
 	 */
-	List<Leisure> selectAll(List<Category> categories) throws DAOException;
+	List<Leisure> selectAll(List<Category> categories, List<Rating> ratings) throws DAOException;
 	
 	/**
 	 * 
@@ -36,7 +37,7 @@ public interface LeisureDAO {
 	 * @return
 	 * @throws DAOException
 	 */
-	List<Leisure> selectByCategory(List<Category> categories, int idCategory) throws DAOException;
+	List<Leisure> selectByCategory(List<Category> categories, List<Rating> ratings, int idCategory) throws DAOException;
 	
 	/**
 	 * 

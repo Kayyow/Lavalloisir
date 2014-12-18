@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.lavalloisir.beans.business.Leisure;
 import com.lavalloisir.beans.business.Rating;
@@ -31,7 +33,7 @@ public class RatingDAOImpl implements RatingDAO{
     		// Récupération d'une connexion depuis la Factory
     		cnct = daoFactory.getConnection();
     		preparedStmt = DAOUtil.initPreparedStatement(cnct, SQL_INSERT, true,
-    		rating.getRating(), rating.getUser().getId(), rating.getLeisure().getId());
+    		rating.getScore(), rating.getUser().getId(), rating.getLeisure().getId());
     		
     		int status = preparedStmt.executeUpdate();
     		
@@ -46,15 +48,13 @@ public class RatingDAOImpl implements RatingDAO{
     	}
     }
     
-	private static final String SQL_SELECT = "SELECT "
+	/*private static final String SQL_SELECT = "SELECT "
 			+ "Id, Note, Option_Courte, Commentaire, Date, Id_Utilisateur, Id_Loisir, "
 			+ "FROM evaluation";
-	
-    
- // Implémentation de la méthode Lister() définie dans l'interface RatingDao
+	// Implémentation de la méthode Lister() définie dans l'interface RatingDao
     @Override
-    public Rating find(long idUser, long idLeisure) throws DAOException {
-        Connection cnct = null;
+    public Rating find(User user, Leisure leisure) throws DAOException {
+    	Connection cnct = null;
         PreparedStatement preparedStmt = null;
         ResultSet rs = null;
         Rating rating = null;
@@ -67,7 +67,7 @@ public class RatingDAOImpl implements RatingDAO{
         	
         	// Parcours de la ligne de donnée de l'éventuel ResultSet retourné
         	while (rs.next()) {
-        		rating = map(rs, idUser, idLeisure);
+        		rating = map(rs, user, leisure);
         	}
         } catch (SQLException e) {
         	throw new DAOException(e);
@@ -76,19 +76,55 @@ public class RatingDAOImpl implements RatingDAO{
         }
         
         return rating;
-    }
+    }*/
     
-    
-	private static Rating map (ResultSet rs, long idUser, long idLeisure) throws SQLException {
+    private static final String SQL_SELECT_ALL = "SELECT "
+			+ "Id_Utilisateur, Id_Loisir, Note "
+			+ "FROM evaluation";
+	@Override
+	public List<Rating> selectAll() throws DAOException {
+		Connection cnct = null;
+        PreparedStatement preparedStmt = null;
+        ResultSet rs = null;
+        Rating rating = null;
+        List<Rating> ratings = new ArrayList<Rating>();
+                
+        try {
+        	// Récupération d'une connexion depuis la Factory
+        	cnct = daoFactory.getConnection();
+        	preparedStmt = DAOUtil.initPreparedStatement(cnct, SQL_SELECT_ALL, false);
+        	rs = preparedStmt.executeQuery();
+        	
+        	while (rs.next()) {
+        		rating = map(rs, this.daoFactory);
+        		ratings.add(rating);
+        	}        	
+        } catch (SQLException e) {
+        	throw new DAOException(e);
+        } finally {
+        	DAOUtil.silentsClosing(rs, preparedStmt, cnct);
+        }
+		return ratings;
+	}
+
+    /**
+     * 
+     * @param rs
+     * @param idUser
+     * @param idLeisure
+     * @return
+     * @throws SQLException
+     */
+	private static Rating map (ResultSet rs, DAOFactory daoFactory) throws SQLException {
 		Rating rating = new Rating();
-		rating.setRating(rs.getInt("Note"));
+		rating.setScore(rs.getInt("Note"));
 		
-		LeisureDAOImpl leisureDAO = new LeisureDAOImpl();
-		Leisure leisure = leisureDAO.find(idLeisure);
+		LeisureDAO leisureDAO = daoFactory.getLeisureDAO();
+		Leisure leisure = leisureDAO.find(rs.getInt("Id_Loisir"));
 		rating.setLeisure(leisure);
 		
-		UserDAOImpl userDAO = new UserDAOImpl();
-		User user = userDAO.find(idUser);
+		UserDAO userDAO = daoFactory.getUserDAO();
+		User user = userDAO.find(rs.getInt("Id_Utilisateur"));
 		rating.setUser(user);
 
 		return rating;

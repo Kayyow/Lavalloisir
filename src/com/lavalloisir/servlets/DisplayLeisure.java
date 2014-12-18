@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.lavalloisir.beans.business.Category;
 import com.lavalloisir.beans.business.Leisure;
+import com.lavalloisir.beans.business.Rating;
 import com.lavalloisir.beans.dao.CategoryDAO;
 import com.lavalloisir.beans.dao.DAOFactory;
 import com.lavalloisir.beans.dao.LeisureDAO;
+import com.lavalloisir.beans.dao.RatingDAO;
 
 /**
  * Servlet implementation class DisplayLeisure
@@ -28,9 +30,11 @@ public class DisplayLeisure extends HttpServlet {
 	
 	private LeisureDAO leisureDAO;
 	private CategoryDAO categoryDAO;
+	private RatingDAO ratingDAO;
 	
 	private List<Category> categories;
 	private List<Leisure> leisures;
+	private List<Rating> ratings;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,18 +47,22 @@ public class DisplayLeisure extends HttpServlet {
 		// Récupération d'une instance de notre DAO Utilisateur
 		this.leisureDAO = ((DAOFactory)getServletContext().getAttribute(CONF_DAO_FACTORY)).getLeisureDAO();
 		this.categoryDAO = ((DAOFactory)getServletContext().getAttribute(CONF_DAO_FACTORY)).getCategoryDAO();
+		this.ratingDAO = ((DAOFactory)getServletContext().getAttribute(CONF_DAO_FACTORY)).getRatingDAO();
 		
-		categories = categoryDAO.selectAll();
-		leisures = leisureDAO.selectAll(categories);
+		
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		categories = categoryDAO.selectAll();
+		ratings = ratingDAO.selectAll();
+		leisures = leisureDAO.selectAll(categories, ratings);
+		
 		request.setAttribute(ATT_FILE_LP, "/restrained/LPLeisure.jsp");
 		request.setAttribute("restrained", "../");
-		request.setAttribute("categories", categories);		
+		request.setAttribute("categories", categories);
 		request.setAttribute("leisures", leisures);
 		
 		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
@@ -65,9 +73,9 @@ public class DisplayLeisure extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute(ATT_FILE_LP, "/restrained/LPLeisure.jsp");
-		request.setAttribute("categories", categories);		
+		request.setAttribute("categories", categories);
 		
-		leisures = leisureDAO.selectByCategory(categories, Integer.parseInt(request.getParameter("categoryLeisr")));
+		leisures = leisureDAO.selectByCategory(categories, ratings, Integer.parseInt(request.getParameter("categoryLeisr")));
 		
 		request.setAttribute("leisures", leisures);
 		

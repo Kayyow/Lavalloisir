@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Restriction
  */
-public class Restriction extends HttpServlet {
+public class ReservedAccess extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	public static final String ATT_FILE_LP = "fileLP";
@@ -19,7 +19,7 @@ public class Restriction extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Restriction() {
+    public ReservedAccess() {
         super();
     }
 
@@ -27,7 +27,7 @@ public class Restriction extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute(ATT_FILE_LP, "LPRestriction.jsp");
+		request.setAttribute(ATT_FILE_LP, "LPReservedAccess.jsp");
 		
 		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
 	}

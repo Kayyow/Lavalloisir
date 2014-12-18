@@ -2,16 +2,16 @@ package com.lavalloisir.beans.business;
 
 public class Rating {
 	
-    private int rating;
+    private int score;
     private User user;
     private Leisure leisure;
     
-    public int getRating() {
-        return rating;
+    public int getScore() {
+        return score;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public User getUser() {

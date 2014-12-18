@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.1
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Client: localhost
--- Généré le: Mer 17 Décembre 2014 à 13:22
--- Version du serveur: 5.5.24-log
--- Version de PHP: 5.3.13
+-- Client :  127.0.0.1
+-- Généré le :  Jeu 18 Décembre 2014 à 15:38
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `lavalloisir`
+-- Base de données :  `lavalloisir`
 --
 
 -- --------------------------------------------------------
@@ -54,17 +54,25 @@ INSERT INTO `categorie` (`Id`, `Titre`, `Description`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `evaluation` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Note` tinyint(3) unsigned NOT NULL,
-  `Option_Courte` varchar(100) NOT NULL,
-  `Commentaire` varchar(300) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Id_Utilisateur` bigint(20) NOT NULL,
   `Id_Loisir` int(11) NOT NULL,
-  PRIMARY KEY (`Id`),
+  `Note` tinyint(11) NOT NULL,
+  PRIMARY KEY (`Id_Utilisateur`,`Id_Loisir`),
   KEY `Id_Utilisateur` (`Id_Utilisateur`),
   KEY `Id_Categorie` (`Id_Loisir`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `evaluation`
+--
+
+INSERT INTO `evaluation` (`Id_Utilisateur`, `Id_Loisir`, `Note`) VALUES
+(10, 3, 8),
+(10, 4, 4),
+(11, 3, 6),
+(11, 4, 7),
+(12, 3, 9),
+(12, 4, 9);
 
 -- --------------------------------------------------------
 
@@ -89,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `loisir` (
 --
 
 INSERT INTO `loisir` (`Id`, `Nom`, `Adresse`, `Description`, `Telephone`, `Email`, `Id_Categorie`) VALUES
-(3, 'Mc Donnalds''', 'Avenue de lattre-de-Tassigny 53000 LAVAL', 'Fast Food', '0243669866', 'McDonnard@Food.fr', 4),
+(3, 'Mc Donald''s', 'Avenue de lattre-de-Tassigny 53000 LAVAL', 'Fast Food', '0243669866', 'McDonnard@Food.fr', 4),
 (4, 'Allo-chinois', '17, rue des Orfevres 53000 LAVAL', 'Restaurant chinois ', '0243536565', 'bondour@AlloChinois-laval.fr', 4),
 (5, 'La Boite a Pizza', '47, Avenue Robert-Buron', 'Pizzeria et livraison à domicile', '0243560102', 'Boite@pizza.fr', 4),
 (6, 'Valkris', 'Centre commercial E.Leclerc, Parc des Loges 53940 Saint-Berthevin', 'Cafétéria ', '0243029697', 'Valkris@Cafettte.fr', 4),
@@ -141,12 +149,12 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`Id`, `Nom`, `Prenom`, `Email`, `Login`, `MotDePasse`, `PhotoProfil`, `DateInscription`) VALUES
-(10, 'LANDEAU', 'Julien', 'j.landeau@iia-laval.fr', 'JykÃ©', 'p5FCqu94rgUqdW+qpbP2/8jJqSB4zJeLzM47r6x/SelyPIR8+mq+JA==', 'WebContent/img/profil_picture.jpeg', '2014-12-16 19:30:25'),
+(10, 'LANDEAU', 'Julien', 'j.landeau@iia-laval.fr', 'Jyké', 'p5FCqu94rgUqdW+qpbP2/8jJqSB4zJeLzM47r6x/SelyPIR8+mq+JA==', 'WebContent/img/profil_picture.jpeg', '2014-12-18 14:28:58'),
 (11, 'MARCHAL', 'Pierre', 'p.marchal@iia-laval.fr', 'Kayyow', '4TYry6tIzrCE8qRqptys0RBLp2F1URD5ayT3e1KTaxljcDXtLJ5b9g==', 'WebContent/img/profil_picture.jpeg', '2014-12-16 19:31:30'),
 (12, 'VAN NOORT', 'Lucas', 'l.vannoort@iia-laval.fr', 'Loucasse', 'xBszhRbnkwT/V4xZYi7jlF1dCdcYcz/QlUq10l5zaEyY488vz5pxEQ==', 'WebContent/img/profil_picture.jpeg', '2014-12-16 19:32:27'),
 (13, 'LEPAGE', 'Alexis', 'a.lepage@iia-laval.fr', 'Alexey', 'GdvlWhhA6UBJv/3VRkTIEqvPidXuEQIVyqBrzwa20fB70ZimCwxAPw==', 'WebContent/img/profil_picture.jpeg', '2014-12-16 19:32:56'),
 (14, 'SUPIOT', 'Theodore', 't.supiot@iia-laval.fr', 'T-Hodor', 'Qj13LxelBfR3OuOQnbIOmIKCVC5G7QbaeWHkV2DBJ/2erh3e/58zgA==', 'WebContent/img/profil_picture.jpeg', '2014-12-16 19:34:00'),
-(15, 'GEOFFROY', 'Maxime', 'm.geoffroy@iia-laval.fr', 'Remet-nous-des-GlaÃ§ons', 'TJHL1JfkWa9KuW9Q2wgpHrU4o4/GYMUBpoyXvQ4zlXiQSmTp1bXWKA==', 'WebContent/img/profil_picture.jpeg', '2014-12-16 19:36:32'),
+(15, 'GEOFFROY', 'Maxime', 'm.geoffroy@iia-laval.fr', 'Remet-nous-des-Glaçons', 'TJHL1JfkWa9KuW9Q2wgpHrU4o4/GYMUBpoyXvQ4zlXiQSmTp1bXWKA==', 'WebContent/img/profil_picture.jpeg', '2014-12-18 14:29:10'),
 (16, 'HAMELIN', 'Ianis', 'i.hamelin@iia-laval.fr', 'Hiamel', 'wGjnDjF4oCNEIyDkavGrb/lBWWmwkdBvBi29kpysil/7Ns8xcrU8Fw==', 'WebContent/img/profil_picture.jpeg', '2014-12-16 19:37:09'),
 (17, 'PEREIRA', 'Damien', 'd.pereira@iia-laval.fr', 'Dam-Dam-Deo', 'j8Qp8HrbY1qPB+zkjkoPdHeQ6IXvDSg2rrvhlJK5Vb/UJvCvaQn33Q==', 'WebContent/img/profil_picture.jpeg', '2014-12-16 19:38:10'),
 (18, 'BOUSSARD', 'Kevin', 'k.boussard@iia-laval.fr', 'Kbouss', '8xtc6iPbyrl5Xk8hVN6/UTSg3Rk5reWua7EFNS5/u9E5Wj7GI73n/w==', 'WebContent/img/profil_picture.jpeg', '2014-12-16 19:38:42'),

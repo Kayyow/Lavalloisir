@@ -28,19 +28,19 @@
 	<!-- Tant qu'il y a des loisirs, afficher : -->	
 	<c:forEach var="leisure" items="${ leisures }">
 		<div class="leisrInsert">
-			<div class="leisrPhoto"></div>
+			<img class="leisrPhoto" src="/Lavalloisir/img/leisure_img.svg">
 			<div class="leisrRating">
-				<span class="leisrValueRating">6.5</span> /10
+				<span class="leisrValueRating">${ leisure.average }</span> /10
 			</div>
 			<div class="leisrDescription">
 				<span class="leisrTitle">${ leisure.name }</span><br/>
 
-				<p class="leisrOtherInfo">
+				<div class="leisrOtherInfo">
 					<p>Descriptifs :<span> ${ leisure.description }</span></p>
 						Adresse : <span> ${ leisure.address }</span><br/>
 						Téléphone : <span> ${ leisure.phone }</span><br/>
 						Email : <span> ${ leisure.email }</span>
-				</p>
+				</div>
 			</div>
 		</div>
 	</c:forEach>

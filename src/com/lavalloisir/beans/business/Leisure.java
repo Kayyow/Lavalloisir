@@ -8,6 +8,7 @@ public class Leisure {
     private String phone;
     private String email;
     private Category category;
+    private String average;
 
     public int getId() {
         return id;
@@ -63,6 +64,14 @@ public class Leisure {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+    
+    public String getAverage() {
+    	return average;
+    }
+    
+    public void setAverage(String average) {
+    	this.average = average;
     }
 
     public Leisure() {
