@@ -87,6 +87,7 @@
     <servlet-name>Rate</servlet-name>
     <url-pattern>/restrained/Rate</url-pattern>
   </servlet-mapping>
+  
   <jsp-config>
     <jsp-property-group>
       <url-pattern>*.jsp</url-pattern>
