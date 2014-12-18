@@ -25,7 +25,4 @@
 	        <li class="listBestRating"> TOP 5 </li>
 	    </ul>
 	</div>
-	<div class="columnBox" id="lastAdded">
-	    <div class="titleBox">Les derniers ajoutés</div>
-	</div>
 </div>

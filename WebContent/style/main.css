@@ -133,6 +133,19 @@ h2{
 	background-color: #fff;
 }
 
+.messageHome {
+	text-align: justify;
+    text-justify: inter-word;
+}
+
+img {
+	float: right;
+	max-width: 300px;
+	width: 100%;
+	height: auto;
+	margin-left: 10px;
+}
+
 .formField {
 	margin-bottom: 10px;
 }
@@ -349,6 +362,7 @@ textarea {
 /* FOOTER */
 footer {
 	position: relative;
+	display: block;
 	clear: both;
 	text-align: center;
 }
@@ -371,9 +385,13 @@ footer {
 	#rightPanel {
 		right: 5px;
 	}
+	
+	footer {
+		display: none;
+	}
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
 	#container, .splitter {
 		height: 100%;
 	}
@@ -490,22 +508,19 @@ footer {
 	
 	#rightPanel {
 		position: relative;
-		width : 100%;
-		margin: auto;
+		width: 98%;
 		text-align: center;
+		margin: auto;
 
 	}
 	
 	.columnBox{
 		display: inline-block;
 		vertical-align: top;
-		width: 250px;
+		width: 49%;
 		min-height: 220px;
 		text-align: left;
-	}
-
-	#lastAdded {
-		display: none;
+		
 	}
 }
 

@@ -9,6 +9,7 @@
 		<ul>
 			<li class="tabLink"><a href="/Lavalloisir/Home">Accueil</a></li>
 			<li class="tabLink"><a href="/Lavalloisir/restrained/DisplayLeisure">Loisir</a></li>
+			<li class="tabLink"><a href="/Lavalloisir/restrained/Rating">Evaluation</a></li>
 			<li class="tabLink"><a href="/Lavalloisir/Registration">Inscription</a></li>
 			<li class="tabLink"><a href="/Lavalloisir/Contact">Contact</a></li>
 		</ul>

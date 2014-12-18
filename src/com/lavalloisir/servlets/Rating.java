@@ -3,14 +3,15 @@ package com.lavalloisir.servlets;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Restriction
+ * Servlet implementation class Rating
  */
-public class ReservedAccess extends HttpServlet {
+public class Rating extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	public static final String ATT_FILE_LP = "fileLP";
@@ -19,7 +20,7 @@ public class ReservedAccess extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReservedAccess() {
+    public Rating() {
         super();
     }
 
@@ -27,7 +28,7 @@ public class ReservedAccess extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute(ATT_FILE_LP, "LPReservedAccess.jsp");
+		request.setAttribute(ATT_FILE_LP, "/restrained/LPRating.jsp");
 		
 		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
 	}
