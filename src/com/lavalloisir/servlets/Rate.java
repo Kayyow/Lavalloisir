@@ -63,6 +63,9 @@ public class Rate extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute(ATT_FILE_LP, "/restrained/LPRate.jsp");
+		request.setAttribute("leisures", leisures);
+		
 		HttpSession session = request.getSession();
 		
 		RatingForm form = new RatingForm(ratingDAO, leisures, (User)session.getAttribute(ATT_SESSION_USER));
