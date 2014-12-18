@@ -225,7 +225,7 @@ textarea {
 	clear: both;
 }
 
-.leisrDescription span {
+.leisrDescription .leisrOtherInfo {
 	font: status-bar;
 }
 

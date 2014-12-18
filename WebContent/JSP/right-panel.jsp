@@ -8,9 +8,9 @@
 	    	Mon compte
 	    </div>
 	    <div class="connectionBox info">
-	    	<p>Login : <c:out value="${sessionScope.sessionUser.login}"/></p>
-	    	<p>Nom : <c:out value="${sessionScope.sessionUser.name}"/></p>
-	    	<p>Prénom : <c:out value="${sessionScope.sessionUser.firstName}"/></p>
+	    	<p><b>Login :</b> <c:out value="${sessionScope.sessionUser.login}"/></p>
+	    	<p><b>Nom :</b> <c:out value="${sessionScope.sessionUser.name}"/></p>
+	    	<p><b>Prénom :</b> <c:out value="${sessionScope.sessionUser.firstName}"/></p>
 	    </div>
 	   
 	</div>
@@ -27,6 +27,5 @@
 	</div>
 	<div class="columnBox" id="lastAdded">
 	    <div class="titleBox">Les derniers ajoutés</div>
-	        
 	</div>
 </div>
