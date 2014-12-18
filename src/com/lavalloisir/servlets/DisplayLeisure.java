@@ -48,20 +48,18 @@ public class DisplayLeisure extends HttpServlet {
 		this.leisureDAO = ((DAOFactory)getServletContext().getAttribute(CONF_DAO_FACTORY)).getLeisureDAO();
 		this.categoryDAO = ((DAOFactory)getServletContext().getAttribute(CONF_DAO_FACTORY)).getCategoryDAO();
 		this.ratingDAO = ((DAOFactory)getServletContext().getAttribute(CONF_DAO_FACTORY)).getRatingDAO();
-		
-		
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute(ATT_FILE_LP, "/restrained/LPLeisure.jsp");
+		
 		categories = categoryDAO.selectAll();
 		ratings = ratingDAO.selectAll();
 		leisures = leisureDAO.selectAll(categories, ratings);
-		
-		request.setAttribute(ATT_FILE_LP, "/restrained/LPLeisure.jsp");
-		request.setAttribute("restrained", "../");
+			
 		request.setAttribute("categories", categories);
 		request.setAttribute("leisures", leisures);
 		
