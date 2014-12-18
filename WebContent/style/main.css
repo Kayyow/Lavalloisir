@@ -155,10 +155,10 @@ label {
 	float: left;
 	margin-top: 5px;
 	width: 120px;
+	height-line: 30px;
 }
-
 input {
-	height: 30px;
+    height: 30px;
 }
 
 select {
@@ -181,6 +181,7 @@ select {
 
 .formInput {
 	display: block;
+	margin-top: 5px;
     padding: 2px;
     width: 200px;
     border: 1px solid #ccc;
