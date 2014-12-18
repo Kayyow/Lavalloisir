@@ -1,28 +1,31 @@
 package com.lavalloisir.beans.forms;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.jasypt.util.password.ConfigurablePasswordEncryptor;
-
+import com.lavalloisir.beans.business.Leisure;
 import com.lavalloisir.beans.business.Rating;
 import com.lavalloisir.beans.business.User;
 import com.lavalloisir.beans.dao.DAOException;
 import com.lavalloisir.beans.dao.RatingDAO;
-import com.lavalloisir.beans.dao.UserDAO;
 
 public class RatingForm {
-	private static final String FIELD_LNAME = "registrLName"; 
-	private static final String FIELD_FNAME = "registrFName";
+	private static final String FIELD_LEISURE = "leisrId";
+	private static final String FIELD_SCORE = "leisrScore";
 
     private String result;
     private Map<String, String> errors = new HashMap<String, String>();
     private RatingDAO ratingDAO;
+    private List<Leisure> leisures;
+    private User user;
 
-    public RatingForm(RatingDAO ratingDAO) {
+    public RatingForm(RatingDAO ratingDAO, List<Leisure> leisures, User user) {
         this.ratingDAO = ratingDAO;
+        this.leisures = leisures;
+        this.user = user;
     }
 
     public Map<String, String> getErrors() {
@@ -33,14 +36,25 @@ public class RatingForm {
         return result;
     }
 
-    public Rating addRating(HttpServletRequest request) {
-    	String rating = getFieldValue(request, FIELD_LNAME);
-    	String idLeisure = getFieldValue(request, FIELD_FNAME);
-
-        User user = new User();
-        try {
-            processRating(rating, user);
-
+    public void addRating(HttpServletRequest request) {
+    	int idLeisure = Integer.parseInt(getFieldValue(request, FIELD_LEISURE));
+    	Leisure leisure = null;
+    	for (Leisure leis : leisures) {
+    		if (leis.getId() == idLeisure) {
+    			leisure = leis;
+    			break;
+    		}
+    	}
+    	
+    	this.leisures.get(Integer.parseInt(getFieldValue(request, FIELD_LEISURE))-1);
+    	int score = Integer.parseInt(getFieldValue(request, FIELD_SCORE));
+    	
+    	Rating rating = new Rating();
+        try {        	
+            processScore(score, rating);
+            rating.setLeisure(leisure);
+            rating.setUser(user);
+          
             if (errors.isEmpty()) {
                 ratingDAO.create(rating);
                 result = "Succès de l'inscription.";
@@ -51,8 +65,6 @@ public class RatingForm {
             result = "Echec de l'inscription : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
             e.printStackTrace();
         }
-
-        return user;
     }
 
     /**
@@ -61,25 +73,19 @@ public class RatingForm {
      * @param email
      * @param user
      */
-    private void processRating(String rating, User user) {
+    private void processScore(int score, Rating rating) {
         try {
-            validRating( rating );
+            validScore(score);
         } catch (FormValidationException e) {
-        	setError(FIELD_RATING, e.getMessage());
+        	setError(FIELD_SCORE, e.getMessage());
         }
-        user.setEmail(email);
+        rating.setScore(score);
     }
 
     /* Validation de l'adresse email */
-    private void validEmail(String email) throws FormValidationException {
-        if (email != null) {
-            if (!email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
-                throw new FormValidationException( "Merci de saisir une adresse mail valide." );
-            } else if ( userDAO.find(email) != null ) {
-                throw new FormValidationException( "Cette adresse email est déjà  utilisée, merci d'en choisir une autre." );
-            }
-        } else {
-            throw new FormValidationException( "Merci de saisir une adresse mail." );
+    private void validScore(int score) throws FormValidationException {
+        if (score < 0 || score > 10) {
+        	throw new FormValidationException( "Merci de saisir un note entre 0 et 10." );
         }
     }
 

@@ -5,12 +5,12 @@
 
 <form method="post">
 	
-	<label for="leisrRating">Catégorie :</label>	
-	<select class="formInput" id="leisrRating" name="leisrRating" class="formInput">
+	<label for="leisrRating">Loisirs :</label>	
+	<select class="formInput" id="leisrId" name="leisrId" class="formInput">
 		<c:choose>
 			<c:when test="${ leisures != null }">
 				<c:forEach var="leisure" items="${ leisures }">
-					<option value="${ leisure.id }">${ leisure.title }</option>
+					<option value="${ leisure.id }">${ leisure.name }</option>
 				</c:forEach>
 			</c:when>
 			<c:otherwise>
@@ -19,8 +19,8 @@
 		</c:choose>
 	</select>
 	
-	<label for="leisrRate">Catégorie :</label>
-	<input type="text" class="formInput" id="leisrRate" name="leisrRate" placeholteur="0">
+	<label for="leisrRate">Note (<b>/10</b>) :</label>
+	<input type="text" class="formInput" id="leisrScore" name="leisrScore" placeholder="0">
 	
 	<input class="button" type="submit" value="Evaluer" />
 </form>

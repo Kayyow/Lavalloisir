@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 18 Décembre 2014 à 15:38
+-- Généré le :  Jeu 18 Décembre 2014 à 22:18
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -71,6 +71,7 @@ INSERT INTO `evaluation` (`Id_Utilisateur`, `Id_Loisir`, `Note`) VALUES
 (10, 4, 4),
 (11, 3, 6),
 (11, 4, 7),
+(11, 6, 3),
 (12, 3, 9),
 (12, 4, 9);
 
