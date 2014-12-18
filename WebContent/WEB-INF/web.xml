@@ -81,7 +81,7 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>Rating</servlet-name>
-    <url-pattern>/Rating</url-pattern>
+    <url-pattern>/restrained/Rating</url-pattern>
   </servlet-mapping>
   <jsp-config>
     <jsp-property-group>
