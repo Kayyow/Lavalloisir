@@ -46,7 +46,6 @@ public class RatingForm {
     		}
     	}
     	
-    	this.leisures.get(Integer.parseInt(getFieldValue(request, FIELD_LEISURE))-1);
     	int score = Integer.parseInt(getFieldValue(request, FIELD_SCORE));
     	
     	Rating rating = new Rating();
