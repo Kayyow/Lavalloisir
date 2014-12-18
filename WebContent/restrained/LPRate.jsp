@@ -3,8 +3,8 @@
 <h2> Donne-nous ton avis </h2>
 <hr>
 
-<form method="post">
-	
+<form id="rateForm" method="post">
+
 	<label for="leisrRating">Loisirs :</label>	
 	<select class="formInput" id="leisrId" name="leisrId" class="formInput">
 		<c:choose>
@@ -20,7 +20,7 @@
 	</select>
 	
 	<label for="leisrRate">Note (<b>/10</b>) :</label>
-	<input type="text" class="formInput" id="leisrScore" name="leisrScore" placeholder="0">
+	<input type="number" min="0" max="10" step="1"  class="formInput" id="ratingScore" name="ratingScore">
 	
 	<input class="button" type="submit" value="Evaluer" />
 </form>
