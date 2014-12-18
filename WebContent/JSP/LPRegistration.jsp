@@ -1,5 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
-<h2>Inscription</h2>
+<h2>Inscris-toi</h2>
 <hr>
 
 <form id="registrForm" method="post">

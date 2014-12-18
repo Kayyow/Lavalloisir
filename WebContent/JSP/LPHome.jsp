@@ -1,8 +1,18 @@
-<h2>Lorem Ipsum</h2>
+<h2>Viens bouger en Mayenne ...</h2>
 <hr>
 <div class="messageHome">
 	<img src="/Lavalloisir/img/image.jpg">
-	<p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<p>Une envie de bouger, vous ne savez pas quoi faire ? Lavalloisir vous aidera dans votre choix.</p>
+
+	<p>
+		Lavalloisir est une application communautaire répertoriant les activités disponibles à Laval et ses alentours.<br>
+	
+		Grace à son interface simple et intuitive, vous pourrez consulter toute une liste de loisir, que vous pourrez filtrer selon vos préférences.
+	
+		Retrouvez également les loisir à ne pas manquer, en consultant les avis et évaluations déposer par la communauté.<br>
+	
+		A votre tour, après vous être amusé, partager votre avis en ajoutant une évaluation aux activités auxquelles vous avez participé.
+	</p>
+	<p>Parce que donner son avis c'est important, Lavalloisir vous aidera à passer du bon temps.</p>
 </div>
 
