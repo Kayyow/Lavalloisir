@@ -79,5 +79,6 @@ public class User {
     }
 
     public User() {
+    	this.id = 0;
     }
 }

@@ -14,7 +14,7 @@ import com.lavalloisir.beans.dao.RatingDAO;
 
 public class RatingForm {
 	private static final String FIELD_LEISURE = "leisrId";
-	private static final String FIELD_SCORE = "leisrScore";
+	private static final String FIELD_SCORE = "ratingScore";
 
     private String result;
     private Map<String, String> errors = new HashMap<String, String>();

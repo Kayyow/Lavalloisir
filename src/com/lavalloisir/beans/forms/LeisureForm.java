@@ -43,7 +43,16 @@ public final class LeisureForm {
     	String phone = getFieldValue(request, FIELD_PHONE);
     	String email = getFieldValue(request, FIELD_EMAIL);
     	String description = getFieldValue(request, FIELD_DESCRIPTION);
-    	Category category = this.categories.get(Integer.parseInt(getFieldValue(request, FIELD_CATEGORY))-1);
+    	int idCategory = Integer.parseInt(getFieldValue(request, FIELD_CATEGORY));
+    	Category category = null;
+    	for (Category cat : categories) {
+    		if (cat.getId() == idCategory) {
+    			category = cat;
+    			break;
+    		}
+    	}
+    	
+    	
     	
         Leisure leisure = new Leisure();
         try {

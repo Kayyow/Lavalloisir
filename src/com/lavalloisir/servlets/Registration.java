@@ -23,6 +23,7 @@ public class Registration extends HttpServlet {
 	public static final String ATT_FORM = "form";
 	public static final String ATT_FILE_LP = "fileLP";
 	public static final String VIEW = "/JSP/page.jsp";
+	public static final String URL_REDIRECTION = "Home";
 	
 	private UserDAO userDAO;
 
@@ -62,7 +63,11 @@ public class Registration extends HttpServlet {
 		// Stockage du formulaire et du bean dans l'objet request
 		request.setAttribute(ATT_FORM, form);
 		request.setAttribute(ATT_USER, user);
-	
-		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
+		
+		if ( user.getId() != 0 ) {
+			response.sendRedirect(URL_REDIRECTION);
+		} else {
+			this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
+		}
 	}
 }
