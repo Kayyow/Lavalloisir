@@ -173,7 +173,8 @@ select {
 #registrForm,
 #LeisureForm,
 #createLeisrForm,
-#cnctForm {
+#cnctForm,
+#rateForm {
     margin: 20px 50px 0px 50px;
     width: auto;
 }
@@ -532,7 +533,8 @@ footer {
 	#registrForm,
 	#LeisureForm,
 	#createLeisrForm,
-	#cnctForm {
+	#cnctForm,
+	#rateForm {
 	    margin: auto;
 	    margin-top: 20px;
 	    width: 200px;
