@@ -24,6 +24,13 @@ public interface LeisureDAO {
 	
 	/**
 	 * 
+	 * @return
+	 * @throws DAOException
+	 */
+	List<Leisure> selectAll() throws DAOException;
+	
+	/**
+	 * 
 	 * @param categories
 	 * @return
 	 * @throws DAOException

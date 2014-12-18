@@ -119,6 +119,33 @@ public class LeisureDAOImpl implements LeisureDAO {
 			+ "Id, Nom, Adresse, Description, Telephone, Email, Id_categorie "
 			+ "FROM Loisir";    
     @Override
+    public List<Leisure> selectAll () throws DAOException {
+    	Connection cnct = null;
+        PreparedStatement preparedStmt = null;
+        ResultSet rs = null;
+        Leisure leisure = null;
+        List<Leisure> leisures = new ArrayList<Leisure>();
+        
+        try {
+        	// Récupération d'une connexion depuis la Factory
+        	cnct = daoFactory.getConnection();
+        	preparedStmt = DAOUtil.initPreparedStatement(cnct, SQL_SELECT_ALL, false);
+        	
+        	rs = preparedStmt.executeQuery();
+        	
+        	while (rs.next()) {
+        		leisure = map(rs);
+        		leisures.add(leisure);
+        	}        	
+        } catch (SQLException e) {
+        	throw new DAOException(e);
+        } finally {
+        	DAOUtil.silentsClosing(rs, preparedStmt, cnct);
+        }
+		return leisures;
+    }
+    
+    @Override
     public List<Leisure> selectAll (List<Category> categories, List<Rating> ratings) throws DAOException {
     	Connection cnct = null;
         PreparedStatement preparedStmt = null;
@@ -251,7 +278,6 @@ public class LeisureDAOImpl implements LeisureDAO {
 		}
 		
 		if (nbScore != 0) {
-			
 			leisure.setAverage(df.format(scoreTotal/nbScore));
 		}
 		

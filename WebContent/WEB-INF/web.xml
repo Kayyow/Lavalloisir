@@ -3,14 +3,17 @@
   <listener>
     <listener-class>com.lavalloisir.beans.config.InitDAOFactory</listener-class>
   </listener>
+  
   <filter>
     <filter-name>Restriction</filter-name>
     <filter-class>com.lavalloisir.filters.Restriction</filter-class>
   </filter>
+  
   <filter-mapping>
     <filter-name>Restriction</filter-name>
     <url-pattern>/restrained/*</url-pattern>
   </filter-mapping>
+  
   <servlet>
     <servlet-name>Home</servlet-name>
     <servlet-class>com.lavalloisir.servlets.Home</servlet-class>
@@ -18,14 +21,6 @@
   <servlet>
     <servlet-name>Registration</servlet-name>
     <servlet-class>com.lavalloisir.servlets.Registration</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>DisplayLeisure</servlet-name>
-    <servlet-class>com.lavalloisir.servlets.DisplayLeisure</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>CreateLeisure</servlet-name>
-    <servlet-class>com.lavalloisir.servlets.CreateLeisure</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>Connection</servlet-name>
@@ -44,9 +39,18 @@
     <servlet-class>com.lavalloisir.servlets.ReservedAccess</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>Rating</servlet-name>
-    <servlet-class>com.lavalloisir.servlets.Rating</servlet-class>
+    <servlet-name>DisplayLeisure</servlet-name>
+    <servlet-class>com.lavalloisir.servlets.DisplayLeisure</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CreateLeisure</servlet-name>
+    <servlet-class>com.lavalloisir.servlets.CreateLeisure</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Rate</servlet-name>
+    <servlet-class>com.lavalloisir.servlets.Rate</servlet-class>
+  </servlet>
+  
   <servlet-mapping>
     <servlet-name>Home</servlet-name>
     <url-pattern>/Home</url-pattern>
@@ -54,14 +58,6 @@
   <servlet-mapping>
     <servlet-name>Registration</servlet-name>
     <url-pattern>/Registration</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>DisplayLeisure</servlet-name>
-    <url-pattern>/restrained/DisplayLeisure</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>CreateLeisure</servlet-name>
-    <url-pattern>/restrained/CreateLeisure</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>Connection</servlet-name>
@@ -80,9 +76,18 @@
     <url-pattern>/ReservedAccess</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>Rating</servlet-name>
-    <url-pattern>/restrained/Rating</url-pattern>
+    <servlet-name>DisplayLeisure</servlet-name>
+    <url-pattern>/restrained/DisplayLeisure</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CreateLeisure</servlet-name>
+    <url-pattern>/restrained/CreateLeisure</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Rate</servlet-name>
+    <url-pattern>/restrained/Rate</url-pattern>
+  </servlet-mapping>
+  
   <jsp-config>
     <jsp-property-group>
       <url-pattern>*.jsp</url-pattern>
