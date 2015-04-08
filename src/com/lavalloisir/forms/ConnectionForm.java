@@ -1,4 +1,4 @@
-package com.lavalloisir.beans.forms;
+package com.lavalloisir.forms;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 
-import com.lavalloisir.beans.business.User;
-import com.lavalloisir.beans.dao.DAOException;
-import com.lavalloisir.beans.dao.UserDAO;
-import com.lavalloisir.beans.forms.FormValidationException;
+import com.lavalloisir.beans.User;
+import com.lavalloisir.dao.DAOException;
+import com.lavalloisir.dao.UserDAO;
+import com.lavalloisir.forms.FormValidationException;
 
 public final class ConnectionForm {
 	private static final String FIELD_LOGIN = "cnctLogin";

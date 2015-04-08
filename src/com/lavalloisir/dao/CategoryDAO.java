@@ -1,8 +1,8 @@
-package com.lavalloisir.beans.dao;
+package com.lavalloisir.dao;
 
 import java.util.List;
 
-import com.lavalloisir.beans.business.Category;
+import com.lavalloisir.beans.Category;
 
 public interface CategoryDAO {
 	/**

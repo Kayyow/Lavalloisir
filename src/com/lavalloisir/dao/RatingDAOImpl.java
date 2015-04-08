@@ -1,4 +1,4 @@
-package com.lavalloisir.beans.dao;
+package com.lavalloisir.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,9 +7,9 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.lavalloisir.beans.business.Leisure;
-import com.lavalloisir.beans.business.Rating;
-import com.lavalloisir.beans.business.User;
+import com.lavalloisir.beans.Leisure;
+import com.lavalloisir.beans.Rating;
+import com.lavalloisir.beans.User;
 
 
 public class RatingDAOImpl implements RatingDAO{

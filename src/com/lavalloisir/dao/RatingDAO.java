@@ -1,8 +1,8 @@
-package com.lavalloisir.beans.dao;
+package com.lavalloisir.dao;
 
 import java.util.List;
 
-import com.lavalloisir.beans.business.Rating;
+import com.lavalloisir.beans.Rating;
 
 public interface RatingDAO {
 	/**

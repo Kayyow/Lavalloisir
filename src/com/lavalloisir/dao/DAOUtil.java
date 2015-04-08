@@ -1,4 +1,4 @@
-package com.lavalloisir.beans.dao;
+package com.lavalloisir.dao;
 
 import java.sql.Statement;
 import java.sql.PreparedStatement;

@@ -1,4 +1,4 @@
-<%@page import="com.lavalloisir.beans.business.Category"%>
+<%@page import="com.lavalloisir.beans.Category"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page pageEncoding="UTF-8" %>
