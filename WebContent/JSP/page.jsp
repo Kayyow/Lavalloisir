@@ -1,7 +1,9 @@
 <%@ page pageEncoding="UTF-8" %>
 <html>
-<%@ include file="head.jsp" %>
+<%@ include file="_head.jsp" %>
 <body>
+	<div id="body-bg">
+	</div>
 	<div id="container">
 		<div class="splitter">
 			<%@ include file="header.jsp"%>
