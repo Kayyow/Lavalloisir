@@ -1,4 +1,4 @@
-package com.lavalloisir.beans.dao;
+package com.lavalloisir.dao;
 
 public class DAOException extends RuntimeException {
 	// CONSTRUCTORS

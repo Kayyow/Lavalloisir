@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.lavalloisir.beans.business.Leisure;
-import com.lavalloisir.beans.business.User;
-import com.lavalloisir.beans.dao.DAOFactory;
-import com.lavalloisir.beans.dao.LeisureDAO;
-import com.lavalloisir.beans.dao.RatingDAO;
-import com.lavalloisir.beans.forms.RatingForm;
+import com.lavalloisir.beans.Leisure;
+import com.lavalloisir.beans.User;
+import com.lavalloisir.dao.DAOFactory;
+import com.lavalloisir.dao.LeisureDAO;
+import com.lavalloisir.dao.RatingDAO;
+import com.lavalloisir.forms.RatingForm;
 
 /**
  * Servlet implementation class Rating

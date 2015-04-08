@@ -1,4 +1,4 @@
-package com.lavalloisir.beans.dao;
+package com.lavalloisir.dao;
 
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
@@ -7,9 +7,9 @@ import java.sql.Connection;
 
 import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 
-import com.lavalloisir.beans.business.User;
-import com.lavalloisir.beans.dao.UserDAO;
-import com.lavalloisir.beans.dao.DAOUtil;
+import com.lavalloisir.beans.User;
+import com.lavalloisir.dao.DAOUtil;
+import com.lavalloisir.dao.UserDAO;
 
 public class UserDAOImpl implements UserDAO {
 	private DAOFactory daoFactory;

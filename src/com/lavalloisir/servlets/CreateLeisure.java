@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.lavalloisir.beans.business.Category;
-import com.lavalloisir.beans.business.Leisure;
-import com.lavalloisir.beans.dao.CategoryDAO;
-import com.lavalloisir.beans.dao.DAOFactory;
-import com.lavalloisir.beans.dao.LeisureDAO;
-import com.lavalloisir.beans.forms.LeisureForm;
+import com.lavalloisir.beans.Category;
+import com.lavalloisir.beans.Leisure;
+import com.lavalloisir.dao.CategoryDAO;
+import com.lavalloisir.dao.DAOFactory;
+import com.lavalloisir.dao.LeisureDAO;
+import com.lavalloisir.forms.LeisureForm;
 
 /**
  * Servlet implementation class CreateLeisure

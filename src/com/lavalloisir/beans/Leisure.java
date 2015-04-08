@@ -1,4 +1,4 @@
-package com.lavalloisir.beans.business;
+package com.lavalloisir.beans;
 
 public class Leisure {
 	private int id;

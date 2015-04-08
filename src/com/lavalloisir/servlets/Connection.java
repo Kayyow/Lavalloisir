@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.lavalloisir.beans.business.User;
-import com.lavalloisir.beans.dao.DAOFactory;
-import com.lavalloisir.beans.dao.UserDAO;
-import com.lavalloisir.beans.forms.ConnectionForm;
+import com.lavalloisir.beans.User;
+import com.lavalloisir.dao.DAOFactory;
+import com.lavalloisir.dao.UserDAO;
+import com.lavalloisir.forms.ConnectionForm;
 
 /**
  * Servlet implementation class Connection

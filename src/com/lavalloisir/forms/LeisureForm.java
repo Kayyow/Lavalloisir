@@ -1,4 +1,4 @@
-package com.lavalloisir.beans.forms;
+package com.lavalloisir.forms;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,10 +6,10 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.lavalloisir.beans.business.Category;
-import com.lavalloisir.beans.business.Leisure;
-import com.lavalloisir.beans.dao.DAOException;
-import com.lavalloisir.beans.dao.LeisureDAO;
+import com.lavalloisir.beans.Category;
+import com.lavalloisir.beans.Leisure;
+import com.lavalloisir.dao.DAOException;
+import com.lavalloisir.dao.LeisureDAO;
 
 public final class LeisureForm {
 	private static final String FIELD_NAME = "nameLeisr";

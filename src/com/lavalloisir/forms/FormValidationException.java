@@ -1,4 +1,4 @@
-package com.lavalloisir.beans.forms;
+package com.lavalloisir.forms;
 
 public class FormValidationException extends Exception {
 	// CONSTRUCTOR

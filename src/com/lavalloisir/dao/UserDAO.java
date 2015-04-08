@@ -1,8 +1,8 @@
-package com.lavalloisir.beans.dao;
+package com.lavalloisir.dao;
 
 import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 
-import com.lavalloisir.beans.business.User;
+import com.lavalloisir.beans.User;
 
 public interface UserDAO {
 	/**

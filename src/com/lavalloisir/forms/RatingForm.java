@@ -1,4 +1,4 @@
-package com.lavalloisir.beans.forms;
+package com.lavalloisir.forms;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,11 +6,11 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.lavalloisir.beans.business.Leisure;
-import com.lavalloisir.beans.business.Rating;
-import com.lavalloisir.beans.business.User;
-import com.lavalloisir.beans.dao.DAOException;
-import com.lavalloisir.beans.dao.RatingDAO;
+import com.lavalloisir.beans.Leisure;
+import com.lavalloisir.beans.Rating;
+import com.lavalloisir.beans.User;
+import com.lavalloisir.dao.DAOException;
+import com.lavalloisir.dao.RatingDAO;
 
 public class RatingForm {
 	private static final String FIELD_LEISURE = "leisrId";

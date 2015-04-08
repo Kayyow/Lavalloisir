@@ -1,4 +1,4 @@
-package com.lavalloisir.beans.dao;
+package com.lavalloisir.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.lavalloisir.beans.business.Category;
+import com.lavalloisir.beans.Category;
 
 public class CategoryDAOImpl implements CategoryDAO{
 

@@ -1,4 +1,4 @@
-package com.lavalloisir.beans.dao;
+package com.lavalloisir.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,9 +8,9 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.lavalloisir.beans.business.Category;
-import com.lavalloisir.beans.business.Leisure;
-import com.lavalloisir.beans.business.Rating;
+import com.lavalloisir.beans.Category;
+import com.lavalloisir.beans.Leisure;
+import com.lavalloisir.beans.Rating;
 
 public class LeisureDAOImpl implements LeisureDAO {
 	

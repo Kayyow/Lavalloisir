@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.lavalloisir.beans.business.User;
-import com.lavalloisir.beans.dao.DAOFactory;
-import com.lavalloisir.beans.dao.UserDAO;
-import com.lavalloisir.beans.forms.RegistrationForm;
+import com.lavalloisir.beans.User;
+import com.lavalloisir.dao.DAOFactory;
+import com.lavalloisir.dao.UserDAO;
+import com.lavalloisir.forms.RegistrationForm;
 
 /**
  * Servlet implementation class Registration

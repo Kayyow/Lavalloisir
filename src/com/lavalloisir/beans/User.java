@@ -1,4 +1,4 @@
-package com.lavalloisir.beans.business;
+package com.lavalloisir.beans;
 
 import java.sql.Timestamp;
 import java.util.Date;

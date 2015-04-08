@@ -1,4 +1,4 @@
-package com.lavalloisir.beans.dao;
+package com.lavalloisir.dao;
 
 import java.io.IOException;
 import java.io.InputStream;
