@@ -9,6 +9,12 @@
 	font-weight: normal;
 	font-style: normal;
 }
+@font-face {
+	font-family: 'Open Sans';
+	src: url('font/OpenSans-Bold.ttf');
+	font-weight: 700;
+	font-style: normal;
+}
 
 body {
 	margin: 0;
@@ -99,46 +105,34 @@ h2{
 	padding: 0 25px;
 }
 
-#menu {
+nav {
 	float: right;
-}
-
-#menu ul {
-	padding: 0;
-	margin: 0;
-}
-
-.tabLink {
-	display: inline-block;
-	width: 100px;
 	text-align: center;
-	font-size: 17px;
-	border-left: 1px dashed #C0C0C0;
 }
 
-.tabLink:first-child {
-	border-left: none;
-}
-
-.tabLink a {
+nav a {
+	display: inline-block;
+	width: 120px;
+	line-height: 70px;
+	font-family: 'Open Sans';
+	font-size: 16px;
 	color: #636363;
-	transition: color linear .5s;
+	transition: text-shadow .6s, color .25;	
 }
 
-.tabLink a:hover {
+nav a:hover {
 	color: #65B9BD;
-	transition: color linear .2s;
-}
-	
-.tabLink #registrationUnlinked {
-	cursor: default;
-	color: #939393;
-	transition: color linear .5s;
+	text-shadow: 0 0 15px white,
+		0 0 20px white,
+		0 0 40px #65B9BD,
+		0 0 50px #65B9BD,
+		0 0 60px #65B9BD;
+	transition: all .25s;
 }
 
-.tablink #registrationUnlinked:hover {
-	color: white;
-	transition: color linear .2s;
+nav a.clicked {
+	font-size: 22px;
+	vertical-align: bottom;
 }
 
 /* LEFT PANEL */
