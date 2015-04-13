@@ -5,7 +5,8 @@
 	    	<a id="cnctLink" href="/Lavalloisir/<c:out value="${!empty sessionScope.sessionUser ? 'Deconnection' : 'Connection'}"/>">
 	    		<img src="/Lavalloisir/img/power_button_<c:out value="${!empty sessionScope.sessionUser ? 'red' : 'green'}"/>.svg"/>
 	    	</a>
-	    	<a href="#">Mon compte</a>
+	    	<a href="/Lavalloisir/<c:out value="${!empty sessionScope.sessionUser ? 'restrained/MyAccount' : 'Registration'}"/>">
+	    		<c:out value="${!empty sessionScope.sessionUser ? 'Mon compte' : 'Inscription'}"/></a>
 	    </div>
 	    <div class="connectionBox info">
 	    	<p><b>Login :</b> <c:out value="${sessionScope.sessionUser.login}"/></p>
