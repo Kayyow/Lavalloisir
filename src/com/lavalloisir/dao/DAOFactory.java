@@ -9,7 +9,7 @@ import java.util.Properties;
 
 public class DAOFactory {
 	// CONSTANTS
-	private static final String FICHIER_PROPERTIES = "/com/lavalloisir/beans/dao/dao.properties";
+	private static final String FICHIER_PROPERTIES = "/com/lavalloisir/dao/dao.properties";
 	private static final String PROPERTY_URL = "url";
 	private static final String PROPERTY_DRIVER = "driver";
 	private static final String PROPERTY_USER_NAME = "username";
