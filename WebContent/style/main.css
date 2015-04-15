@@ -112,22 +112,22 @@ nav {
 
 nav a {
 	display: inline-block;
-	width: 120px;
+	padding: 0 20px;
 	line-height: 70px;
 	font-family: 'Open Sans';
 	font-size: 16px;
 	color: #636363;
-	transition: text-shadow .6s, color .25;	
+	transition: text-shadow .6s, color .3s;	
 }
 
 nav a:hover {
-	color: #65B9BD;
+	color: white;
 	text-shadow: 0 0 15px white,
 		0 0 20px white,
 		0 0 40px #65B9BD,
 		0 0 50px #65B9BD,
 		0 0 60px #65B9BD;
-	transition: all .25s;
+	transition: all .3s;
 }
 
 nav a.clicked {
@@ -324,11 +324,12 @@ textarea {
 
 #cnctLink img {
 	width: 100%;
-	-webkit-transition: transform linear 1s;
+	transition: transform linear .6s;
+	-webkit-transition: transform linear .6s;
 }
 
 #cnctLink img:hover {
-	-webkit-transition: transform linear 1s;
+	transform: rotate(360deg);
 	-webkit-transform: rotate(360deg);
 }
 
