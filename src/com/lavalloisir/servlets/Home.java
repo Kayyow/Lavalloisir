@@ -13,10 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 public class Home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-	public static final String CONF_DAO_FACTORY = "daofactory";
-	public static final String ATT_USER = "user";
-	public static final String ATT_FORM = "form";
-	public static final String ATT_SESSION_USER = "sessionUser";
 	public static final String ATT_FILE_LP = "fileLP";
 	public static final String VIEW = "/JSP/page.jsp";
     

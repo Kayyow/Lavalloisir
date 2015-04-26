@@ -82,7 +82,11 @@ public class DAOFactory {
     	return new CategoryDAOImpl(this);
     }
     
-    public RatingDAO getRatingDAO() {
-    	return new RatingDAOImpl(this);
+    public EvaluationDAO getEvaluationDAO() {
+    	return new EvaluationDAOImpl(this);
+    }
+    
+    public AddressDAO getAddressDAO() {
+    	return new AddressDAOImpl(this);
     }
 }

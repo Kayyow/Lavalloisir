@@ -8,15 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.lavalloisir.beans.Leisure;
-import com.lavalloisir.beans.Rating;
+import com.lavalloisir.beans.Evaluation;
 import com.lavalloisir.beans.User;
 
 
-public class RatingDAOImpl implements RatingDAO{
+public class EvaluationDAOImpl implements EvaluationDAO{
 
 	private DAOFactory daoFactory;
 	
-	RatingDAOImpl (DAOFactory daoFactory) {
+	EvaluationDAOImpl (DAOFactory daoFactory) {
 		this.daoFactory = daoFactory;
 	}
 	

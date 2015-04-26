@@ -11,8 +11,8 @@ public class User {
     private String givenName;
     private String phone;
     private String picture;
-    private Timestamp registrationDate;
-    private Timestamp lastConnectionDate;
+    private Timestamp registration;
+    private Timestamp lastConnection;
     
     public User(long id) {
 		super();
@@ -67,20 +67,20 @@ public class User {
 		this.picture = picture;
 	}
 
-	public Timestamp getRegistrationDate() {
-		return registrationDate;
+	public Timestamp getRegistration() {
+		return registration;
 	}
 
-	public void setRegistrationDate(Timestamp registrationDate) {
-		this.registrationDate = registrationDate;
+	public void setRegistration(Timestamp registration) {
+		this.registration = registration;
 	}
 
-	public Timestamp getLastConnectionDate() {
-		return lastConnectionDate;
+	public Timestamp getLastConnection() {
+		return lastConnection;
 	}
 
-	public void setLastConnectionDate(Timestamp lastConnectionDate) {
-		this.lastConnectionDate = lastConnectionDate;
+	public void setLastConnection(Timestamp lastConnection) {
+		this.lastConnection= lastConnection;
 	}
 
 	public long getId() {

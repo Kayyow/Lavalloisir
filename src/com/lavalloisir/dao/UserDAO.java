@@ -5,35 +5,43 @@ import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 import com.lavalloisir.beans.User;
 
 public interface UserDAO {
-	/**
-	 * 
-	 * @param user
-	 * @throws DAOException
-	 */
+//	/**
+//	 * 
+//	 * @param user
+//	 * @throws DAOException
+//	 */
+//	void create (User user) throws DAOException;
+//	
+//	/**
+//	 * 
+//	 * @param login
+//	 * @param password
+//	 * @return
+//	 * @throws DAOException
+//	 */
+//	User find (String login, String password, ConfigurablePasswordEncryptor pwdEncrypt) throws DAOException;
+//	
+//	/**
+//	 * 
+//	 * @param id
+//	 * @return
+//	 * @throws DAOException
+//	 */
+//	User find (long id)throws DAOException;
+//	
+//	/**
+//	 * 
+//	 * @param email
+//	 * @return
+//	 * @throws DAOException
+//	 */
+//	User find (String email)throws DAOException;
+	
 	void create (User user) throws DAOException;
 	
-	/**
-	 * 
-	 * @param login
-	 * @param password
-	 * @return
-	 * @throws DAOException
-	 */
-	User find (String login, String password, ConfigurablePasswordEncryptor pwdEncrypt) throws DAOException;
+	User read (long id) throws DAOException;
 	
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 * @throws DAOException
-	 */
-	User find (long id)throws DAOException;
+	User read (String email) throws DAOException;
 	
-	/**
-	 * 
-	 * @param email
-	 * @return
-	 * @throws DAOException
-	 */
-	User find (String email)throws DAOException;
+	void update (long id, User user) throws DAOException;
 }
