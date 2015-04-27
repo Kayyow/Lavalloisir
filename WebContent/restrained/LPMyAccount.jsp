@@ -1,41 +1,37 @@
+<%@ page pageEncoding="UTF-8" %>
 <h2>Mon compte</h2>
 <hr>
 
 <form id="myAccountForm">
-	<img src="/Lavalloisir/img/account_img.svg" style="height:160px; width:160px; border-radius:10px"/>
-
+	<img src="<c:out value="${user.picture}"/>" style="height:160px; width:160px; border-radius:10px"/>
+	
+ <!-- /lavalloisir/img/account_img.svg -->
+ 
 	<div class="formField">
 		<label for="name">Nom :</label>
 		<input type="text" class="formInput" name="name"
-			value="Doe"/>
+			value="<c:out value="${user.name}"/>"/> 
 		<span class="error"></span>
 	</div>
 	
 	<div class="formField">
-		<label for="name">Prénom :</label>
+		<label for="name">PrÃ©nom :</label>
 		<input type="text" class="formInput" name="givenName"
-			value="John"/>
+			value="<c:out value="${user.givenName}"/>"/>
 		<span class="error"></span>
 	</div>
 	
 	<div class="formField">
 		<label for="email">Email :</label>
 		<input type="text" class="formInput" name="email"
-			value="address@email.com"/>
+			value="<c:out value="${user.email}"/>"/>
 		<span class="error"></span>
 	</div>
 	
 	<div class="formField">
-		<label for="password">Mot de passe</label>
-		<input type="password" class="formInput" name="password"
-			value=""/>
-		<span class="error"></span>
-	</div>
-	
-	<div class="formField">
-		<label for="phoneNum">Téléphone :</label>
+		<label for="phoneNum">TÃ©lÃ©phone :</label>
 		<input type="text" class="formInput" name="phoneNum"
-			value="0612345678"/>
+			value="<c:out value="${user.phone}"/>"/>
 		<span class="error"></span>
 	</div>
 	
