@@ -57,6 +57,7 @@ public final class ConnectionForm {
                 result = "Echec de la connexion.";
             }
 		} catch ( DAOException e ) {
+			errors.put("Database", "Error");
             result = "Echec de la connexion : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
             e.printStackTrace();
         }

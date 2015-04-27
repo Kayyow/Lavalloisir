@@ -187,7 +187,6 @@ select {
 	margin-top: 10px;
 }
 
-/* Dégueulasse les id's ^^ */
 #registrForm,
 #LeisureForm,
 #createLeisrForm,
@@ -331,11 +330,11 @@ textarea {
 
 #cnctLink img {
 	width: 100%;
-	-webkit-transition: transform linear 1s;
+	-webkit-transition: transform linear 0.6s;
 }
 
 #cnctLink img:hover {
-	-webkit-transition: transform linear 1s;
+	-webkit-transition: transform linear 0.6s;
 	-webkit-transform: rotate(360deg);
 }
 
