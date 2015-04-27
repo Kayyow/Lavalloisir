@@ -2,13 +2,12 @@ package com.lavalloisir.beans;
 
 public class Category {
 
-	private final long id;
+	private long id;
     private String label;
     private String description;
     
-    public Category(long id) {
+    public Category() {
     	super();
-    	this.id = id;
     }    
     
 	public String getLabel() {
@@ -29,6 +28,10 @@ public class Category {
 	
 	public long getId() {
 		return id;
-	}   
+	}
+	
+	public void setId(long id) {
+		this.id = id;
+	}
     
 }

@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class User {
 
-    private final long id;
+    private long id;
     private String email;
     private String password;
     private String name;
@@ -14,9 +14,8 @@ public class User {
     private Timestamp registration;
     private Timestamp lastConnection;
     
-    public User(long id) {
+    public User() {
 		super();
-		this.id = id;
 	}
 
 	public String getEmail() {
@@ -85,5 +84,9 @@ public class User {
 
 	public long getId() {
 		return id;
+	}
+	
+	public void setId(long id) {
+		this.id = id;
 	}
 }

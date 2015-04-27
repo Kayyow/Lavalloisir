@@ -2,7 +2,7 @@ package com.lavalloisir.beans;
 
 public class Leisure {
 	
-	private final long id;
+	private long id;
     private String title;
     private String description;
     private String email;
@@ -11,9 +11,8 @@ public class Leisure {
     private Category category;
     
        
-	public Leisure(long id) {
+	public Leisure() {
 		super();
-		this.id = id;
 	}
 
 	public String getTitle() {
@@ -66,5 +65,9 @@ public class Leisure {
 	
 	public long getId() {
 		return id;
+	}
+	
+	public void setId(long id) {
+		this.id = id;
 	}
 }

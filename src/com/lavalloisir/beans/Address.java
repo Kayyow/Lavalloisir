@@ -1,15 +1,14 @@
 package com.lavalloisir.beans;
 
 public class Address {
-	private final long id;
+	private long id;
 	private int number;
 	private String street;
 	private String zipCode;
 	private String city;
 	
-	public Address(long id) {
+	public Address() {
 		super();
-		this.id = id;
 	}
 	
 	public int getNumber() {
@@ -46,6 +45,10 @@ public class Address {
 	
 	public long getId() {
 		return id;
+	}
+	
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 }

@@ -7,12 +7,8 @@ public class Evaluation {
     private User user;
     private Leisure leisure;
        
-    public Evaluation(int note, String opinion, User user, Leisure leisure) {
+    public Evaluation() {
 		super();
-		this.note = note;
-		this.opinion = opinion;
-		this.user = user;
-		this.leisure = leisure;
 	}
 
 	public int getNote() {
