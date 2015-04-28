@@ -4,15 +4,15 @@
 
 <form id="cnctForm" method="post">	
 	<div class="formField">	
-		<label for="Login">Identifiant :</label>
-		<input type="text" class="formInput login" name="Login" value="<c:out value="${user.login}"/>" placeholder="Login" />
-		<span class="error">${form.errors['cnctLogin']}</span>
+		<label for="email">Email :</label>
+		<input type="text" class="formInput login" name="email" value="<c:out value="${user.email}"/>" placeholder="adresse@domaine.fr" />
+		<span class="error">${form.errors['email']}</span>
 	</div>
 	
 	<div class="formField">	
 		<label for="password">Mot de passe : </label>
 		<input type="password" class="formInput pwd" name="password" value="" placeholder="•••••••••••••••"/>
-		<span class="error">${form.errors['cnctPassword']}</span>
+		<span class="error">${form.errors['password']}</span>
 	</div>
 	
 	<a href="Registration" class="registrButton">S'inscrire</a>

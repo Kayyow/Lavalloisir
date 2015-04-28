@@ -5,8 +5,8 @@
 <a href="/Lavalloisir/restrained/CreateLeisure" id="addLeisurButton">Ajouter un loisir</a>
 <form method="post">
 	
-	<label for="categoryLeisr">Catégorie :</label>	
-	<select id="categoryLeisr" name="categoryLeisr" class="formInput">
+	<label for="category">Catégorie :</label>	
+	<select id="categoryLeisr" name="category" class="formInput">
 		<c:choose>
 			<c:when test="${ categories != null }">
 				<c:forEach var="category" items="${ categories }">
