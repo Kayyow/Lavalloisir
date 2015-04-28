@@ -159,7 +159,7 @@ img {
 }
 
 .formField {
-	margin-bottom: 10px;
+	margin-top: 10px;
 }
 
 label {
@@ -189,6 +189,12 @@ select {
 #myAccountForm {
     margin: 20px 50px 0px 50px;
     width: auto;
+}
+
+#updateAccountForm > img {
+	width: 180px;
+	height: 180px;
+	border: 4px solid #65B9BD;
 }
 
 .formInput {
@@ -349,6 +355,14 @@ textarea {
 	background-color: #5F9AB5;
 	border: 1px solid #006D9F;
 	color: #fff;
+}
+
+.titleBox a {
+	color: #fff;
+}
+
+.titleBox a:hover {
+	text-decoration: none;
 }
 
 .info {

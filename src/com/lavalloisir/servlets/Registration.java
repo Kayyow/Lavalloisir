@@ -52,8 +52,6 @@ public class Registration extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute(ATT_FILE_LP, "LPRegistration.jsp");
-		
 		// Préparation de l'objet formulaire d'inscription
 		RegistrationForm form = new RegistrationForm(userDAO);
 		
@@ -63,6 +61,7 @@ public class Registration extends HttpServlet {
 		// Stockage du formulaire et du bean dans l'objet request
 		request.setAttribute(ATT_FORM, form);
 		request.setAttribute(ATT_USER, user);
+		request.setAttribute(ATT_FILE_LP, "LPRegistration.jsp");
 		
 		if ( user.getId() != 0 ) {
 			response.sendRedirect(URL_REDIRECTION);

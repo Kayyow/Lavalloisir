@@ -9,7 +9,7 @@
 		<a href="/Lavalloisir/Home">Accueil</a>
 		<a href="/Lavalloisir/restrained/DisplayLeisure">Loisir</a>
 		<c:choose>
-			<c:when test="${ sessionScope.sessionUser != null }">
+			<c:when test="${ sessionScope.user != null }">
 				<a href="/Lavalloisir/restrained/Rate">Evaluer</a>
 			</c:when>
 			<c:otherwise>

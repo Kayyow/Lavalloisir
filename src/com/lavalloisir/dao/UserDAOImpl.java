@@ -138,11 +138,10 @@ public class UserDAOImpl implements UserDAO {
 		
 		try {
 			cnct = daoFactory.getConnection();
-			String query = SQLFactory.update("user", "email = ?, password = ?, name = ?, "
-					+ "given_name = ?, phone = ?, picture = ?", "id = " + id);
+			String query = SQLFactory.update("user", "email = ?, name = ?, given_name = ?, "
+					+ "phone = ?", "id = " + id);
 			preparedStmt = DAOUtil.initPreparedStatement(cnct, query, false, user.getEmail(),
-					user.getPassword(), user.getName(), user.getGivenName(), user.getPhone(),
-					user.getPicture());
+					user.getName(), user.getGivenName(), user.getPhone());
 			
 			if (preparedStmt.executeUpdate() == 0) {
 				throw new DAOException("Echec de la mise à jour de l'utilisateur, aucune modification prise en compte.");

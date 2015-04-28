@@ -4,26 +4,26 @@
 	<div class="columnBox" id="connectionBox">
 	
 	    <div class="titleBox">
-	    	<a id="cnctLink" href="/Lavalloisir/<c:out value="${!empty sessionScope.sessionUser ? 'Deconnection' : 'Connection'}"/>">
-	    		<img src="/Lavalloisir/img/power_button_<c:out value="${!empty sessionScope.sessionUser ? 'red' : 'green'}"/>.svg"/>
+	    	<a id="cnctLink" href="/Lavalloisir/<c:out value="${!empty sessionScope.user ? 'Deconnection' : 'Connection'}"/>">
+	    		<img src="/Lavalloisir/img/power_button_<c:out value="${!empty sessionScope.user ? 'red' : 'green'}"/>.svg"/>
 	    	</a>
-	    	<a href="/Lavalloisir/<c:out value="${!empty sessionScope.sessionUser ? 'restrained/MyAccount' : 'Registration'}"/>">
-	    		<c:out value="${!empty sessionScope.sessionUser ? 'Mon compte' : 'Inscription'}"/></a>
+	    	<a href="/Lavalloisir/<c:out value="${!empty sessionScope.user ? 'restrained/UpdateAccount' : 'Registration'}"/>">
+	    		<c:out value="${!empty sessionScope.user ? 'Mon compte' : 'Inscription'}"/></a>
 	    </div>
 	    
 	    
-		<c:if test="${ sessionScope.sessionUser != null }">
+		<c:if test="${ sessionScope.user != null }">
 			<div class="connectionBox info">
 	    	<p>
-		    	<c:out value="${ sessionScope.sessionUser.givenName }"/>
-		    	<c:out value="${ sessionScope.sessionUser.name }"/>
+		    	<c:out value="${ sessionScope.user.givenName }"/>
+		    	<c:out value="${ sessionScope.user.name }"/>
 	    	</p>
-	    	<c:if test="${ sessionScope.sessionUser.email != null }">
-	    		<p> <c:out value="${ sessionScope.sessionUser.email }"/> </p>
+	    	<c:if test="${ sessionScope.user.email != null }">
+	    		<p> <c:out value="${ sessionScope.user.email }"/> </p>
 	    	</c:if>
 	    	
-	    	<c:if test="${ sessionScope.sessionUser.phone != null }">
-	    		<p> <c:out value="${ sessionScope.sessionUser.phone }"/> </p>
+	    	<c:if test="${ sessionScope.user.phone != null }">
+	    		<p> <c:out value="${ sessionScope.user.phone }"/> </p>
 	    	</c:if>
 	    	
 	    	</div>

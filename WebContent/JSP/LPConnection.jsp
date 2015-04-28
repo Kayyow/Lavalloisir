@@ -22,8 +22,8 @@
 	<p class="${empty form.errors ? 'success' : 'error'}">${form.result}</p>
     
 	<%-- Vérification de la présence d'un objet user en session --%>
-	<c:if test="${!empty sessionScope.sessionUser}">
+	<c:if test="${!empty sessionScope.user}">
 		<%-- Si l'utilisateur existe en session, alors on affiche son login --%>
-		<p class="success">Vous êtes connecté(e) avec l'adresse : ${sessionScope.sessionUser.login}</p>
+		<p class="success">Vous êtes connecté(e) avec l'adresse : ${sessionScope.user.login}</p>
 	</c:if>
 </form>

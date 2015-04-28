@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  */
 public class Restriction implements Filter {
 	public static final String RESERVED_ACCESS = "/ReservedAccess";
-	public static final String ATT_SESSION_USER = "sessionUser";
+	public static final String ATT_SESSION_USER = "user";
 
     /**
      * Default constructor. 

@@ -38,20 +38,8 @@
     <servlet-class>com.lavalloisir.servlets.ReservedAccess</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>DisplayLeisure</servlet-name>
-    <servlet-class>com.lavalloisir.servlets.DisplayLeisure</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>CreateLeisure</servlet-name>
-    <servlet-class>com.lavalloisir.servlets.CreateLeisure</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>Rate</servlet-name>
-    <servlet-class>com.lavalloisir.servlets.Rate</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>MyAccount</servlet-name>
-  	<servlet-class>com.lavalloisir.servlets.MyAccount</servlet-class>
+  	<servlet-name>UpdateAccount</servlet-name>
+  	<servlet-class>com.lavalloisir.servlets.UpdateAccount</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -79,20 +67,8 @@
     <url-pattern>/ReservedAccess</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>DisplayLeisure</servlet-name>
-    <url-pattern>/restrained/DisplayLeisure</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>CreateLeisure</servlet-name>
-    <url-pattern>/restrained/CreateLeisure</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>Rate</servlet-name>
-    <url-pattern>/restrained/Rate</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>MyAccount</servlet-name>
-  	<url-pattern>/restrained/MyAccount</url-pattern>
+  	<servlet-name>UpdateAccount</servlet-name>
+  	<url-pattern>/restrained/UpdateAccount</url-pattern>
   </servlet-mapping>
   
   <jsp-config>

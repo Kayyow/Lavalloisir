@@ -53,6 +53,7 @@ public final class RegistrationForm {
             processEmail(email, user);
             processPassword(password, confirmPassword, user);
             processPhone(phone, user);
+            user.setPicture("/Lavalloisir/img/user/user_img.png");
 
             if (errors.isEmpty()) {
                 userDAO.create(user);

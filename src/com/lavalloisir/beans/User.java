@@ -16,6 +16,7 @@ public class User {
     
     public User() {
 		super();
+    	this.id = 0;
 	}
 
 	public String getEmail() {
