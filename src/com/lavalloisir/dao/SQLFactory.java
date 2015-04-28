@@ -1,6 +1,9 @@
 package com.lavalloisir.dao;
 
-public class SQLFactory {	
+public final class SQLFactory {
+	private SQLFactory() {
+	}
+	
 	public static String selectAll(String table) {
 		return "SELECT * FROM " + table;
 	}
@@ -15,5 +18,9 @@ public class SQLFactory {
 	
 	public static String update(String table, String set, String where) {
 		return "UPDATE " + table + " SET " + set + " WHERE " + where;
+	}
+	
+	public static String delete(String table, String where) {
+		return "DELETE FROM " + table + " WHERE " + where;
 	}
 }
