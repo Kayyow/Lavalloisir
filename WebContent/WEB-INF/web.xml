@@ -7,8 +7,7 @@
   <filter>
     <filter-name>Restriction</filter-name>
     <filter-class>com.lavalloisir.filters.Restriction</filter-class>
-  </filter>
-  
+  </filter>  
   <filter-mapping>
     <filter-name>Restriction</filter-name>
     <url-pattern>/restrained/*</url-pattern>
@@ -50,6 +49,10 @@
     <servlet-name>Rate</servlet-name>
     <servlet-class>com.lavalloisir.servlets.Rate</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>MyAccount</servlet-name>
+  	<servlet-class>com.lavalloisir.servlets.MyAccount</servlet-class>
+  </servlet>
   
   <servlet-mapping>
     <servlet-name>Home</servlet-name>
@@ -87,6 +90,10 @@
     <servlet-name>Rate</servlet-name>
     <url-pattern>/restrained/Rate</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyAccount</servlet-name>
+  	<url-pattern>/restrained/MyAccount</url-pattern>
+  </servlet-mapping>
   
   <jsp-config>
     <jsp-property-group>
@@ -94,4 +101,5 @@
       <include-prelude>/JSP/taglibs.jsp</include-prelude>
     </jsp-property-group>
   </jsp-config>
+  
 </web-app>

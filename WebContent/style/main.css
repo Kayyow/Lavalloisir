@@ -181,12 +181,12 @@ select {
 	margin-top: 10px;
 }
 
-
 #registrForm,
 #LeisureForm,
 #createLeisrForm,
 #cnctForm,
-#rateForm {
+#rateForm,
+#myAccountForm {
     margin: 20px 50px 0px 50px;
     width: auto;
 }
@@ -325,12 +325,10 @@ textarea {
 #cnctLink img {
 	width: 100%;
 	transition: transform linear .6s;
-	-webkit-transition: transform linear .6s;
 }
 
 #cnctLink img:hover {
 	transform: rotate(360deg);
-	-webkit-transform: rotate(360deg);
 }
 
 #rightPanel {
