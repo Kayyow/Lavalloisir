@@ -53,13 +53,17 @@ public class Connection extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute(ATT_FILE_LP, "LPConnection.jsp");
-		
 		// Préparation de l'objet formulaire de connexion
 		ConnectionForm form = new ConnectionForm(userDAO);
 		
 		// Traitement de la requête et récupération du bean en résultant
 		User user = form.connectUser(request);
+		
+		if (user != null) {
+			request.setAttribute(ATT_FILE_LP, "LPHome.jsp");			
+		} else {
+			request.setAttribute(ATT_FILE_LP, "LPConnection.jsp");			
+		}
 		
 		// Récupération de la session depuis la requête
 		HttpSession session = request.getSession();

@@ -14,7 +14,7 @@
 		<c:if test="${ sessionScope.sessionUser != null }">
 			<div class="connectionBox info">
 	    	<p>
-		    	<c:out value="${sessionScope.sessionUser.firstName}"/>
+		    	<c:out value="${sessionScope.sessionUser.givenName}"/>
 		    	<c:out value="${sessionScope.sessionUser.name}"/>
 	    	</p>
 	    	</div>
