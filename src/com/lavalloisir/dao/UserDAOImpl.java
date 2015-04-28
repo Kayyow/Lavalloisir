@@ -54,6 +54,56 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	@Override
+	public User read (long id) throws DAOException {
+		Connection cnct = null;
+		PreparedStatement preparedStmt = null;
+		ResultSet rs = null;
+		User user = null;
+		
+		try {
+			cnct = daoFactory.getConnection();
+			String query = SQLFactory.selectWhere("user", "id = ?");
+			preparedStmt = DAOUtil.initPreparedStatement(cnct, query, false, id);
+			rs = preparedStmt.executeQuery();
+			
+			if (rs.next()) {
+				user = map(rs);
+			}
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		} finally {
+			DAOUtil.silentsClosing(rs, preparedStmt, cnct);
+		}
+		
+		return user;
+	}
+	
+	@Override
+	public User read (String email) throws DAOException {
+		Connection cnct = null;
+		PreparedStatement preparedStmt = null;
+		ResultSet rs = null;
+		User user = null;
+		
+		try {
+			cnct = daoFactory.getConnection();
+			String query = SQLFactory.selectWhere("user", "email = ?");
+			preparedStmt = DAOUtil.initPreparedStatement(cnct, query, false, email);
+			rs = preparedStmt.executeQuery();
+			
+			if (rs.next()) {
+				user = map(rs);
+			}
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		} finally {
+			DAOUtil.silentsClosing(rs, preparedStmt, cnct);
+		}
+		
+		return user;
+	}
+	
+	@Override
 	public User read (String email, String password, ConfigurablePasswordEncryptor pwdEncrypt) throws DAOException {
 		Connection cnct = null;
 		PreparedStatement preparedStmt = null;
@@ -71,31 +121,6 @@ public class UserDAOImpl implements UserDAO {
 					user = map(rs);
 				}
 			}			
-		} catch (SQLException e) {
-			throw new DAOException(e);
-		} finally {
-			DAOUtil.silentsClosing(rs, preparedStmt, cnct);
-		}
-		
-		return user;
-	}
-	
-	@Override
-	public User read (long id) throws DAOException {
-		Connection cnct = null;
-		PreparedStatement preparedStmt = null;
-		ResultSet rs = null;
-		User user = null;
-		
-		try {
-			cnct = daoFactory.getConnection();
-			String query = SQLFactory.selectWhere("user", "id = ?");
-			preparedStmt = DAOUtil.initPreparedStatement(cnct, query, false, id);
-			rs = preparedStmt.executeQuery();
-			
-			if (rs.next()) {
-				user = map(rs);
-			}
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} finally {

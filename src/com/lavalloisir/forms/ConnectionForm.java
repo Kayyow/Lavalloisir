@@ -13,8 +13,8 @@ import com.lavalloisir.dao.UserDAO;
 import com.lavalloisir.forms.FormValidationException;
 
 public final class ConnectionForm {
-	private static final String FIELD_LOGIN = "login";
-	private static final String FIELD_PASSWD = "password";
+	private static final String FIELD_EMAIL = "email";
+	private static final String FIELD_PASSORWD = "password";
 	private static final String ALGO_ENCRYPT = "SHA-256";
 	
 	private String result;
@@ -38,16 +38,16 @@ public final class ConnectionForm {
 	}
 	
 	public User connectUser (HttpServletRequest request) {
-		String login = getFieldValue(request, FIELD_LOGIN);
-		String password = getFieldValue(request, FIELD_PASSWD);
+		String email = getFieldValue(request, FIELD_EMAIL);
+		String password = getFieldValue(request, FIELD_PASSORWD);
 		
 		User user = null;
 		try {
-			processLogin(login);
+			processEmail(email);
 			processPassword(password);
 			
 			if ( errors.isEmpty() ) {
-                user = userDAO.find(login, password, pwdEncryptor);
+                user = userDAO.read(email, password, pwdEncryptor);
                 if (user != null) {
                 	result = "Succès de la connexion.";
                 } else {
@@ -64,31 +64,30 @@ public final class ConnectionForm {
 		return user;
 	}
 	
-	private void processLogin (String login) {
-		try {
-			validLogin(login);
-		} catch (FormValidationException e) {
-			setError(FIELD_LOGIN, e.getMessage());
-		}
-	}
+	private void processEmail(String email) {
+        try {
+            validEmail( email );
+        } catch (FormValidationException e) {
+        	setError(FIELD_EMAIL, e.getMessage());
+        }
+    }
 	
 	private void processPassword (String password) {
         try {
             validPassword(password);
         } catch (FormValidationException e) {
-        	setError(FIELD_PASSWD, e.getMessage());
+        	setError(FIELD_PASSORWD, e.getMessage());
         }
-        
 	}
 	
-	/* Validation du login */
-    private void validLogin (String login) throws FormValidationException {
-        if (login != null) {
-        	if (login.length() < 3) {
-        		throw new FormValidationException("Le login doit contenir au moins 3 caractères.");
-        	}
+	/* Validation de l'adresse email */
+    private void validEmail(String email) throws FormValidationException {
+        if (email != null) {
+            if (!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
+                throw new FormValidationException( "Merci de saisir une adresse mail valide." );
+            }
         } else {
-        	throw new FormValidationException("Merci de saisir votre login.");
+            throw new FormValidationException( "Merci de saisir une adresse mail." );
         }
     }
 	

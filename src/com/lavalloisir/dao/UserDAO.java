@@ -14,6 +14,22 @@ public interface UserDAO {
 	
 	/**
 	 * 
+	 * @param id
+	 * @return
+	 * @throws DAOException
+	 */
+	User read (long id) throws DAOException;
+	
+	/**
+	 * 
+	 * @param email
+	 * @return
+	 * @throws DAOException
+	 */
+	User read (String email) throws DAOException;
+	
+	/**
+	 * 
 	 * @param email
 	 * @param password
 	 * @param pwdEncrypt
@@ -21,14 +37,6 @@ public interface UserDAO {
 	 * @throws DAOException
 	 */
 	User read (String email, String password, ConfigurablePasswordEncryptor pwdEncrypt) throws DAOException;
-	
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 * @throws DAOException
-	 */
-	User read (long id) throws DAOException;
 	
 	/**
 	 * 

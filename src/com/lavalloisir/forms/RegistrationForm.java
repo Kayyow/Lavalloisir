@@ -17,7 +17,8 @@ public final class RegistrationForm {
 	private static final String FIELD_EMAIL = "email";
 	private static final String FIELD_PASSWORD = "password";
 	private static final String FIELD_CONFIRMPASSWORD = "confirmPassword";
-	private static final String FIELD_PICTURE = "picture";
+	private static final String FIELD_PHONE = "phone";
+	//private static final String FIELD_PICTURE = "picture";
 
     private static final String ALGO_ENCRYPT = "SHA-256";
 
@@ -43,14 +44,15 @@ public final class RegistrationForm {
     	String email = getFieldValue(request, FIELD_EMAIL);
        	String password = getFieldValue(request, FIELD_PASSWORD);
     	String confirmPassword = getFieldValue(request, FIELD_CONFIRMPASSWORD);
-    	String picture = getFieldValue(request, FIELD_PICTURE);
+    	String phone = getFieldValue(request, FIELD_PHONE);
+    	//String picture = getFieldValue(request, FIELD_PICTURE);
     	
-
         User user = new User();
         try {
-            processEmail(email, user);
-            processPasswords(password, confirmPassword, user);
             processNames(name, givenName, user);
+            processEmail(email, user);
+            processPassword(password, confirmPassword, user);
+            processPhone(phone, user);
 
             if (errors.isEmpty()) {
                 userDAO.create(user);
@@ -85,15 +87,14 @@ public final class RegistrationForm {
      * Appel à la validation des mots de passe reçus, chiffrement du mot de
      * passe et initialisation de la propriété password du bean
      * @param password
-     * @param confirm
+     * @param confirmation
      * @param user
      */
-    private void processPasswords( String password, String confirm, User user ) {
+    private void processPassword( String password, String confirmation, User user ) {
         try {
-            validPasswords( password, confirm );
+            validPasswords( password, confirmation );
         } catch ( FormValidationException e ) {
         	setError(FIELD_PASSWORD, e.getMessage() );
-        	setError(FIELD_CONFIRMPASSWORD, null );
         }
 
         /*
@@ -108,36 +109,49 @@ public final class RegistrationForm {
         ConfigurablePasswordEncryptor passwordEncryptor = new ConfigurablePasswordEncryptor();
         passwordEncryptor.setAlgorithm( ALGO_ENCRYPT );
         passwordEncryptor.setPlainDigest( false );
-        String motDePasseChiffre = passwordEncryptor.encryptPassword( password );
+        String cryptedPassword = passwordEncryptor.encryptPassword( password );
 
-        user.setPassword(motDePasseChiffre);
+        user.setPassword(cryptedPassword);
     }
 
     /**
      * Appel à la validation du nom reçu et initialisation de la
      * propriété nom du bean.
-     * @param lName
-     * @param fName
-     * @param login
+     * @param name
+     * @param givenName
      * @param user
      */
     private void processNames( String name, String givenName, User user) {
         try {
-        	validNames(name, givenName);
+        	validName(name);
+        	validName(givenName);
         } catch ( FormValidationException e ) {
             setError(FIELD_NAME, e.getMessage());
-            setError(FIELD_GIVENNAME, null);
         }
         user.setName(name);
-        user.setFirstName(givenName);
+        user.setGivenName(givenName);
+    }
+    
+    /**
+     * 
+     * @param phone
+     * @param user
+     */
+    private void processPhone( String phone, User user) {
+    	try {
+			validPhone(phone);
+		} catch (FormValidationException e) {
+			setError(FIELD_PHONE, e.getMessage());
+		}
+    	user.setPhone(phone);
     }
 
     /* Validation de l'adresse email */
     private void validEmail(String email) throws FormValidationException {
         if (email != null) {
-            if (!email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
+            if (!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
                 throw new FormValidationException( "Merci de saisir une adresse mail valide." );
-            } else if ( userDAO.find(email) != null ) {
+            } else if ( userDAO.read(email) != null ) {
                 throw new FormValidationException( "Cette adresse email est déjà  utilisée, merci d'en choisir une autre." );
             }
         } else {
@@ -150,16 +164,16 @@ public final class RegistrationForm {
         if ( password != null && confirmation != null ) {
             if ( !password.equals( confirmation ) ) {
                 throw new FormValidationException("Les mots de passe entrés sont différents, merci de les saisir à nouveau.");
-            } else if ( password.length() < 3 ) {
-                throw new FormValidationException("Les mots de passe doivent contenir au moins 3 caractères.");
+            } else if ( password.length() < 5 ) {
+                throw new FormValidationException("Les mots de passe doivent contenir au moins 5 caractères.");
             }
         } else {
             throw new FormValidationException("Merci de saisir et confirmer votre mot de passe.");
         }
     }
 
-    /* Validation du nom / prénom / login */
-    private void validNames(String name, String givenName) throws FormValidationException {        
+    /* Validation du nom / prénom */
+    private void validName(String name) throws FormValidationException {        
         if (name != null && !name.isEmpty()) {
         	if (name.length() < 3) {
                 throw new FormValidationException("Le nom doit contenir au moins 3 caractères.");
@@ -167,15 +181,20 @@ public final class RegistrationForm {
         } else {
         	throw new FormValidationException("Merci de saisir un nom.");
         }
-        
-        if (givenName != null && !givenName.isEmpty()) {
-        	if (givenName.length() < 3) {
-            	throw new FormValidationException("Le prénom doit contenir au moins 3 caractères.");
-        	}
-        } else {
-        	throw new FormValidationException("Merci de saisir un prénom.");
-        }
     }
+    
+    /* Validation du numéro de téléphone */
+    private void validPhone (String phone) throws FormValidationException {
+    	if (phone != null && !phone.isEmpty()) {
+    		if (phone.length() != 10) {
+    			throw new FormValidationException("Le numéro de téléphone doit contenir 10 chiffres.");
+    		} else if (phone.matches("\\d{10}")) {
+    			throw new FormValidationException("Le numéro de téléphone ne doit contenir que des chiffres.");
+    		}
+    	} else {
+    		throw new FormValidationException("Merci de saisir un numéro de téléphone.");
+    	}
+    } 
 
     /*
      * Ajoute un message correspondant au champ spécifié à la map des errors.
