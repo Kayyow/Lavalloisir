@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Dim 26 Avril 2015 à 20:12
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
+-- Client: localhost
+-- Généré le: Mar 28 Avril 2015 à 16:04
+-- Version du serveur: 5.5.43-0ubuntu0.14.04.1
+-- Version de PHP: 5.5.9-1ubuntu4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `lavalloisir`
+-- Base de données: `lavalloisir`
 --
 
 -- --------------------------------------------------------
@@ -95,12 +95,19 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` text NOT NULL,
   `name` varchar(255) NOT NULL,
   `given_name` varchar(255) NOT NULL,
-  `phone` varchar(10) NOT NULL,
-  `picture` varchar(255) NOT NULL,
-  `registration` timestamp NOT NULL,
-  `last_connection` timestamp NOT NULL,
+  `phone` varchar(10) DEFAULT NULL,
+  `picture` varchar(255) DEFAULT NULL,
+  `registration` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_connection` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `password`, `name`, `given_name`, `phone`, `picture`, `registration`, `last_connection`) VALUES
+(1, 'mhp@iia-laval.fr', '27MJM0WvGD+IJZ4UZD27ylHUyj4pp+SXtq4zhjpiZZ+FEL7BtzOPOg==', 'Pamiseux', 'Marc-Henri', NULL, NULL, '2015-04-28 14:03:41', '2015-04-28 14:03:41');
 
 --
 -- Contraintes pour les tables exportées

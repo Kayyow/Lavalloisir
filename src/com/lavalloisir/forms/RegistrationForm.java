@@ -189,8 +189,6 @@ public final class RegistrationForm {
     		if (!phone.matches("\\d{10}")) {
     			throw new FormValidationException("Le numéro de téléphone ne doit contenir que des chiffres.");
     		}
-    	} else {
-    		throw new FormValidationException("Merci de saisir un numéro de téléphone.");
     	}
     } 
 
