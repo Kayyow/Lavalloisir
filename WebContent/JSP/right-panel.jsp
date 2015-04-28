@@ -14,13 +14,19 @@
 		<c:if test="${ sessionScope.sessionUser != null }">
 			<div class="connectionBox info">
 	    	<p>
-		    	<c:out value="${sessionScope.sessionUser.givenName}"/>
-		    	<c:out value="${sessionScope.sessionUser.name}"/>
+		    	<c:out value="${ sessionScope.sessionUser.givenName }"/>
+		    	<c:out value="${ sessionScope.sessionUser.name }"/>
 	    	</p>
+	    	<c:if test="${ sessionScope.sessionUser.email != null }">
+	    		<p> <c:out value="${ sessionScope.sessionUser.email }"/> </p>
+	    	</c:if>
+	    	
+	    	<c:if test="${ sessionScope.sessionUser.phone != null }">
+	    		<p> <c:out value="${ sessionScope.sessionUser.phone }"/> </p>
+	    	</c:if>
+	    	
 	    	</div>
-	    </c:if>
-
-		
+	    </c:if>		
 
 	 </div>
 	
