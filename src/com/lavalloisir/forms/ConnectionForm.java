@@ -13,8 +13,8 @@ import com.lavalloisir.dao.UserDAO;
 import com.lavalloisir.forms.FormValidationException;
 
 public final class ConnectionForm {
-	private static final String FIELD_LOGIN = "cnctLogin";
-	private static final String FIELD_PASSWD = "cnctPassword";
+	private static final String FIELD_LOGIN = "login";
+	private static final String FIELD_PASSWD = "password";
 	private static final String ALGO_ENCRYPT = "SHA-256";
 	
 	private String result;

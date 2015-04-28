@@ -5,39 +5,46 @@
 <form id="registrForm" method="post">
 	
 	<div class="formField">					
-		<label for="registrLName">Nom :</label>
-		<input type="text" class="formInput" name="registrLName" placeholder="Nom" value="<c:out value="${user.name}"/>"/>
+		<label for="name">Nom :</label>
+		<input type="text" class="formInput" name="name" placeholder="Nom" value="<c:out value="${user.name}"/>"/>
 		<span class="error">${form.errors['registrLName']}</span>
 	</div>
 	
 	<div class="formField">	
-		<label for="registrFName">Prénom :</label>
-		<input type="text" class="formInput" name="registrFName" placeholder="Prénom" value="<c:out value="${user.firstName}"/>"/>
+		<label for="givenName">Prénom :</label>
+		<input type="text" class="formInput" name="givenName" placeholder="Prénom" value="<c:out value="${user.givenName}"/>"/>
 		<span class="error">${form.errors['registrFName']}</span>
 	</div>
 	
+		
 	<div class="formField">
-		<label for="registrMail">Adresse e-mail :</label>
-		<input type="text" class="formInput" name="registrMail" placeholder="adresse@domaine.fr" value="<c:out value="${user.email}"/>"/>
+		<label for="email">Adresse e-mail :</label>
+		<input type="text" class="formInput" name="email" placeholder="adresse@domaine.fr" value="<c:out value="${user.email}"/>"/>
 		<span class="error">${form.errors['registrMail']}</span>
 	</div>
 	
 	<div class="formField">
-		<label for="registrLogin">Login :</label>
-		<input type="text" class="formInput" name="registrLogin" placeholder="Login" value="<c:out value="${user.login}"/>"/>
-		<span class="error">${form.errors['registrLogin']}</span>
-	</div>
-	
-	<div class="formField">
-		<label for="registrPwd">Mot de passe :</label>
-		<input type="password" class="formInput" name="registrPwd" placeholder="••••••••••••••" value=""/>
+		<label for="password">Mot de passe :</label>
+		<input type="password" class="formInput" name="password" placeholder="••••••••••••••" value=""/>
 		<span class="error">${form.errors['registrPwd']}</span>
 	</div>
 	
 	<div class="formField">
-		<label for="registrConfirm">Confirmation :</label>
-		<input type="password" class="formInput" name="registrConfirm" placeholder="••••••••••••••" value=""/>
+		<label for="confirmPassword">Confirmation :</label>
+		<input type="password" class="formInput" name="confirmPassword" placeholder="••••••••••••••" value=""/>
 		<span class="error">${form.errors['registrConfirm']}</span>
+	</div>
+	
+	<div class="formField">					
+		<label for="phone">Téléphone :</label>
+		<input type="text" class="formInput" name="phone" placeholder="00.00.00.00.00" value="<c:out value="${user.phone}"/>"/>
+		<span class="error">${form.errors['registrPhone']}</span>
+	</div>
+	
+	<div class="formField">					
+		<label for="profilPicture">Photo de profil :</label>
+		<input type="file" class="formInput" name="profilPicture" value="<c:out value="${user.picture}"/>"/>
+		<span class="error">${form.errors['registrProfilPicture']}</span>
 	</div>
 	
 	<input type="submit" value="S'inscrire">

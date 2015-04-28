@@ -12,7 +12,7 @@ import com.lavalloisir.beans.User;
 import com.lavalloisir.dao.DAOException;
 import com.lavalloisir.dao.RatingDAO;
 
-public class RatingForm {
+public class EvaluationForm {
 	private static final String FIELD_LEISURE = "leisrId";
 	private static final String FIELD_SCORE = "ratingScore";
 
@@ -22,7 +22,7 @@ public class RatingForm {
     private List<Leisure> leisures;
     private User user;
 
-    public RatingForm(RatingDAO ratingDAO, List<Leisure> leisures, User user) {
+    public EvaluationForm(RatingDAO ratingDAO, List<Leisure> leisures, User user) {
         this.ratingDAO = ratingDAO;
         this.leisures = leisures;
         this.user = user;

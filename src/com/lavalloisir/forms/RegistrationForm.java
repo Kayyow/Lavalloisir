@@ -12,12 +12,12 @@ import com.lavalloisir.dao.DAOException;
 import com.lavalloisir.dao.UserDAO;
 
 public final class RegistrationForm {
-	private static final String FIELD_LNAME = "registrLName"; 
-	private static final String FIELD_FNAME = "registrFName";
-	private static final String FIELD_EMAIL = "registrMail";
-	private static final String FIELD_LOGIN = "registrLogin";
-	private static final String FIELD_PASSWD = "registrPwd";
-	private static final String FIELD_CONFIRM = "registrConfirm";
+	private static final String FIELD_NAME = "name"; 
+	private static final String FIELD_GIVENNAME = "givenName";
+	private static final String FIELD_EMAIL = "email";
+	private static final String FIELD_PASSWORD = "password";
+	private static final String FIELD_CONFIRMPASSWORD = "confirmPassword";
+	private static final String FIELD_PICTURE = "picture";
 
     private static final String ALGO_ENCRYPT = "SHA-256";
 
@@ -38,18 +38,19 @@ public final class RegistrationForm {
     }
 
     public User registerUser(HttpServletRequest request) {
-    	String lName = getFieldValue(request, FIELD_LNAME);
-    	String fName = getFieldValue(request, FIELD_FNAME);
+    	String name = getFieldValue(request, FIELD_NAME);
+    	String givenName = getFieldValue(request, FIELD_GIVENNAME);
     	String email = getFieldValue(request, FIELD_EMAIL);
-    	String login = getFieldValue(request, FIELD_LOGIN);
-    	String passwd = getFieldValue(request, FIELD_PASSWD);
-    	String confirm = getFieldValue(request, FIELD_CONFIRM);
+       	String password = getFieldValue(request, FIELD_PASSWORD);
+    	String confirmPassword = getFieldValue(request, FIELD_CONFIRMPASSWORD);
+    	String picture = getFieldValue(request, FIELD_PICTURE);
+    	
 
         User user = new User();
         try {
             processEmail(email, user);
-            processPasswords(passwd, confirm, user);
-            processNames(lName, fName, login, user);
+            processPasswords(password, confirmPassword, user);
+            processNames(name, givenName, user);
 
             if (errors.isEmpty()) {
                 userDAO.create(user);
@@ -91,8 +92,8 @@ public final class RegistrationForm {
         try {
             validPasswords( password, confirm );
         } catch ( FormValidationException e ) {
-        	setError(FIELD_PASSWD, e.getMessage() );
-        	setError(FIELD_CONFIRM, null );
+        	setError(FIELD_PASSWORD, e.getMessage() );
+        	setError(FIELD_CONFIRMPASSWORD, null );
         }
 
         /*
@@ -120,17 +121,15 @@ public final class RegistrationForm {
      * @param login
      * @param user
      */
-    private void processNames( String lastName, String firstName, String login, User user) {
+    private void processNames( String name, String givenName, User user) {
         try {
-        	validNames(lastName, firstName, login);
+        	validNames(name, givenName);
         } catch ( FormValidationException e ) {
-            setError(FIELD_LNAME, e.getMessage());
-            setError(FIELD_FNAME, null);
-            setError(FIELD_LOGIN, null);
+            setError(FIELD_NAME, e.getMessage());
+            setError(FIELD_GIVENNAME, null);
         }
-        user.setName(lastName);
-        user.setFirstName(firstName);
-        user.setLogin(login);
+        user.setName(name);
+        user.setFirstName(givenName);
     }
 
     /* Validation de l'adresse email */
@@ -160,29 +159,21 @@ public final class RegistrationForm {
     }
 
     /* Validation du nom / prénom / login */
-    private void validNames(String lastName, String firstName, String login) throws FormValidationException {        
-        if (lastName != null && !lastName.isEmpty()) {
-        	if (lastName.length() < 3) {
+    private void validNames(String name, String givenName) throws FormValidationException {        
+        if (name != null && !name.isEmpty()) {
+        	if (name.length() < 3) {
                 throw new FormValidationException("Le nom doit contenir au moins 3 caractères.");
         	}
         } else {
         	throw new FormValidationException("Merci de saisir un nom.");
         }
         
-        if (firstName != null && !firstName.isEmpty()) {
-        	if (firstName.length() < 3) {
+        if (givenName != null && !givenName.isEmpty()) {
+        	if (givenName.length() < 3) {
             	throw new FormValidationException("Le prénom doit contenir au moins 3 caractères.");
         	}
         } else {
         	throw new FormValidationException("Merci de saisir un prénom.");
-        }
-        
-        if (login != null && !login.isEmpty()) {
-	        if (login.length() < 3) {
-	            throw new FormValidationException("Le login doit contenir au moins 3 caractères.");
-	        }
-        } else {
-        	throw new FormValidationException("Merci de saisir un login.");
         }
     }
 

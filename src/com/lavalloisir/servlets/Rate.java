@@ -14,7 +14,7 @@ import com.lavalloisir.beans.User;
 import com.lavalloisir.dao.DAOFactory;
 import com.lavalloisir.dao.LeisureDAO;
 import com.lavalloisir.dao.RatingDAO;
-import com.lavalloisir.forms.RatingForm;
+import com.lavalloisir.forms.EvaluationForm;
 
 /**
  * Servlet implementation class Rating
@@ -68,7 +68,7 @@ public class Rate extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		RatingForm form = new RatingForm(ratingDAO, leisures, (User)session.getAttribute(ATT_SESSION_USER));
+		EvaluationForm form = new EvaluationForm(ratingDAO, leisures, (User)session.getAttribute(ATT_SESSION_USER));
 		
 		form.addRating(request);
 		
