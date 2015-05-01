@@ -21,5 +21,8 @@
 			<div class="site-cache"></div>
 		</div>
 	</div>
+	
+    <script type="text/javascript" src="/Lavalloisir/JS/jquery-2.1.3.js"></script>
+    <script type="text/javascript" src="/Lavalloisir/JS/script.js"></script>
 </body>
 </html>
