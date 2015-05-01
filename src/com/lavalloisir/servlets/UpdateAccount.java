@@ -57,31 +57,20 @@ public class UpdateAccount extends HttpServlet {
 		UpdateAccountForm form = new UpdateAccountForm(userDAO);
 		
 		// Traitement de la requête et récupération du bean en résultant
+		// Ou si il y a une/des erreur(s) récupère l'objet user déjà en session
 		User user = form.updateUser(request);
 		
-        user = userDAO.read( ( (User)request.getSession().getAttribute("user") ).getId() );
+		// Récupération de la session depuis la requête
+		HttpSession session = request.getSession();
+		
+		session.setAttribute(ATT_SESSION_USER, user);
 		
 		// Stockage du formulaire et du bean dans l'objet request
 		request.setAttribute(ATT_FORM, form);
 		request.setAttribute(ATT_USER, user);
 		request.setAttribute(ATT_FILE_LP, "/restrained/LPUpdateAccount.jsp");
 		
-		// Récupération de la session depuis la requête
-		HttpSession session = request.getSession();
-		
-		// Si aucune erreur de validation n'a lieu, alors ajout du bean
-		// User à la session, sinon suppression du bean de la session.
-		if (form.getErrors().isEmpty()) {
-			session.setAttribute(ATT_SESSION_USER, user);
-		} else {
-			session.setAttribute(ATT_SESSION_USER, null);
-		}
-		
-		if ( user.getId() != 0 ) {
-			response.sendRedirect(URL_REDIRECTION);
-		} else {
-			this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
-		}
+		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
 	}
 
 }

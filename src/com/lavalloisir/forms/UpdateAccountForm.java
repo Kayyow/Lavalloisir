@@ -36,6 +36,7 @@ public class UpdateAccountForm {
 		String givenName = getFieldValue(request, FIELD_GIVEN_NAME);
 		String email = getFieldValue(request, FIELD_EMAIL);
 		String phone = getFieldValue(request, FIELD_PHONE);
+		User sessionUser = (User)request.getSession().getAttribute("user");
 		
 		User user = new User();
 		try {
@@ -44,7 +45,6 @@ public class UpdateAccountForm {
             processPhone(phone, user);
 
             if (errors.isEmpty()) {
-            	User sessionUser = (User)request.getSession().getAttribute("user");
                 userDAO.update(sessionUser.getId(), user);
                 result = "Succès de l'inscription.";
             } else {
@@ -55,7 +55,12 @@ public class UpdateAccountForm {
 			e.printStackTrace();
 		}
 		
-		return user;
+		if (errors.isEmpty()) {
+			return user;
+		} else {
+			return sessionUser;
+		}
+		
 	}
 	
 	/**
