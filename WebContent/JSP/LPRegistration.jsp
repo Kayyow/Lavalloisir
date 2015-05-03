@@ -2,7 +2,7 @@
 <h2>Inscris-toi</h2>
 <hr>
 
-<form id="registrForm" method="post">
+<form id="registrForm" method="post" enctype="multipart/form-data">
 	
 	<div class="formField">					
 		<label for="name">Nom :</label>
@@ -34,16 +34,16 @@
 		<span class="error">${form.errors['confirmPassword']}</span>
 	</div>
 	
-	<div class="formField">					
+	<div class="formField">
 		<label for="phone">Téléphone :</label>
 		<input type="text" class="formInput" name="phone" placeholder="0612345678" value="<c:out value="${user.phone}"/>"/>
 		<span class="error">${form.errors['phone']}</span>
 	</div>
 	
-	<div class="formField">					
-		<label for="profilPicture">Photo de profil :</label>
-		<input type="file" class="formInput" name="profilPicture" value="<c:out value="${user.picture}"/>"/>
-		<span class="error">${form.errors['profilPicture']}</span>
+	<div class="formField">
+		<label for="picture">Photo de profil :</label>
+		<input type="file" class="formInput" name="picture"/>
+		<span class="error">${form.errors['picture']}</span>
 	</div>
 	
 	<input type="submit" value="S'inscrire">

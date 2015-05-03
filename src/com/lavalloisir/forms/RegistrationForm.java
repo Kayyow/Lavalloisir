@@ -1,9 +1,16 @@
 package com.lavalloisir.forms;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
 
 import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 
@@ -18,13 +25,15 @@ public final class RegistrationForm {
 	private static final String FIELD_PASSWORD = "password";
 	private static final String FIELD_CONFIRMPASSWORD = "confirmPassword";
 	private static final String FIELD_PHONE = "phone";
-	//private static final String FIELD_PICTURE = "picture";
+	private static final String FIELD_PICTURE = "picture";
+	private static final int BUFFER_SIZE = 10240; // 10 ko
 
     private static final String ALGO_ENCRYPT = "SHA-256";
 
     private String result;
     private Map<String, String> errors = new HashMap<String, String>();
     private UserDAO userDAO;
+    private String path;
 
     public RegistrationForm( UserDAO userDAO ) {
         this.userDAO = userDAO;
@@ -38,24 +47,47 @@ public final class RegistrationForm {
         return result;
     }
 
-    public User registerUser(HttpServletRequest request) {
+    /**
+     * 
+     * @param request
+     * @param path
+     * @return
+     */
+    public User registerUser(HttpServletRequest request, String path) {
     	String name = getFieldValue(request, FIELD_NAME);
     	String givenName = getFieldValue(request, FIELD_GIVENNAME);
     	String email = getFieldValue(request, FIELD_EMAIL);
        	String password = getFieldValue(request, FIELD_PASSWORD);
     	String confirmPassword = getFieldValue(request, FIELD_CONFIRMPASSWORD);
     	String phone = getFieldValue(request, FIELD_PHONE);
-    	//String picture = getFieldValue(request, FIELD_PICTURE);
+    	Part picture = null;
+    	this.path = path;
+    	
+    	try {
+    		picture = request.getPart(FIELD_PICTURE);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+			setError(FIELD_PICTURE, "L'image ne doit pas peser plus de 320 ko.");
+		} catch (IOException e) {
+			e.printStackTrace();
+			setError(FIELD_PICTURE, "Erreur de configuration du serveur");
+		} catch (ServletException e) {
+			e.printStackTrace();
+			setError(FIELD_PICTURE, "");
+		}
     	
         User user = new User();
         try {
             processNames(name, givenName, user);
             processEmail(email, user);
             processPassword(password, confirmPassword, user);
-            processPhone(phone, user);
+            processPhone(phone, user);                        
             user.setPicture("/Lavalloisir/img/user/user_img.png");
 
             if (errors.isEmpty()) {
+            	if (picture != null) {
+                	processPicture(picture, user);
+                }
                 userDAO.create(user);
                 result = "Succès de l'inscription.";
             } else {
@@ -125,9 +157,13 @@ public final class RegistrationForm {
     private void processNames( String name, String givenName, User user) {
         try {
         	validName(name);
-        	validName(givenName);
         } catch ( FormValidationException e ) {
             setError(FIELD_NAME, e.getMessage());
+        }
+        try {
+        	validName(givenName);
+        } catch ( FormValidationException e ) {
+            setError(FIELD_GIVENNAME, e.getMessage());
         }
         user.setName(name);
         user.setGivenName(givenName);
@@ -145,6 +181,24 @@ public final class RegistrationForm {
 			setError(FIELD_PHONE, e.getMessage());
 		}
     	user.setPhone(phone);
+    }
+    
+    /**
+     * 
+     * @param picture
+     * @param user
+     */
+    private void processPicture (Part picture, User user) {
+    	String pictureName = null;
+    	try {
+    		pictureName = getFileName(picture);
+    		validPictureName(pictureName);
+    		writeFile(picture, pictureName);
+		} catch (Exception e) {
+			setError(FIELD_PICTURE, e.getMessage());
+		}
+    	String localPath = path.substring(path.indexOf("/img"));
+    	user.setPicture("/Lavalloisir" + localPath + pictureName);
     }
 
     /* Validation de l'adresse email */
@@ -188,10 +242,73 @@ public final class RegistrationForm {
     private void validPhone (String phone) throws FormValidationException {
     	if (phone != null && !phone.isEmpty()) {
     		if (!phone.matches("\\d{10}")) {
-    			throw new FormValidationException("Le numéro de téléphone doit contenir 10 chiffres.");
+    			throw new FormValidationException("Le numéro de téléphone doit contenir uniquement 10 chiffres.");
     		} 
     	}
-    } 
+    }
+    
+    /* Validation de la photo de profil */
+    private void validPictureName (String pictureName) throws FormValidationException {
+    	if (pictureName != null && !pictureName.isEmpty()) {
+    		if (!pictureName.matches("([^\\s]+(\\.(?i)(jpg|png|bmp|gif))$)")) {
+    			throw new FormValidationException("Le fichier doit être dans un format d'image.");
+    		}
+    	}
+    }
+    
+    /* 
+     * Méthode utilitaire qui a pour unique but d'analyser l'en-tête "content-disposition",
+     * et de vérifier si le paramètre "filename"  y est présent. Si oui, alors le champ traité
+     * est de type File et la méthode retourne son nom, sinon il s'agit d'un champ de formulaire 
+     * classique et la méthode retourne null. 
+     */
+    private String getFileName(Part part) {
+    	/* Boucle sur chacun des paramètres de l'en-tête "content-disposition". */
+        for ( String contentDisposition : part.getHeader( "content-disposition" ).split( ";" ) ) {
+        	/* Recherche de l'éventuelle présence du paramètre "filename". */
+            if ( contentDisposition.trim().startsWith("filename") ) {
+                /* Si "filename" est présent, alors renvoi de sa valeur, c'est-à-dire du nom de fichier. */
+                return contentDisposition.substring( contentDisposition.indexOf( '=' ) + 1 )
+                		.trim().replace( "\"", "" ); // Supprime les guillemets "
+            }
+        }
+        /* Et pour terminer, si rien n'a été trouvé... */
+        return null;
+    }
+    
+    /*
+     * Méthode utilitaire qui a pour but d'écrire le fichier passé en paramètre
+     * sur le disque, dans le répertoire donné et avec le nom donné.
+     */
+    private void writeFile(Part part, String fileName) throws Exception {
+    	//Prépare les flux.
+    	BufferedInputStream in = null;
+    	BufferedOutputStream out = null;
+
+    	try {
+    		// Ouvre les flux
+			in = new BufferedInputStream(part.getInputStream(), BUFFER_SIZE);
+			out = new BufferedOutputStream(new FileOutputStream(new File(path + fileName)),
+					BUFFER_SIZE);
+			// Lit le fichier reçu et écrit son contenu dans un fichier sur le disque.
+			byte[] buffer = new byte[BUFFER_SIZE];
+			int length;
+			while ((length = in.read(buffer)) > 0) {
+				out.write(buffer, 0, length);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally { // Fermeture des flux.
+			try {
+				if (out != null) out.close();
+			} catch (IOException ignore) {
+			}
+			try {
+				if (in != null) in.close();
+			} catch (IOException ignore) {
+			}
+		}
+    }
 
     /*
      * Ajoute un message correspondant au champ spécifié à la map des errors.
