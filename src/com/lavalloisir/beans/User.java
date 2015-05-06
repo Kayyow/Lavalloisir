@@ -40,7 +40,7 @@ public class User {
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.name = name.toUpperCase();
 	}
 
 	public String getGivenName() {
@@ -48,7 +48,7 @@ public class User {
 	}
 
 	public void setGivenName(String givenName) {
-		this.givenName = givenName;
+		this.givenName = givenName.substring(0, 1).toUpperCase() + givenName.substring(1);
 	}
 
 	public String getPhone() {
