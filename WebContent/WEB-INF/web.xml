@@ -40,8 +40,12 @@
     <servlet-class>com.lavalloisir.servlets.UpdateAccount</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>IndexLeisures</servlet-name>
-  	<servlet-class>com.lavalloisir.servlets.IndexLeisures</servlet-class>
+    <servlet-name>IndexLeisures</servlet-name>
+    <servlet-class>com.lavalloisir.servlets.IndexLeisures</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ShowLeisure</servlet-name>
+  	<servlet-class>com.lavalloisir.servlets.ShowLeisure</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Home</servlet-name>
@@ -72,8 +76,12 @@
     <url-pattern>/restrained/UpdateAccount</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>IndexLeisures</servlet-name>
-  	<url-pattern>/restrained/IndexLeisures</url-pattern>
+    <servlet-name>IndexLeisures</servlet-name>
+    <url-pattern>/restrained/IndexLeisures</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ShowLeisure</servlet-name>
+  	<url-pattern>/restrained/ShowLeisure</url-pattern>
   </servlet-mapping>
   <jsp-config>
     <jsp-property-group>

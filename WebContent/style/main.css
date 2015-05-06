@@ -33,8 +33,7 @@ body {
 }
 
 a {
-	color: #65b9bd;
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 .success {
@@ -227,7 +226,7 @@ textarea {
 	margin-top: 10px;
 }
 
-.list-leisures .content-leisure {
+.list-leisures a.content-leisure {
 	float: left;
 	width: 49%;
 	height: 180px;
@@ -238,16 +237,17 @@ textarea {
 	box-sizing: border-box;
 	border-radius: 16px;
 	background: radial-gradient(#73E0E5, #65B9BD 75%);
+	color: #696969;
 	overflow: hidden;
 	cursor: pointer;
 	transition: .15s;
 }
 
-.list-leisures .content-leisure:nth-of-type(even) {
+.list-leisures a.content-leisure:nth-of-type(even) {
 	float: right;
 }
 
-.list-leisures .content-leisure h3 {
+.list-leisures a.content-leisure h3 {
 	margin-top: 0;
 	color: #eee;
 	font-size: large;
@@ -255,39 +255,39 @@ textarea {
 	transition: .15s;
 }
 
-.list-leisures .content-leisure span.label {
+.list-leisures a.content-leisure span.label {
 	display: inline-block;
 	font-weight: bold;
 }
 
-.list-leisures .content-leisure span.category {
+.list-leisures a.content-leisure span.category {
 	font-weight: bold;
 	color: #5F9AB5;
 }
 
-.list-leisures .content-leisure p {
+.list-leisures a.content-leisure p {
 	font-size: small;
 	line-height: 16px;
 	transition: .15s;
 }
 
-.list-leisures .content-leisure:hover {
+.list-leisures a.content-leisure:hover {
 	border-bottom: 10px solid #5F9AB5;
 	transition: .3s;
 }
 
-.list-leisures .content-leisure:hover h3 {
+.list-leisures a.content-leisure:hover h3 {
 	color: white;
 	margin-left: 32px;
 	transition: .3s;
 }
 
-.list-leisures .content-leisure:hover span.category {
+.list-leisures a.content-leisure:hover span.category {
 	color: #006D9F;
 	transition: .3s;
 }
 
-.list-leisures .content-leisure:hover p {
+.list-leisures a.content-leisure:hover p {
 	color: #363636;
 	transition: .3s;
 }
