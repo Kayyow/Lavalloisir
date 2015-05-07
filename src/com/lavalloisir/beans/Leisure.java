@@ -7,6 +7,8 @@ public class Leisure {
     private String description;
     private String email;
     private String phone;
+    private String displayPhone;
+    private String website;
     private Address address;
     private Category category;
     
@@ -45,6 +47,28 @@ public class Leisure {
 	
 	public void setPhone(String phone) {
 		this.phone = phone;
+		
+		String displayPhone = "";
+		for (int i=1; i<=5; i++) {
+			displayPhone += phone.substring((i-1) * 2, 2*i) + ".";
+		}
+		this.setDisplayPhone(displayPhone.substring(0, displayPhone.length()-1));
+	}
+	
+	public String getDisplayPhone() {
+		return displayPhone;
+	}
+	
+	private void setDisplayPhone(String displayPhone) {
+		this.displayPhone = displayPhone;
+	}
+	
+	public String getWebsite() {
+		return website;
+	}
+	
+	public void setWebsite(String website) {
+		this.website = website;
 	}
 	
 	public Address getAddress() {

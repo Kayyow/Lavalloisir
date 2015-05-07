@@ -292,6 +292,59 @@ textarea {
 	transition: .3s;
 }
 
+.show-leisure {
+	position: relative;
+}
+
+.show-leisure .picture {
+	position: absolute;
+	right: 0;
+	width: 400px;
+	height: 264px;
+	background-color: #222;
+}
+
+.show-leisure div.field {
+	line-height: 22px;
+	background-color: #EEE;
+}
+
+.show-leisure div.field:nth-of-type(even) {
+	background-color: #DDD;
+}
+
+.show-leisure div.field span.label {
+	display: block;
+	padding: 5px 10px;
+	line-height: 2em;
+	font-variant: small-caps;
+	font-size: large;
+	letter-spacing: 1px;
+	font-weight: bold;
+	background-color: #65B9BD;
+  	border-left: 6px solid #006D9F;
+  	color: white;
+}
+
+.show-leisure div.field .value {
+	  display: inline-block;
+	  padding: 10px;
+	  margin-left: 20px;
+}
+
+.show-leisure div.field a.value {
+	  color: #65B9BD;
+}
+
+.show-leisure div.field span.value.category {
+	font-weight: bold;
+	color: #006D9F;
+}
+
+.show-leisure div.field span.value.description {
+	text-align: justify;
+}
+
 .contactContent {
 	text-align: center;
 	margin: auto;
@@ -322,6 +375,11 @@ textarea {
 
 .messageRestriction {
 	text-align: center;
+}
+
+.messageRestriction a {
+	color: #65B9BD;
+	text-decoration: underline;
 }
 
 /* RIGHT PANEL */
@@ -365,6 +423,7 @@ textarea {
 
 .titleBox a {
 	color: #fff;
+	text-decoration: underline;
 }
 
 .titleBox a:hover {

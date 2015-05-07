@@ -18,6 +18,7 @@ public class ShowLeisure extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public static final String CONF_DAO_FACTORY = "daofactory";
+	public static final String URL_REDIRECTION = "IndexLeisures";
 	public static final String ATT_FILE_LP = "fileLP";
 	public static final String ATT_LEISURE = "leisure";
 	public static final String VIEW = "/JSP/page.jsp";
@@ -40,14 +41,15 @@ public class ShowLeisure extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		long id = Long.parseLong(request.getParameter("id"));
-		System.out.println(id);
-		
-		leisure = leisureDAO.read(id);
-		request.setAttribute(ATT_LEISURE, leisure);
-		
-		request.setAttribute(ATT_FILE_LP, "/restrained/LPShowLeisure.jsp");	
-		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
+		if (request.getParameter("id") != null) {
+			long id = Long.parseLong(request.getParameter("id"));
+			leisure = leisureDAO.read(id);
+			request.setAttribute(ATT_LEISURE, leisure);
+			request.setAttribute(ATT_FILE_LP, "/restrained/LPShowLeisure.jsp");
+			this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
+		} else {
+			response.sendRedirect(URL_REDIRECTION);
+		}		
 	}
 
 	/**

@@ -117,6 +117,7 @@ public class LeisureDAOImpl implements LeisureDAO {
 		leisure.setDescription(rs.getString("description"));
 		leisure.setEmail(rs.getString("email"));
 		leisure.setPhone(rs.getString("phone"));
+		leisure.setWebsite(rs.getString("website"));
 		
 		AddressDAO addressDAO = DAOFactory.getInstance().getAddressDAO();
 		leisure.setAddress(addressDAO.read(rs.getLong("id_address")));
