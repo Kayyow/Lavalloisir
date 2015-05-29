@@ -81,7 +81,7 @@ public final class RegistrationForm {
             processNames(name, givenName, user);
             processEmail(email, user);
             processPassword(password, confirmPassword, user);
-            processPhone(phone, user);                        
+            processPhone(phone, user);
             user.setPicture("/Lavalloisir/img/user/user_img.png");
 
             if (errors.isEmpty()) {
@@ -197,7 +197,7 @@ public final class RegistrationForm {
 		} catch (Exception e) {
 			setError(FIELD_PICTURE, e.getMessage());
 		}
-    	String localPath = path.substring(path.indexOf("/img"));
+    	String localPath = path.substring(path.indexOf("\\img"));
     	user.setPicture("/Lavalloisir" + localPath + pictureName);
     }
 
