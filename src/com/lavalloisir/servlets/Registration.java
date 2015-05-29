@@ -1,5 +1,6 @@
 package com.lavalloisir.servlets;
 
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -24,6 +25,7 @@ public class Registration extends HttpServlet {
 	public static final String ATT_FILE_LP = "fileLP";
 	public static final String VIEW = "/JSP/page.jsp";
 	public static final String URL_REDIRECTION = "Home";
+	public static final String PATH = "path";
 	
 	private UserDAO userDAO;
 
@@ -56,7 +58,7 @@ public class Registration extends HttpServlet {
 		RegistrationForm form = new RegistrationForm(userDAO);
 		
 		// Traitement de la requête et récupération du bean en résultant
-		User user = form.registerUser(request);
+		User user = form.registerUser(request, this.getServletConfig().getInitParameter(PATH));
 		
 		// Stockage du formulaire et du bean dans l'objet request
 		request.setAttribute(ATT_FORM, form);
