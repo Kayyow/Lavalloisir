@@ -3,16 +3,14 @@
   <listener>
     <listener-class>com.lavalloisir.config.InitDAOFactory</listener-class>
   </listener>
-  
   <filter>
     <filter-name>Restriction</filter-name>
     <filter-class>com.lavalloisir.filters.Restriction</filter-class>
-  </filter>  
+  </filter>
   <filter-mapping>
     <filter-name>Restriction</filter-name>
     <url-pattern>/restrained/*</url-pattern>
   </filter-mapping>
-  
   <servlet>
     <servlet-name>Home</servlet-name>
     <servlet-class>com.lavalloisir.servlets.Home</servlet-class>
@@ -38,10 +36,17 @@
     <servlet-class>com.lavalloisir.servlets.ReservedAccess</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>UpdateAccount</servlet-name>
-  	<servlet-class>com.lavalloisir.servlets.UpdateAccount</servlet-class>
+    <servlet-name>UpdateAccount</servlet-name>
+    <servlet-class>com.lavalloisir.servlets.UpdateAccount</servlet-class>
   </servlet>
-  
+  <servlet>
+    <servlet-name>IndexLeisures</servlet-name>
+    <servlet-class>com.lavalloisir.servlets.IndexLeisures</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ShowLeisure</servlet-name>
+  	<servlet-class>com.lavalloisir.servlets.ShowLeisure</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>Home</servlet-name>
     <url-pattern>/Home</url-pattern>
@@ -67,15 +72,21 @@
     <url-pattern>/ReservedAccess</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>UpdateAccount</servlet-name>
-  	<url-pattern>/restrained/UpdateAccount</url-pattern>
+    <servlet-name>UpdateAccount</servlet-name>
+    <url-pattern>/restrained/UpdateAccount</url-pattern>
   </servlet-mapping>
-  
+  <servlet-mapping>
+    <servlet-name>IndexLeisures</servlet-name>
+    <url-pattern>/restrained/IndexLeisures</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ShowLeisure</servlet-name>
+  	<url-pattern>/restrained/ShowLeisure</url-pattern>
+  </servlet-mapping>
   <jsp-config>
     <jsp-property-group>
       <url-pattern>*.jsp</url-pattern>
       <include-prelude>/JSP/taglibs.jsp</include-prelude>
     </jsp-property-group>
   </jsp-config>
-  
 </web-app>

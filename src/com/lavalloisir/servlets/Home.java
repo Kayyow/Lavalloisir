@@ -29,7 +29,7 @@ public class Home extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute(ATT_FILE_LP, "LPHome.jsp");
 		
-		this.getServletContext().getRequestDispatcher("/JSP/page.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
 	}
 
 	/**

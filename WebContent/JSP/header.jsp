@@ -7,7 +7,7 @@
 	<!-- Menu -->
 	<nav>
 		<a href="/Lavalloisir/Home">Accueil</a>
-		<a href="/Lavalloisir/restrained/DisplayLeisure">Loisir</a>
+		<a href="/Lavalloisir/restrained/IndexLeisures">Loisir</a>
 		<c:choose>
 			<c:when test="${ sessionScope.user != null }">
 				<a href="/Lavalloisir/restrained/Rate">Evaluer</a>

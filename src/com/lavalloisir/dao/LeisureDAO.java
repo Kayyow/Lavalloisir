@@ -19,7 +19,7 @@ public interface LeisureDAO {
 	 * @return
 	 * @throws DAOException
 	 */
-	List<Leisure> index (Category categories) throws DAOException;
+	List<Leisure> index (Category category) throws DAOException;
 	
 	/**
 	 * 

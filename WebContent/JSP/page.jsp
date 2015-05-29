@@ -14,7 +14,6 @@
 				<div id="leftPanel">
 					<jsp:include page="${ fileLP }" flush="true"/>
 				</div>
-			
 			</div>
 			
 			<%@ include file="footer.jsp"%>
@@ -23,6 +22,8 @@
 	</div>
 	
     <script type="text/javascript" src="/Lavalloisir/JS/jquery-2.1.3.js"></script>
+    <script type="text/javascript" src="/Lavalloisir/JS/jquery.dotdotdot.min.js"></script>
+    <script type="text/javascript" src="/Lavalloisir/JS/dotdotdot_script.js"></script>
     <script type="text/javascript" src="/Lavalloisir/JS/script.js"></script>
 </body>
 </html>
