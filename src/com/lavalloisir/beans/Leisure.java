@@ -11,8 +11,7 @@ public class Leisure {
     private String website;
     private Address address;
     private Category category;
-    
-       
+
 	public Leisure() {
 		super();
 	}

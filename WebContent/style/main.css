@@ -235,8 +235,7 @@ textarea {
 	border-top: 6px solid #5F9AB5;
 	border-bottom: 6px solid #5F9AB5;
 	box-sizing: border-box;
-	border-radius: 16px;
-	background: radial-gradient(#73E0E5, #65B9BD 75%);
+	background: radial-gradient(#ABF1F4, #65B9BD 75%);
 	color: #696969;
 	overflow: hidden;
 	cursor: pointer;
@@ -272,7 +271,7 @@ textarea {
 }
 
 .list-leisures a.content-leisure:hover {
-	border-bottom: 10px solid #5F9AB5;
+	border-bottom: 12px solid #5F9AB5;
 	transition: .3s;
 }
 

@@ -7,8 +7,8 @@
 	<select name="category" class="category">
 		<c:choose>
 			<c:when test="${ categories != null }">
-				<c:forEach var="category" items="${ categories }">
-					<option value="${ category.id }">${ category.label }</option>
+				<c:forEach items="${ categories }" var="category" >
+					<option value="${ category.id }"> <c:out value="${ category.label }"/> </option>
 				</c:forEach>
 			</c:when>
 			<c:otherwise>
@@ -30,12 +30,11 @@
 			</p>
 			
 			<p>
-				<span class="label">Adresse :</span> <c:out value="${ leisure.address.number } ${ leisure.address.street }
-																	${ leisure.address.zipCode } ${ leisure.address.city }"/>
+				<span class="label">Adresse :</span> <c:out value="${ leisure.address.number } ${ leisure.address.street } ${ leisure.address.zipCode } ${ leisure.address.city }"/>
 			</p>
 			
 			<p>
-				<span class="label">Déscription :</span> <span class="description"> <c:out value="${ leisure.description }"/> </span>
+				<span class="label">Description :</span> <span class="description"> <c:out value="${ leisure.description }"/> </span>
 			</p>
 		</a>
 	</c:forEach>
