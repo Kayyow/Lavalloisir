@@ -45,4 +45,15 @@
 		
 		<span class="value description"> <c:out value="${ leisure.description }"/> </span>
 	</div>
+	
+	<div class="field">
+		<span class="label">Avis</span>
+		
+		<input type="range" name="inputNote" min="0" max="10" step="1"/>
+		<span class="value note"> <c:out value="${ averageNote }"/> </span>
+		
+		<c:forEach items="${ evaluations }" var="evaluation">
+			<span class="value opinion"> <c:out value="${ evaluation.opinion }"/> </span>
+		</c:forEach>
+	</div>
 </div>
