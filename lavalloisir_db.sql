@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Mer 06 Mai 2015 à 20:41
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
+-- Client: localhost
+-- Généré le: Dim 31 Mai 2015 à 15:46
+-- Version du serveur: 5.5.43-0ubuntu0.14.04.1
+-- Version de PHP: 5.5.9-1ubuntu4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `lavalloisir`
+-- Base de données: `lavalloisir`
 --
 
 -- --------------------------------------------------------
@@ -85,6 +85,15 @@ CREATE TABLE IF NOT EXISTS `evaluation` (
   KEY `id_user` (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `evaluation`
+--
+
+INSERT INTO `evaluation` (`note`, `opinion`, `id_leisure`, `id_user`) VALUES
+(6, 'test2', 9, 1),
+(3, 'test', 9, 5),
+(7, 'test2', 9, 6);
+
 -- --------------------------------------------------------
 
 --
@@ -98,6 +107,7 @@ CREATE TABLE IF NOT EXISTS `leisure` (
   `email` varchar(255) NOT NULL,
   `phone` varchar(10) NOT NULL,
   `website` varchar(255) DEFAULT NULL,
+  `picture` mediumblob,
   `id_address` int(11) NOT NULL,
   `id_category` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -109,12 +119,12 @@ CREATE TABLE IF NOT EXISTS `leisure` (
 -- Contenu de la table `leisure`
 --
 
-INSERT INTO `leisure` (`id`, `title`, `description`, `email`, `phone`, `website`, `id_address`, `id_category`) VALUES
-(1, 'Aquabulle', 'Un centre aquatique de Laval avec un espace dédié de 1440 m² pour la détente, les jeux et les sports aquatiques.', 'aquabulle@laval.fr', '0243592999', 'http://www.aquabulle.fr/', 1, 1),
-(8, 'Golf Club du Pays de Laval', 'Idéalement situé au bord de La Mayenne, dans un site vallonné, le Golf de Laval s''étend sur 82 hectares. Il propose 27 trous répartis sur 2 parcours de qualité : le Jariel (9 trous) et la Chabossière (18 trous).', 'golfclub@villelaval.fr', '0243493515', 'http://www.laval53-golf.com/', 10, 2),
-(9, 'Gourmets en Cuisine', 'Idéalement situé en plein coeur de Laval, Gourmets en Cuisine vous accueille du mardi au samedi.\r\nEmmanuelle Greco vous attend dans son atelier pour vous faire partager sa passion pour la cuisine\r\net vous apprendre les tours de main qui feront le succès de vos recettes.', 'contact@gourmetsencuisine.fr', '0243561140', 'http://www.gourmetsencuisine.fr/', 11, 1),
-(10, 'Centre Equestre de Laval', 'En plein coeur du Bois de l''Huisserie, dans un cadre exceptionnel, découvrez l''équitation sur un poney ou perfectionnez-vous à cheval grâce à nos deux moniteurs.\r\nDisciplines proposées : initiation / CSO / handi-cheval / handisport / bébé-cavalier.\r\nLe centre équestre propose aux enfants une balade en poney tous les dimanches à la belle saison pour la modique somme de 6 euros la 1/2h et sans réservation.', 'centreequestre@villelaval.fr', '0243029013', 'http://celaval.free.fr/', 13, 3),
-(11, 'EcHOlogia', 'EcHOlogia est un projet de réhabilitation écologique et touristique de l’ancien village chaufournier et des carrières de Louverné. \r\nIl comprend des hébergements insolites, circuits pédagogiques (sentier patrimoine, sentier nature), animations (rallyes, brocantes et marchés, concerts), sport nature et plein air (tir à l''arc, canoë) ... sur les 70 ha d''un site naturel exceptionnel.', 'contact@echologia.fr', '0982476031', 'http://www.echologia.fr/', 12, 2);
+INSERT INTO `leisure` (`id`, `title`, `description`, `email`, `phone`, `website`, `picture`, `id_address`, `id_category`) VALUES
+(1, 'Aquabulle', 'Un centre aquatique de Laval avec un espace dédié de 1440 m² pour la détente, les jeux et les sports aquatiques.', 'aquabulle@laval.fr', '0243592999', 'http://www.aquabulle.fr/', NULL, 1, 1),
+(8, 'Golf Club du Pays de Laval', 'Idéalement situé au bord de La Mayenne, dans un site vallonné, le Golf de Laval s''étend sur 82 hectares. Il propose 27 trous répartis sur 2 parcours de qualité : le Jariel (9 trous) et la Chabossière (18 trous).', 'golfclub@villelaval.fr', '0243493515', 'http://www.laval53-golf.com/', NULL, 10, 2),
+(9, 'Gourmets en Cuisine', 'Idéalement situé en plein coeur de Laval, Gourmets en Cuisine vous accueille du mardi au samedi.\r\nEmmanuelle Greco vous attend dans son atelier pour vous faire partager sa passion pour la cuisine\r\net vous apprendre les tours de main qui feront le succès de vos recettes.', 'contact@gourmetsencuisine.fr', '0243561140', 'http://www.gourmetsencuisine.fr/', NULL, 11, 1),
+(10, 'Centre Equestre de Laval', 'En plein coeur du Bois de l''Huisserie, dans un cadre exceptionnel, découvrez l''équitation sur un poney ou perfectionnez-vous à cheval grâce à nos deux moniteurs.\r\nDisciplines proposées : initiation / CSO / handi-cheval / handisport / bébé-cavalier.\r\nLe centre équestre propose aux enfants une balade en poney tous les dimanches à la belle saison pour la modique somme de 6 euros la 1/2h et sans réservation.', 'centreequestre@villelaval.fr', '0243029013', 'http://celaval.free.fr/', NULL, 13, 3),
+(11, 'EcHOlogia', 'EcHOlogia est un projet de réhabilitation écologique et touristique de l’ancien village chaufournier et des carrières de Louverné. \r\nIl comprend des hébergements insolites, circuits pédagogiques (sentier patrimoine, sentier nature), animations (rallyes, brocantes et marchés, concerts), sport nature et plein air (tir à l''arc, canoë) ... sur les 70 ha d''un site naturel exceptionnel.', 'contact@echologia.fr', '0982476031', 'http://www.echologia.fr/', NULL, 12, 2);
 
 -- --------------------------------------------------------
 
@@ -133,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `registration` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `last_connection` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `user`
@@ -141,7 +151,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `email`, `password`, `name`, `given_name`, `phone`, `picture`, `registration`, `last_connection`) VALUES
 (1, 'julien.landeau@iia-laval.fr', 'g+6AQuAGKjCQT2SKVUKACIx2rEwMeY7WkMj8fSjHiqi9bPs59PYLLg==', 'LANDEAU', 'Julien', '0612345678', NULL, '2015-04-28 12:55:44', '2015-04-28 12:53:35'),
-(5, 'mhp@iia-laval.fr', 'nKnY+TRQgSlxJwzc3D5GfJY4psGH3ys1eQlRkizKpUHPDNLSkiXrsw==', 'PAMISEUX', 'Marc-Henri', NULL, '/Lavalloisir/img/user/user_img.png', '2015-05-06 13:28:28', '2015-05-06 13:28:28');
+(5, 'mhp@iia-laval.fr', 'nKnY+TRQgSlxJwzc3D5GfJY4psGH3ys1eQlRkizKpUHPDNLSkiXrsw==', 'PAMISEUX', 'Marc-Henri', '0601020304', '/Lavalloisir/img/user/user_img.png', '2015-05-18 09:39:45', '2015-05-06 13:28:28'),
+(6, 'alepaga@iia-laval.fr', 'm9/XnjZ1OCNr5daEhdg/DMB8SKsuM9hFYIb8cyRF4OLT3UsDwvD4mA==', 'Lepage', 'Alexis', '0102030405', '/Lavalloisir/img/user/user_img.png', '2015-05-18 12:53:33', '2015-05-18 12:53:33');
 
 --
 -- Contraintes pour les tables exportées
