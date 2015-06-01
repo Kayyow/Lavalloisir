@@ -172,6 +172,34 @@ input {
     height: 30px;
 }
 
+input[type=range]{
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    height: 2px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #5F9AB5;
+    margin-top: -4px;
+}
+
+input[type="range"]:before {
+    content: attr(min);
+}
+input[type="range"]:after {
+    content: attr(max);
+}
+
 select {
 	margin-top: 5px;
 }
@@ -185,6 +213,7 @@ select {
 #createLeisrForm,
 #cnctForm,
 #rateForm,
+#evaluationForm,
 #myAccountForm {
     margin: 20px 50px 0px 50px;
     width: auto;
@@ -335,6 +364,7 @@ textarea {
 	  color: #65B9BD;
 }
 
+
 .show-leisure div.field span.value.category {
 	font-weight: bold;
 	color: #006D9F;
@@ -342,6 +372,31 @@ textarea {
 
 .show-leisure div.field span.value.description {
 	text-align: justify;
+}
+
+.show-leisure div.field span.value.note {
+	position: relative;
+	display: inline-block; 
+	border-right: 1px solid #ccc;
+	text-align: center;
+	width: 40px;
+	color : #65B9BD;
+	font-size: 1.1em;
+}
+
+.show-leisure div.field span.value.nameUser {
+	display: inline-block;
+	font-variant: small-caps;
+	text-decoration: underline;
+}
+
+
+.show-leisure div.field span.value.opinion {
+	margin-top: -15;
+	margin-left: 100px;
+	display: block;
+	text-align: justify;
+	font-style: italic; 
 }
 
 .contactContent {
@@ -480,6 +535,14 @@ footer {
 	footer {
 		display: none;
 	}
+	
+	.show-leisure .picture {
+	position: relative;
+	width: 400px;
+	height: 264px;
+	background-color: #222;
+	margin: auto;
+}
 }
 
 @media only screen and (max-width: 800px) {
@@ -612,6 +675,14 @@ footer {
 		text-align: left;
 		
 	}
+	
+	.show-leisure .picture {
+	position: relative;
+	width: 100%;
+	height: auto;
+	background-color: #222;
+	margin: auto;
+	}
 }
 
 @media only screen and (max-width: 535px) {
@@ -623,6 +694,7 @@ footer {
 	#LeisureForm,
 	#createLeisrForm,
 	#cnctForm,
+	#evaluationForm,
 	#rateForm {
 	    margin: auto;
 	    margin-top: 20px;
