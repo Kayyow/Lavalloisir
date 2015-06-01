@@ -261,10 +261,10 @@ textarea {
 	height: 180px;
 	margin-bottom: 10px;
 	padding: 10px;
-	border-top: 6px solid #5F9AB5;
-	border-bottom: 6px solid #5F9AB5;
+	border-top: 6px solid #65B9BD;
+	border-bottom: 6px solid #65B9BD;
 	box-sizing: border-box;
-	background: radial-gradient(#ABF1F4, #65B9BD 75%);
+	background: radial-gradient(transparent 50%, #CFFCF9);
 	color: #696969;
 	overflow: hidden;
 	cursor: pointer;
@@ -277,7 +277,7 @@ textarea {
 
 .list-leisures a.content-leisure h3 {
 	margin-top: 0;
-	color: #eee;
+	color: #65B9BD;
 	font-size: large;
 	font-variant: small-caps;
 	transition: .15s;
@@ -300,12 +300,11 @@ textarea {
 }
 
 .list-leisures a.content-leisure:hover {
-	border-bottom: 12px solid #5F9AB5;
+	border-bottom: 12px solid #65B9BD;
 	transition: .3s;
 }
 
 .list-leisures a.content-leisure:hover h3 {
-	color: white;
 	margin-left: 32px;
 	transition: .3s;
 }

@@ -80,7 +80,7 @@ public class User {
 	}
 
 	public void setLastConnection(Timestamp lastConnection) {
-		this.lastConnection= lastConnection;
+		this.lastConnection = lastConnection;
 	}
 
 	public long getId() {

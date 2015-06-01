@@ -45,4 +45,12 @@ public interface UserDAO {
 	 * @throws DAOException
 	 */
 	void update (long id, User user) throws DAOException;
+	
+	/**
+	 * 
+	 * @param id
+	 * @param user
+	 * @throws DAOException
+	 */
+	void updateLastConnection (long id) throws DAOException;
 }

@@ -6,9 +6,17 @@ public class Evaluation {
     private String opinion;
     private User user;
     private Leisure leisure;
-       
+    
     public Evaluation() {
+    	super();
+    }
+       
+    public Evaluation(int note, String opinion, User user, Leisure leisure) {
 		super();
+    	this.note = note;
+    	this.opinion = opinion;
+    	this.user = user;
+    	this.leisure = leisure;
 	}
 
 	public int getNote() {

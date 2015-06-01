@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.lavalloisir.beans.Leisure;
 import com.lavalloisir.beans.Evaluation;
+import com.lavalloisir.beans.User;
 
 
 public class EvaluationDAOImpl implements EvaluationDAO {
@@ -39,6 +40,51 @@ public class EvaluationDAOImpl implements EvaluationDAO {
 			throw new DAOException(e);
 		} finally {
 			DAOUtil.silentsClosing(rs, preparedStmt, cnct);
+		}
+	}
+	
+	@Override
+	public Evaluation read (User user, Leisure leisure) throws DAOException {
+		Connection cnct = null;
+		PreparedStatement preparedStmt = null;
+		ResultSet rs = null;
+		Evaluation evaluation = null;
+		
+		try {
+			cnct = daoFactory.getConnection();
+			String query = SQLFactory.selectWhere("evaluation", "id_user = ? AND id_leisure = ?");
+			preparedStmt = DAOUtil.initPreparedStatement(cnct, query, false, user.getId(), leisure.getId());
+			rs = preparedStmt.executeQuery();
+			
+			if (rs.next()) {
+				evaluation = map(rs);
+			}			
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		} finally {
+			DAOUtil.silentsClosing(rs, preparedStmt, cnct);
+		}
+		
+		return evaluation;
+	}
+	
+	@Override
+	public void update (Evaluation evaluation, int note, String opinion) throws DAOException {
+		Connection cnct = null;
+		PreparedStatement preparedStmt = null;
+		
+		try {
+			cnct = daoFactory.getConnection();
+			String query = SQLFactory.update("evaluation", "note = ?, opinion = ?", "id_user = " + evaluation.getUser().getId() + " AND id_leisure = " + evaluation.getLeisure().getId());
+			preparedStmt = DAOUtil.initPreparedStatement(cnct, query, false, note, opinion);
+			
+			if (preparedStmt.executeUpdate() == 0) {
+				throw new DAOException("Echec de la mise à jour de l'utilisateur, aucune modification prise en compte.");
+			}
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		} finally {
+			DAOUtil.silentsClosing(preparedStmt, cnct);
 		}
 	}
 	

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.lavalloisir.beans.Evaluation;
 import com.lavalloisir.beans.Leisure;
+import com.lavalloisir.beans.User;
 
 public interface EvaluationDAO {
 	/**
@@ -12,6 +13,17 @@ public interface EvaluationDAO {
 	 * @throws DAOException
 	 */
 	void create (Evaluation evaluation) throws DAOException;
+	
+	/**
+	 * 
+	 * @param user
+	 * @param leisure
+	 * @return
+	 * @throws DAOException
+	 */
+	Evaluation read (User user, Leisure leisure) throws DAOException;
+	
+	void update(Evaluation evaluation, int note, String opinion) throws DAOException;
 	
 	/**
 	 * 
