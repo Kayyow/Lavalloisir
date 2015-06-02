@@ -27,11 +27,13 @@ public class ShowLeisure extends HttpServlet {
 	public static final String ATT_LEISURE = "leisure";
 	public static final String ATT_AVG_NOTE = "averageNote";
 	public static final String ATT_EVALUATIONS = "evaluations";
+	public static final String ATT_BEST_LEISURES = "bestLeisures";
 	public static final String VIEW = "/JSP/page.jsp";
 	
 	private LeisureDAO leisureDAO;
 	private Leisure leisure;
 	private EvaluationDAO evaluationDAO;
+	private List<String> bestLeisures;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -63,6 +65,11 @@ public class ShowLeisure extends HttpServlet {
 			avgNote /= leisureEvaluations.size();
 
 			DecimalFormat df = new DecimalFormat("#.#");
+			
+			// Get best Leisures
+			bestLeisures = evaluationDAO.getBestLeisures();
+			
+			request.setAttribute(ATT_BEST_LEISURES, bestLeisures);
 			request.setAttribute(ATT_LEISURE, leisure);
 			request.setAttribute(ATT_AVG_NOTE, df.format(avgNote));
 			request.setAttribute(ATT_EVALUATIONS, leisureEvaluations);

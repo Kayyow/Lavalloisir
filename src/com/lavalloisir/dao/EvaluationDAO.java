@@ -20,4 +20,11 @@ public interface EvaluationDAO {
 	 * @throws DAOException
 	 */
 	List<Evaluation> index (Leisure leisure) throws DAOException;
+	
+	/**
+	 * 
+	 * @return
+	 * @throws DAOException
+	 */
+	List<String> getBestLeisures() throws DAOException;
 }

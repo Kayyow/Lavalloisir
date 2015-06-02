@@ -69,6 +69,31 @@ public class EvaluationDAOImpl implements EvaluationDAO {
 		return evaluations;
 	}
 	
+	public List<String> getBestLeisures() throws DAOException {
+		Connection cnct = null;
+		PreparedStatement preparedStmt = null;
+		ResultSet rs = null;
+		List<String> bestLeisures = new ArrayList<String>();
+		
+		try {
+			cnct = daoFactory.getConnection();
+			String query = SQLFactory.selectFiveBestLeisures();
+			preparedStmt = DAOUtil.initPreparedStatement(cnct, query, false);
+			rs = preparedStmt.executeQuery();
+
+			while (rs.next()) {
+				String str = rs.getString(1) + " : " + rs.getFloat(2);
+				bestLeisures.add(str);
+			}
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		} finally {
+			DAOUtil.silentsClosing(rs, preparedStmt, cnct);
+		}
+		
+		return bestLeisures;
+	}
+	
 	/**
 	 * 
 	 * @param rs

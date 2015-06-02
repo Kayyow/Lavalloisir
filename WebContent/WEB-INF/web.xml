@@ -19,14 +19,14 @@
     <servlet-name>Registration</servlet-name>
     <servlet-class>com.lavalloisir.servlets.Registration</servlet-class>
     <init-param>
-    	<param-name>path</param-name>
-    	<param-value>C:\Users\Kayyow-PC\Documents\Lavalloisir\WebContent\img\user</param-value>
+      <param-name>path</param-name>
+      <param-value>C:\Users\Kayyow-PC\Documents\Lavalloisir\WebContent\img\user</param-value>
     </init-param>
     <multipart-config>
-    	<location>C:\Users\Kayyow-PC\Documents\Lavalloisir\WebContent\img\temp</location>
-    	<max-file-size>327680</max-file-size> <!-- 320 ko -->
-    	<max-request-size>327680</max-request-size> <!-- 320 ko -->
-    	<file-size-threshold>327680</file-size-threshold> <!-- 320 ko -->
+      <location>C:\Users\Kayyow-PC\Documents\Lavalloisir\WebContent\img\temp</location>
+      <max-file-size>327680</max-file-size>
+      <max-request-size>327680</max-request-size>
+      <file-size-threshold>327680</file-size-threshold>
     </multipart-config>
   </servlet>
   <servlet>
@@ -54,9 +54,10 @@
     <servlet-class>com.lavalloisir.servlets.IndexLeisures</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>ShowLeisure</servlet-name>
-  	<servlet-class>com.lavalloisir.servlets.ShowLeisure</servlet-class>
+    <servlet-name>ShowLeisure</servlet-name>
+    <servlet-class>com.lavalloisir.servlets.ShowLeisure</servlet-class>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>Home</servlet-name>
     <url-pattern>/Home</url-pattern>
@@ -90,8 +91,8 @@
     <url-pattern>/restrained/IndexLeisures</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>ShowLeisure</servlet-name>
-  	<url-pattern>/restrained/ShowLeisure</url-pattern>
+    <servlet-name>ShowLeisure</servlet-name>
+    <url-pattern>/restrained/ShowLeisure</url-pattern>
   </servlet-mapping>
   <jsp-config>
     <jsp-property-group>

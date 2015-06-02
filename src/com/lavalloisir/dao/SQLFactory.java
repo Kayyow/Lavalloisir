@@ -23,4 +23,13 @@ public final class SQLFactory {
 	public static String delete(String table, String where) {
 		return "DELETE FROM " + table + " WHERE " + where;
 	}
+	
+	public static String selectFiveBestLeisures() {
+		return "SELECT title, AVG(note) "
+				+ "FROM leisure, evaluation "
+				+ "WHERE leisure.id = evaluation.id_leisure "
+				+ "GROUP BY id_leisure "
+				+ "ORDER BY AVG(note) DESC "
+				+ "LIMIT 5";
+	}
 }

@@ -11,7 +11,7 @@
 	    		<c:out value="${!empty sessionScope.user ? 'Mon compte' : 'Inscription'}"/></a>
 	    </div>
 	    
-	    
+	     
 		<c:if test="${ sessionScope.user != null }">
 			<div class="connectionBox info">
 	    	<p>
@@ -33,12 +33,19 @@
 	
 	<div class="columnBox" id="bestRating">
 	    <div class="titleBox">Les mieux notés</div>
-	    <ul>
-	        <li class="listBestRating"> TOP 1 </li>
-	        <li class="listBestRating"> TOP 2 </li>
-	        <li class="listBestRating"> TOP 3 </li>
-	        <li class="listBestRating"> TOP 4 </li>
-	        <li class="listBestRating"> TOP 5 </li>
-	    </ul>
+	    
+		<c:choose>
+			<c:when test="${ sessionScope.user != null }">
+				<ul>
+			        <c:forEach items="${ bestLeisures }" var="leisureNote">
+			        	<li class="listBestRating"> <c:out value="${ leisureNote }"/> </li>
+			        </c:forEach>
+	    		</ul>
+			</c:when>
+			<c:otherwise>
+				<span>Fonctionnalité réservée au membre du site ! </span>
+			</c:otherwise>
+		</c:choose>
+	    
 	</div>
 </div>
