@@ -7,15 +7,13 @@
 	<!-- Menu -->
 	<nav>
 		<a href="/Lavalloisir/Home">Accueil</a>
+		
 		<a href="/Lavalloisir/restrained/IndexLeisures">Loisir</a>
-		<c:choose>
-			<c:when test="${ sessionScope.user != null }">
-				<a href="/Lavalloisir/restrained/Rate">Evaluer</a>
-			</c:when>
-			<c:otherwise>
-				<a href="/Lavalloisir/Registration">Inscription</a>
-			</c:otherwise>
-		</c:choose>
+		
+		<c:if test="${ sessionScope.user == null }">
+			<a href="/Lavalloisir/Registration">Inscription</a>
+		</c:if>
+		
 		<a href="/Lavalloisir/Contact">Contact</a>
 	</nav>
 

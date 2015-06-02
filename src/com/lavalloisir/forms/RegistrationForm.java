@@ -85,7 +85,7 @@ public final class RegistrationForm {
             user.setPicture("/Lavalloisir/img/user/user_img.png");
 
             if (errors.isEmpty()) {
-            	if (picture != null) {
+            	if (picture.getSize() != 0) {
                 	processPicture(picture, user);
                 }
                 userDAO.create(user);
@@ -194,11 +194,11 @@ public final class RegistrationForm {
     		pictureName = getFileName(picture);
     		validPictureName(pictureName);
     		writeFile(picture, pictureName);
+        	String localPath = path.substring(path.indexOf("/img"));
+        	user.setPicture("/Lavalloisir" + localPath + pictureName);
 		} catch (Exception e) {
 			setError(FIELD_PICTURE, e.getMessage());
 		}
-    	String localPath = path.substring(path.indexOf("/img"));
-    	user.setPicture("/Lavalloisir" + localPath + pictureName);
     }
 
     /* Validation de l'adresse email */

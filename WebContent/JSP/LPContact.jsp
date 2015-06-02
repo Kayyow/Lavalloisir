@@ -1,4 +1,4 @@
-<h2> Contact-nous </h2>
+<h2> Contacte nous </h2>
 <hr>
 	
 <div class="contactContent">

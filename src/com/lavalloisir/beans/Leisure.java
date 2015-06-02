@@ -47,11 +47,13 @@ public class Leisure {
 	public void setPhone(String phone) {
 		this.phone = phone;
 		
-		String displayPhone = "";
-		for (int i=1; i<=5; i++) {
-			displayPhone += phone.substring((i-1) * 2, 2*i) + ".";
+		if (phone.length() == 10) {
+			String displayPhone = "";
+			for (int i=1; i<=5; i++) {
+				displayPhone += phone.substring((i-1) * 2, 2*i) + ".";
+			}
+			this.setDisplayPhone(displayPhone.substring(0, displayPhone.length()-1));
 		}
-		this.setDisplayPhone(displayPhone.substring(0, displayPhone.length()-1));
 	}
 	
 	public String getDisplayPhone() {

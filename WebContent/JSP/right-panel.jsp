@@ -10,7 +10,6 @@
 	    	<a href="/Lavalloisir/<c:out value="${!empty sessionScope.user ? 'restrained/UpdateAccount' : 'Registration'}"/>">
 	    		<c:out value="${!empty sessionScope.user ? 'Mon compte' : 'Inscription'}"/></a>
 	    </div>
-	    
 	     
 		<c:if test="${ sessionScope.user != null }">
 			<div class="connectionBox info">
@@ -22,8 +21,8 @@
 	    		<p> <c:out value="${ sessionScope.user.email }"/> </p>
 	    	</c:if>
 	    	
-	    	<c:if test="${ sessionScope.user.phone != null }">
-	    		<p> <c:out value="${ sessionScope.user.phone }"/> </p>
+	    	<c:if test="${ sessionScope.user.displayPhone != null }">
+	    		<p> <c:out value="${ sessionScope.user.displayPhone }"/> </p>
 	    	</c:if>
 	    	
 	    	</div>
