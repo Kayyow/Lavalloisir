@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Connection;
+import java.sql.Timestamp;
+import java.util.Date;
 
 import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 
@@ -134,7 +136,6 @@ public class UserDAOImpl implements UserDAO {
 	public void update (long id, User user) throws DAOException {
 		Connection cnct = null;
 		PreparedStatement preparedStmt = null;
-		ResultSet rs = null;
 		
 		try {
 			cnct = daoFactory.getConnection();
@@ -149,7 +150,27 @@ public class UserDAOImpl implements UserDAO {
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} finally {
-			DAOUtil.silentsClosing(rs, preparedStmt, cnct);
+			DAOUtil.silentsClosing(preparedStmt, cnct);
+		}
+	}
+	
+	@Override
+	public void updateLastConnection (long id) throws DAOException {
+		Connection cnct = null;
+		PreparedStatement preparedStmt = null;
+		
+		try {
+			cnct = daoFactory.getConnection();
+			String query = SQLFactory.update("user", "last_connection = ?", "id = " + id);
+			preparedStmt = DAOUtil.initPreparedStatement(cnct, query, false, new Timestamp(new Date().getTime()));
+			
+			if (preparedStmt.executeUpdate() == 0) {
+				throw new DAOException("Echec de la mise à jour de l'utilisateur, aucune modification prise en compte.");
+			}
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		} finally {
+			DAOUtil.silentsClosing(preparedStmt, cnct);
 		}
 	}
     

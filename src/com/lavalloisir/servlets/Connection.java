@@ -60,7 +60,8 @@ public class Connection extends HttpServlet {
 		User user = form.connectUser(request);
 		
 		if (user != null) {
-			request.setAttribute(ATT_FILE_LP, "LPHome.jsp");			
+			request.setAttribute(ATT_FILE_LP, "LPHome.jsp");
+			userDAO.updateLastConnection(user.getId());	
 		} else {
 			request.setAttribute(ATT_FILE_LP, "LPConnection.jsp");			
 		}

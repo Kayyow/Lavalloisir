@@ -49,21 +49,21 @@
 	<div class="field">
 		<span class="label">Avis</span>
 		
-		<span class="value noteAverage"> Note globale :  <c:out value="${ averageNote }"/><b>/10</b> </span>
+		<span class="value noteAverage"> Note globale : <c:out value="${ averageNote }"/> <b> / 10</b> </span>
 		
 		<form id="evaluationForm" method="post">
 			<div class="formField">	
-				<label for="inputNote">Note :</label>
-				<input type="range" name="inputNote" class="formInput note"  min="0" max="10" step="1"/>
-				<label for="inputOpinion"> Commentaire : </label>
-				<textarea  name="inputOpinion" class="formInput opinion" rows="5" ></textarea>
-				<input type="submit"  class="evaluateButton" value="Envoyer"/>
+				<label for="note">Note :</label>
+				<input type="range" name="note" class="formInput note"  min="0" max="10" step="1"/>
+				<label for="opinion"> Commentaire : </label>
+				<textarea name="opinion" class="formInput opinion" rows="5"></textarea>
+				<input type="submit" class="evaluateButton" value="Evaluer"/>
 			</div>
 		</form>
 			
 		<c:forEach items="${ evaluations }" var="evaluation">
 			<hr>
-			<span class="value note"> <c:out value="${ evaluation.note }"/> <b> /10</b> </span> </span>
+			<span class="value note"> <c:out value="${ evaluation.note }"/> <b> / 10</b> </span> </span>
 			<span class="value nameUser"> <c:out value="${ evaluation.user.name }"/> <c:out value="${ evaluation.user.givenName }"/> :</span>
 			<span class="value opinion"> <c:out value="${ evaluation.opinion }"/> </span>
 		</c:forEach>
