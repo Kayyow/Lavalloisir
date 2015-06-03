@@ -55,28 +55,23 @@ public class ShowLeisure extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getParameter("id") != null) {
+		if (request.getParameter("id") != null) {			
 			long id = Long.parseLong(request.getParameter("id"));
 			leisure = leisureDAO.read(id);
-			
-			leisureEvaluations = evaluationDAO.index(leisure);
-			
-			// Calcul de la note moyenne donnée au loisir par les users
-			for (Evaluation e : leisureEvaluations) {
-				avgNote += e.getNote();
-			}
-			avgNote /= leisureEvaluations.size();
-
-
 			request.setAttribute(ATT_LEISURE, leisure);
-			// Get best Leisures
-			bestLeisures = evaluationDAO.getBestLeisures();			
-			request.setAttribute(ATT_BEST_LEISURES, bestLeisures);
-
+			
+			// Note moyenne du loisir
+			avgNote = evaluationDAO.getAverageNote(leisure);
 			DecimalFormat df = new DecimalFormat("#.#");
 			request.setAttribute(ATT_AVG_NOTE, df.format(avgNote));
 			
+			leisureEvaluations = evaluationDAO.index(leisure);
 			request.setAttribute(ATT_EVALUATIONS, leisureEvaluations);
+			
+			// Les 5 meilleurs loisirs
+			bestLeisures = evaluationDAO.getBestLeisures();			
+			request.setAttribute(ATT_BEST_LEISURES, bestLeisures);
+
 			request.setAttribute(ATT_FILE_LP, "/restrained/LPShowLeisure.jsp");
 			this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
 		} else {
@@ -89,22 +84,17 @@ public class ShowLeisure extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		EvaluationForm form = new EvaluationForm(evaluationDAO, leisureDAO);
-
 		form.noteLeisure(request, (User)request.getSession().getAttribute("user"), leisure);
 		
-		leisureEvaluations = evaluationDAO.index(leisure);
+		request.setAttribute(ATT_LEISURE, leisure);
 		
-		avgNote = 0;
-		// Calcul de la note moyenne donnée au loisir par les users
-		for (Evaluation e : leisureEvaluations) {
-			avgNote += e.getNote();
-		}
-		avgNote /= leisureEvaluations.size();
-
+		leisureEvaluations = evaluationDAO.index(leisure);
+		request.setAttribute(ATT_EVALUATIONS, leisureEvaluations);
+		
+		avgNote = evaluationDAO.getAverageNote(leisure);
 		DecimalFormat df = new DecimalFormat("#.#");
 		request.setAttribute(ATT_AVG_NOTE, df.format(avgNote));
-		request.setAttribute(ATT_LEISURE, leisure);
-		request.setAttribute(ATT_EVALUATIONS, leisureEvaluations);
+		
 		request.setAttribute(ATT_FILE_LP, "/restrained/LPShowLeisure.jsp");
 		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
 	}

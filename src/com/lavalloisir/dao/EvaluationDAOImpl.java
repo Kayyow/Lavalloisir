@@ -115,6 +115,30 @@ public class EvaluationDAOImpl implements EvaluationDAO {
 		return evaluations;
 	}
 	
+	public float getAverageNote(Leisure leisure) throws DAOException {
+		Connection cnct = null;
+		PreparedStatement preparedStmt = null;
+		ResultSet rs = null;
+		float averageNote = 0;
+		
+		try {
+			cnct = daoFactory.getConnection();
+			String query = SQLFactory.selectAverageNote();
+			preparedStmt = DAOUtil.initPreparedStatement(cnct, query, false, leisure.getId());
+			rs = preparedStmt.executeQuery();
+			
+			if (rs.next()) {
+				averageNote = rs.getFloat(1);
+			}
+		} catch (Exception e) {
+			throw new DAOException(e);
+		} finally {
+			DAOUtil.silentsClosing(rs, preparedStmt, cnct);
+		}
+		
+		return averageNote;
+	}
+	
 	public List<String> getBestLeisures() throws DAOException {
 		Connection cnct = null;
 		PreparedStatement preparedStmt = null;

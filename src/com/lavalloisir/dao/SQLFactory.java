@@ -32,4 +32,11 @@ public final class SQLFactory {
 				+ "ORDER BY AVG(note) DESC "
 				+ "LIMIT 5";
 	}
+	
+	public static String selectAverageNote() {
+		return "SELECT AVG(note) "
+				+ "FROM leisure, evaluation "
+				+ "WHERE leisure.id = evaluation.id_leisure "
+				+ "AND leisure.id = ?";
+	}
 }

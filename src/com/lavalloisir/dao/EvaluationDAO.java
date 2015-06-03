@@ -23,6 +23,13 @@ public interface EvaluationDAO {
 	 */
 	Evaluation read (User user, Leisure leisure) throws DAOException;
 	
+	/**
+	 * 
+	 * @param evaluation
+	 * @param note
+	 * @param opinion
+	 * @throws DAOException
+	 */
 	void update(Evaluation evaluation, int note, String opinion) throws DAOException;
 	
 	/**
@@ -32,6 +39,13 @@ public interface EvaluationDAO {
 	 * @throws DAOException
 	 */
 	List<Evaluation> index (Leisure leisure) throws DAOException;
+	
+	/**
+	 * 
+	 * @return
+	 * @throws DAOException
+	 */
+	float getAverageNote(Leisure leisure) throws DAOException;
 	
 	/**
 	 * 

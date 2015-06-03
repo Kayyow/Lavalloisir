@@ -46,6 +46,7 @@ public class UpdateAccountForm {
 
             if (errors.isEmpty()) {
                 userDAO.update(sessionUser.getId(), user);
+                user = userDAO.read(sessionUser.getId());
                 result = "Succès de l'inscription.";
             } else {
                 result = "Echec de l'inscription.";
