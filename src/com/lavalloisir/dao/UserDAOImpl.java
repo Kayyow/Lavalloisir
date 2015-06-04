@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 
@@ -173,6 +175,37 @@ public class UserDAOImpl implements UserDAO {
 			DAOUtil.silentsClosing(preparedStmt, cnct);
 		}
 	}
+	
+	@Override
+	public List<User> index () throws DAOException {
+		
+		Connection cnct = null;
+		PreparedStatement preparedStmt = null;
+		ResultSet rs = null;
+		User user = null;
+		List<User> users = new ArrayList<User>();
+		
+		try{
+			cnct = daoFactory.getConnection();
+			String query = SQLFactory.selectAll("user");
+			preparedStmt = DAOUtil.initPreparedStatement(cnct, query, false);
+			
+			rs = preparedStmt.executeQuery();
+			
+			while (rs.next()) {
+				user = map(rs);
+				users.add(user);
+			}
+			
+		}catch (SQLException e) {
+			throw new DAOException(e);
+		} finally {
+			DAOUtil.silentsClosing(rs, preparedStmt, cnct);
+		}
+		
+		return users;
+	}
+	
     
     /**
 	 * Simple méthode utilitaire permettant de faire la correspondance (le mapping)

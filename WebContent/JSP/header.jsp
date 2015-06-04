@@ -8,12 +8,15 @@
 	<nav>
 		<a href="/Lavalloisir/Home">Accueil</a>
 		
-		<a href="/Lavalloisir/restrained/IndexLeisures">Loisir</a>
-		
-		<c:if test="${ sessionScope.user == null }">
-			<a href="/Lavalloisir/Registration">Inscription</a>
-		</c:if>
-		
+		<a href="/Lavalloisir/restrained/IndexLeisures">Loisirs</a>
+		<c:choose>
+			<c:when test="${ sessionScope.user != null }">
+				<a href="/Lavalloisir/restrained/ListMember">Membres</a>
+			</c:when>
+			<c:otherwise>
+				<a href="/Lavalloisir/Registration">Inscription</a>
+			</c:otherwise>
+		</c:choose>
 		<a href="/Lavalloisir/Contact">Contact</a>
 	</nav>
 
