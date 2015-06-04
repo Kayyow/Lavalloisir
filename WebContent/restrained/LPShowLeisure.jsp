@@ -63,7 +63,7 @@
 			
 		<c:forEach items="${ evaluations }" var="evaluation">
 			<hr>
-			<span class="value note"> <c:out value="${ evaluation.note }"/> <b> / 10</b> </span> </span>
+			<span class="value note"> <c:out value="${ evaluation.note }"/> <b> / 10</b> </span>
 			<span class="value nameUser"> <c:out value="${ evaluation.user.givenName }"/> <c:out value="${ evaluation.user.name }"/> :</span>
 			<span class="value opinion"> <c:out value="${ evaluation.opinion }"/> </span>
 		</c:forEach>
