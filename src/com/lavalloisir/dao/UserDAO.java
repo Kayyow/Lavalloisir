@@ -1,5 +1,7 @@
 package com.lavalloisir.dao;
 
+import java.util.List;
+
 import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 
 import com.lavalloisir.beans.User;
@@ -53,4 +55,11 @@ public interface UserDAO {
 	 * @throws DAOException
 	 */
 	void updateLastConnection (long id) throws DAOException;
+	
+	/**
+	 * 
+	 * @return
+	 * @throws DAOException
+	 */
+	List<User> index () throws DAOException;
 }
