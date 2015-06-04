@@ -3,6 +3,7 @@
   <listener>
     <listener-class>com.lavalloisir.config.InitDAOFactory</listener-class>
   </listener>
+  
   <filter>
     <filter-name>Restriction</filter-name>
     <filter-class>com.lavalloisir.filters.Restriction</filter-class>
@@ -11,6 +12,7 @@
     <filter-name>Restriction</filter-name>
     <url-pattern>/restrained/*</url-pattern>
   </filter-mapping>
+  
   <servlet>
     <servlet-name>Home</servlet-name>
     <servlet-class>com.lavalloisir.servlets.Home</servlet-class>
@@ -20,10 +22,10 @@
     <servlet-class>com.lavalloisir.servlets.Registration</servlet-class>
     <init-param>
       <param-name>path</param-name>
-      <param-value>/home/kayyow/Dev/Lavalloisir/WebContent/img/user</param-value>
+      <param-value>C:\Users\Administrateur\workspace\Lavalloisir\WebContent\img\user\</param-value>
     </init-param>
     <multipart-config>
-      	<location>/home/kayyow/Dev/Lavalloisir/WebContent/img/temp</location>
+      	<location>C:\Users\Administrateur\workspace\Lavalloisir\WebContent\img\temp\</location>
 		<max-file-size>327680</max-file-size> <!-- 320 ko -->
 	   	<max-request-size>327680</max-request-size> <!-- 320 ko -->
 	   	<file-size-threshold>327680</file-size-threshold> <!-- 320 ko -->

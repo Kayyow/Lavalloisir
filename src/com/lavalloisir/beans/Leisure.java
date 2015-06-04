@@ -47,7 +47,7 @@ public class Leisure {
 	public void setPhone(String phone) {
 		this.phone = phone;
 		
-		if (phone.length() == 10) {
+		if (phone != null && phone.length() == 10) {
 			String displayPhone = "";
 			for (int i=1; i<=5; i++) {
 				displayPhone += phone.substring((i-1) * 2, 2*i) + ".";
