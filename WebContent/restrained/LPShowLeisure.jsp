@@ -49,7 +49,8 @@
 	<div class="field">
 		<span class="label">Avis</span>
 		
-		<span class="value noteAverage"> Note moyenne : <b><c:out value="${ averageNote }"/> / 10</b> <br/> (<c:out value="${ fn:length( evaluations ) }"/> notes)</span>
+		<span class="value noteAverage"> Note moyenne : <b><c:out value="${ averageNote }"/> / 10</b> <br/>
+		(<c:out value="${ fn:length( evaluations ) }"/> notes)</span>
 		
 		<form id="evaluationForm" method="post">
 			<div class="formField">	

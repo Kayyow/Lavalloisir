@@ -2,9 +2,9 @@
 <h2>Liste des loisirs</h2>
 <hr>
 
-<form method="post">
-	<label for="category">Catégories :</label>	
-	<select name="category" class="category">
+<form method="get">
+	<label for="category">Catégories :</label>
+	<select name="category" class="category" selected="<c:out value="${ selectedCategory }"/>">
 		<c:choose>
 			<c:when test="${ categories != null }">
 				<c:forEach items="${ categories }" var="category" >

@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.lavalloisir.beans.User;
 import com.lavalloisir.dao.DAOFactory;
@@ -45,9 +46,15 @@ public class Registration extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute(ATT_FILE_LP, "LPRegistration.jsp");
-		// Affichage de la page d'inscription
-		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
+		if (user == null) {
+			request.setAttribute(ATT_FILE_LP, "LPRegistration.jsp");
+			// Affichage de la page d'inscription
+			this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
+		} else {
+			response.sendRedirect(URL_REDIRECTION);
+		}
 	}
 
 	/**

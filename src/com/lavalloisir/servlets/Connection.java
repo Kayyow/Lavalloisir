@@ -24,7 +24,8 @@ public class Connection extends HttpServlet {
 	public static final String ATT_FORM = "form";
 	public static final String ATT_SESSION_USER = "user";
 	public static final String ATT_FILE_LP = "fileLP";
-	public static final String VIEW = "/JSP/page.jsp";
+	public static final String VIEW = "/JSP/page.jsp";	
+	public static final String URL_REDIRECTION = "Home";
 	
 	private UserDAO userDAO;
 	
@@ -44,9 +45,16 @@ public class Connection extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute(ATT_FILE_LP, "LPConnection.jsp");
-		// Affichage de la page d'inscription
-		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
+		
+		if (user == null) {	
+			request.setAttribute(ATT_FILE_LP, "LPConnection.jsp");
+			// Affichage de la page d'inscription
+			this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
+		} else {
+			response.sendRedirect(URL_REDIRECTION);
+		}
 	}
 
 	/**
