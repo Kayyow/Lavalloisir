@@ -62,4 +62,11 @@ public interface UserDAO {
 	 * @throws DAOException
 	 */
 	List<User> index () throws DAOException;
+	
+	/**
+	 * 
+	 * @param id
+	 * @throws DAOException
+	 */
+	void delete (long id) throws DAOException;
 }

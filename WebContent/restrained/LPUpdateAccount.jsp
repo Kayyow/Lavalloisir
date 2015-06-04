@@ -40,4 +40,10 @@
 	</div>
 	
 	<input class="button" type="submit" value="Enregistrer" />
+	<input type="hidden" name="whichForm" value="update"/>
+</form>
+
+<form id="deleteAccountForm" method="POST">
+	<input class="button" type="submit" value="Supprimer le compte"/>
+	<input type="hidden" name="whichForm" value="delete"/>
 </form>

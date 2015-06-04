@@ -206,7 +206,27 @@ public class UserDAOImpl implements UserDAO {
 		return users;
 	}
 	
+	@Override
+	public void delete (long id) throws DAOException{
+		Connection cnct = null; 
+		PreparedStatement preparedStmt = null;
+		
+		try {
+			cnct = daoFactory.getConnection();
+			String query = SQLFactory.delete("user", "id = " + id);
+			preparedStmt = DAOUtil.initPreparedStatement(cnct, query, false);
+			
+			if (preparedStmt.executeUpdate() == 0) {
+				throw new DAOException("Echec de la suppression de l'utilisateur, aucune modification prise en compte.");
+			}
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		} finally {
+			DAOUtil.silentsClosing(preparedStmt, cnct);
+		}
+	}
     
+	
     /**
 	 * Simple méthode utilitaire permettant de faire la correspondance (le mapping)
 	 * entre une ligne issue de la table utilisateur (un ResultSet) et un bean User
