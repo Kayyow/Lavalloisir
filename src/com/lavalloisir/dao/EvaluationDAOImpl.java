@@ -33,7 +33,7 @@ public class EvaluationDAOImpl implements EvaluationDAO {
 					"?, ?, ?, ?");
 			preparedStmt = DAOUtil.initPreparedStatement(cnct, query, false, evaluation.getNote(),
 					evaluation.getOpinion(), evaluation.getLeisure().getId(), evaluation.getUser().getId());
-			
+				
 			if (preparedStmt.executeUpdate() == 0) {
 				throw new DAOException("Echec de la création de l'evaluation, aucune ligne ajoutée à la table.");
 			}

@@ -88,7 +88,7 @@ public class Connection extends HttpServlet {
 		// Stockage du formulaire et du bean dans l'objet request
 		request.setAttribute(ATT_FORM, form);
 		request.setAttribute(ATT_USER, user);
-		
-		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
+
+		response.sendRedirect(URL_REDIRECTION);
 	}
 }

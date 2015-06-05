@@ -91,6 +91,10 @@ public class ShowLeisure extends HttpServlet {
 		leisureEvaluations = evaluationDAO.index(leisure);
 		request.setAttribute(ATT_EVALUATIONS, leisureEvaluations);
 		
+		// Les 5 meilleurs loisirs
+		bestLeisures = evaluationDAO.getBestLeisures();			
+		request.setAttribute(ATT_BEST_LEISURES, bestLeisures);
+		
 		avgNote = evaluationDAO.getAverageNote(leisure);
 		DecimalFormat df = new DecimalFormat("#.#");
 		request.setAttribute(ATT_AVG_NOTE, df.format(avgNote));
