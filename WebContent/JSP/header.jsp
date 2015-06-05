@@ -5,7 +5,7 @@
 	</h1>
 
 	<!-- Menu -->
-	<nav>
+	<nav id="menu">
 		<a href="/Lavalloisir/Home">Accueil</a>
 		
 		<a href="/Lavalloisir/restrained/IndexLeisures">Loisirs</a>

@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Connection;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -150,9 +151,10 @@ public class EvaluationDAOImpl implements EvaluationDAO {
 			String query = SQLFactory.selectFiveBestLeisures();
 			preparedStmt = DAOUtil.initPreparedStatement(cnct, query, false);
 			rs = preparedStmt.executeQuery();
-
+			DecimalFormat df = new DecimalFormat("#.#");			
+			
 			while (rs.next()) {
-				String str = rs.getString(1) + " : " + rs.getFloat(2);
+				String str = rs.getString(1) + " : " + df.format(rs.getFloat(2));
 				bestLeisures.add(str);
 			}
 		} catch (SQLException e) {
