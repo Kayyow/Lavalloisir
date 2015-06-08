@@ -166,7 +166,7 @@ public final class RegistrationForm {
             setError(FIELD_GIVENNAME, e.getMessage());
         }
         user.setName(name != null ? name : "");
-        user.setGivenName(givenName != null ? name : "");
+        user.setGivenName(givenName != null ? givenName : "");
     }
     
     /**
