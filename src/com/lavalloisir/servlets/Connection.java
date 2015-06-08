@@ -69,9 +69,9 @@ public class Connection extends HttpServlet {
 		
 		if (user != null) {
 			request.setAttribute(ATT_FILE_LP, "LPHome.jsp");
-			userDAO.updateLastConnection(user.getId());	
+			userDAO.updateLastConnection(user.getId());
 		} else {
-			request.setAttribute(ATT_FILE_LP, "LPConnection.jsp");			
+			request.setAttribute(ATT_FILE_LP, "LPConnection.jsp");
 		}
 		
 		// Récupération de la session depuis la requête

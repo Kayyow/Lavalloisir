@@ -82,7 +82,7 @@ public final class RegistrationForm {
             processEmail(email, user);
             processPassword(password, confirmPassword, user);
             processPhone(phone, user);
-            user.setPicture("\\Lavalloisir\\img\\user\\user_img.png");
+            user.setPicture("/Lavalloisir/img/user/user_img.png");
 
             if (errors.isEmpty()) {
             	if (picture.getSize() != 0) {
@@ -154,7 +154,7 @@ public final class RegistrationForm {
      * @param givenName
      * @param user
      */
-    private void processNames( String name, String givenName, User user) {
+    private void processNames(String name, String givenName, User user) {
         try {
         	validName(name);
         } catch ( FormValidationException e ) {
@@ -165,8 +165,8 @@ public final class RegistrationForm {
         } catch ( FormValidationException e ) {
             setError(FIELD_GIVENNAME, e.getMessage());
         }
-        user.setName(name);
-        user.setGivenName(givenName);
+        user.setName(name != null ? name : "");
+        user.setGivenName(givenName != null ? name : "");
     }
     
     /**
@@ -194,8 +194,8 @@ public final class RegistrationForm {
     		pictureName = getFileName(picture);
     		validPictureName(pictureName);
     		writeFile(picture, pictureName);
-        	String localPath = path.substring(path.indexOf("\\img"));
-        	user.setPicture("\\Lavalloisir" + localPath + pictureName);
+        	String localPath = path.substring(path.indexOf("/img"));
+        	user.setPicture("/Lavalloisir" + localPath + pictureName);
 		} catch (Exception e) {
 			setError(FIELD_PICTURE, e.getMessage());
 		}
