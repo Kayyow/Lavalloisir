@@ -22,10 +22,10 @@
     <servlet-class>com.lavalloisir.servlets.Registration</servlet-class>
     <init-param>
       <param-name>path</param-name>
-      <param-value>C:\Users\Administrateur\workspace\Lavalloisir\WebContent\img\user</param-value>
+      <param-value>/var/lib/tomcat8/webapps/Lavalloisir/img/user</param-value>
     </init-param>
     <multipart-config>
-      <location>C:\Users\Administrateur\workspace\Lavalloisir\WebContent\img\temp</location>
+      <location>/var/lib/tomcat8/webapps/Lavalloisir/img/temp</location>
       <max-file-size>327680</max-file-size>
       <max-request-size>327680</max-request-size>
       <file-size-threshold>327680</file-size-threshold>
